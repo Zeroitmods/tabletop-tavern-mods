@@ -1,0 +1,15 @@
+{
+    "formato": 1,
+    "id": "ZeroImperterritos",
+    "nombre": "Zero - Indesmoralizables (Unbreakable)",
+    "version": "1.0.0",
+    "nucleoMinimo": "0.7.7",
+    "activoPorDefecto": true,
+    "dependencias": [],
+    "efectos": {
+        "moralJugador": {
+            "sinHuida": true,
+            "sinVacilar": true
+        }
+    }
+}

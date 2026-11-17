@@ -1,0 +1,15 @@
+{
+    "formato": 1,
+    "id": "ZeroEscuadras50",
+    "nombre": "Zero - Escuadras más grandes x50% (Bigger Squads x50%)",
+    "version": "1.0.1",
+    "nucleoMinimo": "0.7.7",
+    "activoPorDefecto": true,
+    "dependencias": [],
+    "efectos": {
+        "escuadras": {
+            "multiplicador": 1.5,
+            "minimoSoldados": 2
+        }
+    }
+}

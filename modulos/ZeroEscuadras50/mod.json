@@ -1,0 +1,7 @@
+{
+    "displayName": "Zero - Escuadras más grandes x50% (Bigger Squads x50%)",
+    "author": "ZeroitMods",
+    "version": "1.0.1",
+    "description": "Todas las escuadras de 2 o más soldados llevan un 50 % más de soldados (redondeo normal), con la munición escalada igual, en los dos bandos. / Every squad with 2 or more soldiers gets 50% more soldiers (normal rounding), with ammunition scaled the same, for both sides. NECESITA / REQUIRES: Zero - Núcleo (BepInEx).",
+    "workshopFileId": ""
+}

@@ -1,0 +1,4 @@
+# Los ficheros se guardan tal cual se generan, sin convertir finales de línea
+# Files are stored exactly as generated, without line-ending conversion
+* -text
+*.png binary

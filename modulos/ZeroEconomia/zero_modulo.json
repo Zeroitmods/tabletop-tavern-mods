@@ -1,0 +1,10 @@
+{
+    "formato": 1,
+    "id": "ZeroEconomia",
+    "nombre": "Zero - Más oro, tope de intereses 30 (More Gold)",
+    "version": "1.2.1",
+    "nucleoMinimo": "0.7.7",
+    "activoPorDefecto": true,
+    "dependencias": [],
+    "efectos": {}
+}

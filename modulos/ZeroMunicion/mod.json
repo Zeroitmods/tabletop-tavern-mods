@@ -1,0 +1,7 @@
+{
+    "displayName": "Zero - Munición x3 (Ammo x3)",
+    "author": "ZeroitMods",
+    "version": "1.0.1",
+    "description": "Tu ejército (el del jugador, con cualquier héroe) lleva el triple de munición en todas las unidades con munición (a distancia, híbridas y artillería). La IA no. / Your army (the player's, with any hero) carries triple ammunition on every unit that uses it (ranged, hybrid and artillery). The AI does not. NECESITA / REQUIRES: Zero - Núcleo (BepInEx).",
+    "workshopFileId": ""
+}

@@ -1,0 +1,7 @@
+{
+    "displayName": "Zero - Munición x2 (Ammo x2)",
+    "author": "ZeroitMods",
+    "version": "1.0.0",
+    "description": "Tu ejército (el del jugador, con cualquier héroe) lleva el doble de munición en todas las unidades con munición (a distancia, híbridas y artillería). La IA no. Viene DESACTIVADO: actívalo en el menú de mods del juego. / Your army (the player's, with any hero) carries double ammunition on every unit that uses it (ranged, hybrid and artillery). The AI does not. Ships DISABLED: enable it in the game's mod menu. NECESITA / REQUIRES: Zero - Núcleo (BepInEx).",
+    "workshopFileId": ""
+}

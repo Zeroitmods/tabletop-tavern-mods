@@ -1,0 +1,154 @@
+<!--
+  ZeroNucleo.csproj
+  Plugin de BepInEx 6 (IL2CPP) «Zero - Núcleo» para Tabletop Tavern (antes, un plugin monolítico).
+  Desde la 0.7.0 no aplica nada por sí mismo: detecta los módulos instalados y activos (carpetas de mod oficial con
+  un zero_modulo.json) y aplica lo que declara cada uno: unidades nuevas 9xx con su «fábrica» dirigida por manifiesto,
+  facciones facción A (40) e facción B (41) con sus héroes 901-904, objetos 7xx y los efectos de
+  escuadras, munición y stats a distancia. Sin ningún módulo, el juego queda de serie.
+  Referencia directamente las DLL de BepInEx y los ensamblados de interop que BepInEx generó en la carpeta del
+  juego, así que no hace falta NuGet. Con -p:Instalar=true, al compilar copia también la DLL a BepInEx\plugins del juego.
+  Autor: ZeroitMods.
+-->
+<!--
+  ZeroNucleo.csproj
+  BepInEx 6 (IL2CPP) plugin «Zero - Núcleo» for Tabletop Tavern (formerly a monolithic plugin).
+  Since 0.7.0 it applies nothing by itself: it detects the installed and active modules (official mod folders with
+  a zero_modulo.json) and applies what each one declares: new 9xx units with their manifest-driven «factory»,
+  factions faction A (40) and faction B (41) with their heroes 901-904, 7xx gear and the effects on
+  squads, ammo and ranged stats. With no module, the game stays vanilla.
+  It references the BepInEx DLLs directly and the interop assemblies that BepInEx generated in the game
+  folder, so NuGet is not needed. With -p:Instalar=true, when building it also copies the DLL to the game's BepInEx\plugins.
+  Author: ZeroitMods.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Sección: configuración general del proyecto (BepInEx IL2CPP usa .NET 6) -->
+  <!-- Section: general project settings (BepInEx IL2CPP uses .NET 6) -->
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>ZeroNucleo</AssemblyName>
+    <RootNamespace>ZeroNucleo</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <CheckEolTargetFramework>false</CheckEolTargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <!-- 03-11-2026: autor visible «ZeroitMods» (norma de publicación de ZeroitMods).
+         Company se fija aparte: si no, hereda Authors y sale en las propiedades de la DLL (CompanyName) -->
+    <!-- 03-11-2026: visible author «ZeroitMods» (ZeroitMods publishing rule).
+         Company is set separately: otherwise it inherits Authors and shows up in the DLL properties (CompanyName) -->
+    <Authors>ZeroitMods</Authors>
+    <Company>ZeroitMods</Company>
+    <!-- 0.7.3 (01-11-2026): adaptación al juego 1.11.1 (tipos movidos, carga tolerante, logros de ejército) -->
+    <!-- 0.7.3 (01-11-2026): adaptation to game 1.11.1 (moved types, tolerant loading, army achievements) -->
+    <!-- 0.7.4 (01-11-2026): hechizos propios de los héroes nuevos (1901-1904), munición x3 de las híbridas y sorteo de objetos por rareza -->
+    <!-- 0.7.4 (01-11-2026): custom spells for the new heroes (1901-1904), x3 ammo for hybrids and gear drawing by rarity -->
+    <!-- 0.7.5 (02-11-2026): revisión total del proyecto (notas internas (no publicadas)) -->
+    <!-- 0.7.5 (02-11-2026): full project review (internal notes (unpublished)) -->
+    <!-- 0.7.9 (17-11-2026): ficheros del juego de los modelos propios reconstruidos desde la instalación del jugador (src/FicherosJuego.cs) -->
+    <!-- 0.7.9 (17-11-2026): game files for the custom models rebuilt from the player's installation (src/FicherosJuego.cs) -->
+    <Version>0.7.9</Version>
+    <!-- 0.7.1: la DLL no lleva la ruta local del proyecto (PDB y rutas de compilación se escriben relativas) -->
+    <!-- 0.7.1: the DLL does not carry the project's local path (PDB and build paths are written as relative) -->
+    <PathMap>$(MSBuildProjectDirectory)=.</PathMap>
+    <Deterministic>true</Deterministic>
+    <!-- Ruta del juego: la de Steam por defecto; se cambia al compilar (-p:GameDir="...", que manda sobre todo) o con la variable de entorno TABLETOP_TAVERN_DIR -->
+    <!-- Game path: the Steam one by default; it can be changed at build time (-p:GameDir="...", which overrides everything) or with the environment variable TABLETOP_TAVERN_DIR -->
+    <GameDir>C:\Program Files (x86)\Steam\steamapps\common\TabletopTavern</GameDir>
+    <GameDir Condition="'$(TABLETOP_TAVERN_DIR)' != ''">$(TABLETOP_TAVERN_DIR)</GameDir>
+    <BepInExDir>$(GameDir)\BepInEx</BepInExDir>
+    <InteropDir>$(BepInExDir)\interop</InteropDir>
+  </PropertyGroup>
+
+  <!-- Sección: solo se compila src\ (la carpeta pruebas\ es un proyecto aparte) -->
+  <!-- Section: only src\ is compiled (the pruebas\ folder is a separate project) -->
+  <ItemGroup>
+    <Compile Remove="pruebas\**" />
+    <None Remove="pruebas\**" />
+  </ItemGroup>
+
+  <!-- Sección: referencias a BepInEx, Harmony e Il2CppInterop (no se copian al plugin) -->
+  <!-- Section: references to BepInEx, Harmony and Il2CppInterop (not copied to the plugin) -->
+  <ItemGroup>
+    <Reference Include="BepInEx.Core"><HintPath>$(BepInExDir)\core\BepInEx.Core.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="BepInEx.Unity.IL2CPP"><HintPath>$(BepInExDir)\core\BepInEx.Unity.IL2CPP.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="0Harmony"><HintPath>$(BepInExDir)\core\0Harmony.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Il2CppInterop.Runtime"><HintPath>$(BepInExDir)\core\Il2CppInterop.Runtime.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+
+  <!-- Sección: ensamblados de interop del juego y de Unity (generados por BepInEx al arrancar) -->
+  <!-- Section: interop assemblies of the game and Unity (produced by BepInEx at startup) -->
+  <ItemGroup>
+    <Reference Include="Il2Cppmscorlib"><HintPath>$(InteropDir)\Il2Cppmscorlib.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Il2CppSystem.Core"><HintPath>$(InteropDir)\Il2CppSystem.Core.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.CoreModule"><HintPath>$(InteropDir)\UnityEngine.CoreModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.AudioModule"><HintPath>$(InteropDir)\UnityEngine.AudioModule.dll</HintPath><Private>false</Private></Reference>
+    <!-- F5 (18-10): Animator de las figuras de héroe (cullingMode y diagnóstico de ModeloHeroes.cs) -->
+    <!-- F5 (18-10): Animator of the hero figures (cullingMode and diagnostics of ModeloHeroes.cs) -->
+    <Reference Include="UnityEngine.AnimationModule"><HintPath>$(InteropDir)\UnityEngine.AnimationModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Memori.Audio"><HintPath>$(InteropDir)\Memori.Audio.dll</HintPath><Private>false</Private></Reference>
+    <!-- Juego 1.11.1 (01-11-2026): el enum Memori.Audio.SFXEntityType se movió (mismo namespace) a TabletopTavern.Audio.dll -->
+    <!-- Game 1.11.1 (01-11-2026): the enum Memori.Audio.SFXEntityType was moved (same namespace) to TabletopTavern.Audio.dll -->
+    <Reference Include="TabletopTavern.Audio"><HintPath>$(InteropDir)\TabletopTavern.Audio.dll</HintPath><Private>false</Private></Reference>
+    <!-- Juego 1.11.1: logros nuevos (TJ.Achievements.PlayerAchievements, AchievementId, PlayerStatId y AchievementRegistry),
+         que sustituyen a Memori.Steamworks.SteamAchievements, viven en TabletopTavern.Platform.dll -->
+    <!-- Game 1.11.1: new achievements (TJ.Achievements.PlayerAchievements, AchievementId, PlayerStatId and AchievementRegistry),
+         which replace Memori.Steamworks.SteamAchievements, live in TabletopTavern.Platform.dll -->
+    <Reference Include="TabletopTavern.Platform"><HintPath>$(InteropDir)\TabletopTavern.Platform.dll</HintPath><Private>false</Private></Reference>
+    <!-- Juego 1.11.1: Memori.Utilities.Singleton`1 (Instance / InstanceIfExists de TabletopTavernData, CampaignManager,
+         IAudioRequester, GamePlayerLoader...) se movió de Memori.Utilities.dll a Memori.Core.dll -->
+    <!-- Game 1.11.1: Memori.Utilities.Singleton`1 (Instance / InstanceIfExists of TabletopTavernData, CampaignManager,
+         IAudioRequester, GamePlayerLoader...) was moved from Memori.Utilities.dll to Memori.Core.dll -->
+    <!-- 0.7.7: MemoriTooltipTrigger (tooltips de los colores de facción y de los iconos del estandarte) -->
+    <!-- 0.7.7: MemoriTooltipTrigger (tooltips for the faction colors and the banner icons) -->
+    <!-- 0.7.7: TextAnchor (alineación del HorizontalLayoutGroup de la fila de iconos) -->
+    <!-- 0.7.7: TextAnchor (alignment of the HorizontalLayoutGroup of the icon row) -->
+    <Reference Include="UnityEngine.TextRenderingModule"><HintPath>$(InteropDir)\UnityEngine.TextRenderingModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Memori.Tooltip"><HintPath>$(InteropDir)\Memori.Tooltip.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Memori.Core"><HintPath>$(InteropDir)\Memori.Core.dll</HintPath><Private>false</Private></Reference>
+    <!-- Juego 1.11.1: TJ.ModLoadOrder (lista de mods activos en su orden) se movió a Memori.Modding.dll -->
+    <!-- Game 1.11.1: TJ.ModLoadOrder (list of active mods in their order) was moved to Memori.Modding.dll -->
+    <Reference Include="Memori.Modding"><HintPath>$(InteropDir)\Memori.Modding.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Unity.Addressables"><HintPath>$(InteropDir)\Unity.Addressables.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Unity.ResourceManager"><HintPath>$(InteropDir)\Unity.ResourceManager.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule"><HintPath>$(InteropDir)\UnityEngine.JSONSerializeModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Unity.Entities"><HintPath>$(InteropDir)\Unity.Entities.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Unity.Collections"><HintPath>$(InteropDir)\Unity.Collections.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Unity.Mathematics"><HintPath>$(InteropDir)\Unity.Mathematics.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Memori.Utilities"><HintPath>$(InteropDir)\Memori.Utilities.dll</HintPath><Private>false</Private></Reference>
+    <!-- 0.7.2 (revisión): AnalyticsService, para el bloqueo de la telemetría del juego (Saves.AntesDeTelemetria) -->
+    <!-- 0.7.2 (review): AnalyticsService, for blocking the game's telemetry (Saves.AntesDeTelemetria) -->
+    <Reference Include="Memori.Analytics"><HintPath>$(InteropDir)\Memori.Analytics.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="TabletopTavern.Core"><HintPath>$(InteropDir)\TabletopTavern.Core.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="TabletopTavern.Core.Components"><HintPath>$(InteropDir)\TabletopTavern.Core.Components.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="TabletopTavern.Core.Authoring"><HintPath>$(InteropDir)\TabletopTavern.Core.Authoring.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="TabletopTavern.GpuAnim"><HintPath>$(InteropDir)\TabletopTavern.GpuAnim.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="MemoriStudios.TJBake"><HintPath>$(InteropDir)\MemoriStudios.TJBake.dll</HintPath><Private>false</Private></Reference>
+    <!-- F2 (0.5.0): interfaz (pantalla de héroes), textos, retratos PNG y capturas de diagnóstico -->
+    <!-- F2 (0.5.0): interface (heroes screen), texts, PNG portraits and diagnostic screenshots -->
+    <Reference Include="UnityEngine.UI"><HintPath>$(InteropDir)\UnityEngine.UI.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.UIModule"><HintPath>$(InteropDir)\UnityEngine.UIModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Unity.TextMeshPro"><HintPath>$(InteropDir)\Unity.TextMeshPro.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.ImageConversionModule"><HintPath>$(InteropDir)\UnityEngine.ImageConversionModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule"><HintPath>$(InteropDir)\UnityEngine.ScreenCaptureModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Memori.Localization"><HintPath>$(InteropDir)\Memori.Localization.dll</HintPath><Private>false</Private></Reference>
+    <!-- 0.7.2: logros de Steam (SteamAchievements.Unlock y AchievementId) para el filtrado de LogrosFiltrados.cs -->
+    <!-- 0.7.2: Steam achievements (SteamAchievements.Unlock and AchievementId) for the filtering in LogrosFiltrados.cs -->
+    <Reference Include="Memori.Steamworks"><HintPath>$(InteropDir)\Memori.Steamworks.dll</HintPath><Private>false</Private></Reference>
+    <!-- Acciones de los héroes nuevos tras la batalla: el aviso de error del juego (NotificationManager.ErrorNotification, AccionesHeroes.cs) -->
+    <!-- Actions of the new heroes after the battle: the game's error notice (NotificationManager.ErrorNotification, AccionesHeroes.cs) -->
+    <Reference Include="Memori.Notifications"><HintPath>$(InteropDir)\Memori.Notifications.dll</HintPath><Private>false</Private></Reference>
+    <!-- Batalla personalizada: cadena de flechas de los rombos de raza (SampleNavInputHelper.previous/next, InterfazColeccion.cs) -->
+    <!-- Custom battle: arrow chain of the race diamonds (SampleNavInputHelper.previous/next, InterfazColeccion.cs) -->
+    <Reference Include="Synty"><HintPath>$(InteropDir)\Synty.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+
+  <!-- Sección: con -p:Instalar=true, tras compilar copia la DLL del plugin a BepInEx\plugins del juego (con el juego cerrado).
+       Sin esa opción solo compila: dotnet build -c Release -->
+  <!-- Section: with -p:Instalar=true, after building it copies the plugin DLL to the game's BepInEx\plugins (with the game closed).
+       Without that option it only builds: dotnet build -c Release -->
+  <Target Name="CopiarAlJuego" AfterTargets="Build" Condition="'$(Instalar)' == 'true'">
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(BepInExDir)\plugins" />
+  </Target>
+
+</Project>

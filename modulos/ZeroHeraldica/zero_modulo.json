@@ -1,0 +1,251 @@
+{
+    "formato": 1,
+    "id": "ZeroHeraldica",
+    "nombre": "Zero - Más iconos (More Banner Icons)",
+    "version": "1.0.0",
+    "nucleoMinimo": "0.7.7",
+    "activoPorDefecto": true,
+    "dependencias": [],
+    "efectos": {
+        "iconosEstandarte": [
+            {
+                "id": "corona",
+                "fichero": "estandarte/corona.png",
+                "clave": "zeroIconoEstandarte_corona",
+                "nombreEs": "Corona",
+                "nombreEn": "Crown"
+            },
+            {
+                "id": "flor_de_lis",
+                "fichero": "estandarte/flor_de_lis.png",
+                "clave": "zeroIconoEstandarte_flor_de_lis",
+                "nombreEs": "Flor de lis",
+                "nombreEn": "Fleur-de-lis"
+            },
+            {
+                "id": "sol",
+                "fichero": "estandarte/sol.png",
+                "clave": "zeroIconoEstandarte_sol",
+                "nombreEs": "Sol radiante",
+                "nombreEn": "Radiant Sun"
+            },
+            {
+                "id": "luna",
+                "fichero": "estandarte/luna.png",
+                "clave": "zeroIconoEstandarte_luna",
+                "nombreEs": "Luna creciente",
+                "nombreEn": "Crescent Moon"
+            },
+            {
+                "id": "estrella",
+                "fichero": "estandarte/estrella.png",
+                "clave": "zeroIconoEstandarte_estrella",
+                "nombreEs": "Estrella de ocho puntas",
+                "nombreEn": "Eight-pointed Star"
+            },
+            {
+                "id": "llama",
+                "fichero": "estandarte/llama.png",
+                "clave": "zeroIconoEstandarte_llama",
+                "nombreEs": "Llama",
+                "nombreEn": "Flame"
+            },
+            {
+                "id": "rayo",
+                "fichero": "estandarte/rayo.png",
+                "clave": "zeroIconoEstandarte_rayo",
+                "nombreEs": "Rayo",
+                "nombreEn": "Lightning Bolt"
+            },
+            {
+                "id": "ancla",
+                "fichero": "estandarte/ancla.png",
+                "clave": "zeroIconoEstandarte_ancla",
+                "nombreEs": "Ancla",
+                "nombreEn": "Anchor"
+            },
+            {
+                "id": "arbol",
+                "fichero": "estandarte/arbol.png",
+                "clave": "zeroIconoEstandarte_arbol",
+                "nombreEs": "Árbol",
+                "nombreEn": "Tree"
+            },
+            {
+                "id": "ojo",
+                "fichero": "estandarte/ojo.png",
+                "clave": "zeroIconoEstandarte_ojo",
+                "nombreEs": "Ojo vigilante",
+                "nombreEn": "Watchful Eye"
+            },
+            {
+                "id": "tridente",
+                "fichero": "estandarte/tridente.png",
+                "clave": "zeroIconoEstandarte_tridente",
+                "nombreEs": "Tridente",
+                "nombreEn": "Trident"
+            },
+            {
+                "id": "guadana",
+                "fichero": "estandarte/guadana.png",
+                "clave": "zeroIconoEstandarte_guadana",
+                "nombreEs": "Guadaña",
+                "nombreEn": "Scythe"
+            },
+            {
+                "id": "daga",
+                "fichero": "estandarte/daga.png",
+                "clave": "zeroIconoEstandarte_daga",
+                "nombreEs": "Daga",
+                "nombreEn": "Dagger"
+            },
+            {
+                "id": "mangual",
+                "fichero": "estandarte/mangual.png",
+                "clave": "zeroIconoEstandarte_mangual",
+                "nombreEs": "Mangual",
+                "nombreEn": "Flail"
+            },
+            {
+                "id": "yelmo",
+                "fichero": "estandarte/yelmo.png",
+                "clave": "zeroIconoEstandarte_yelmo",
+                "nombreEs": "Yelmo",
+                "nombreEn": "Great Helm"
+            },
+            {
+                "id": "guantelete",
+                "fichero": "estandarte/guantelete.png",
+                "clave": "zeroIconoEstandarte_guantelete",
+                "nombreEs": "Guantelete",
+                "nombreEn": "Gauntlet"
+            },
+            {
+                "id": "leon",
+                "fichero": "estandarte/leon.png",
+                "clave": "zeroIconoEstandarte_leon",
+                "nombreEs": "León rampante",
+                "nombreEn": "Rampant Lion"
+            },
+            {
+                "id": "aguila",
+                "fichero": "estandarte/aguila.png",
+                "clave": "zeroIconoEstandarte_aguila",
+                "nombreEs": "Águila",
+                "nombreEn": "Eagle"
+            },
+            {
+                "id": "oso",
+                "fichero": "estandarte/oso.png",
+                "clave": "zeroIconoEstandarte_oso",
+                "nombreEs": "Oso",
+                "nombreEn": "Bear"
+            },
+            {
+                "id": "jabali",
+                "fichero": "estandarte/jabali.png",
+                "clave": "zeroIconoEstandarte_jabali",
+                "nombreEs": "Jabalí",
+                "nombreEn": "Boar"
+            },
+            {
+                "id": "cuervo",
+                "fichero": "estandarte/cuervo.png",
+                "clave": "zeroIconoEstandarte_cuervo",
+                "nombreEs": "Cuervo",
+                "nombreEn": "Raven"
+            },
+            {
+                "id": "serpiente",
+                "fichero": "estandarte/serpiente.png",
+                "clave": "zeroIconoEstandarte_serpiente",
+                "nombreEs": "Serpiente",
+                "nombreEn": "Serpent"
+            },
+            {
+                "id": "toro",
+                "fichero": "estandarte/toro.png",
+                "clave": "zeroIconoEstandarte_toro",
+                "nombreEs": "Toro",
+                "nombreEn": "Bull"
+            },
+            {
+                "id": "ciervo",
+                "fichero": "estandarte/ciervo.png",
+                "clave": "zeroIconoEstandarte_ciervo",
+                "nombreEs": "Ciervo",
+                "nombreEn": "Stag"
+            },
+            {
+                "id": "dragon",
+                "fichero": "estandarte/dragon.png",
+                "clave": "zeroIconoEstandarte_dragon",
+                "nombreEs": "Dragón",
+                "nombreEn": "Dragon"
+            },
+            {
+                "id": "kraken",
+                "fichero": "estandarte/kraken.png",
+                "clave": "zeroIconoEstandarte_kraken",
+                "nombreEs": "Kraken",
+                "nombreEn": "Kraken"
+            },
+            {
+                "id": "fenix",
+                "fichero": "estandarte/fenix.png",
+                "clave": "zeroIconoEstandarte_fenix",
+                "nombreEs": "Fénix",
+                "nombreEn": "Phoenix"
+            },
+            {
+                "id": "reloj_arena",
+                "fichero": "estandarte/reloj_arena.png",
+                "clave": "zeroIconoEstandarte_reloj_arena",
+                "nombreEs": "Reloj de arena",
+                "nombreEn": "Hourglass"
+            },
+            {
+                "id": "llave",
+                "fichero": "estandarte/llave.png",
+                "clave": "zeroIconoEstandarte_llave",
+                "nombreEs": "Llave",
+                "nombreEn": "Key"
+            },
+            {
+                "id": "caliz",
+                "fichero": "estandarte/caliz.png",
+                "clave": "zeroIconoEstandarte_caliz",
+                "nombreEs": "Cáliz",
+                "nombreEn": "Chalice"
+            },
+            {
+                "id": "yunque",
+                "fichero": "estandarte/yunque.png",
+                "clave": "zeroIconoEstandarte_yunque",
+                "nombreEs": "Yunque",
+                "nombreEn": "Anvil"
+            },
+            {
+                "id": "seta",
+                "fichero": "estandarte/seta.png",
+                "clave": "zeroIconoEstandarte_seta",
+                "nombreEs": "Seta",
+                "nombreEn": "Mushroom"
+            },
+            {
+                "id": "montana",
+                "fichero": "estandarte/montana.png",
+                "clave": "zeroIconoEstandarte_montana",
+                "nombreEs": "Montañas",
+                "nombreEn": "Mountains"
+            },
+            {
+                "id": "copo_nieve",
+                "fichero": "estandarte/copo_nieve.png",
+                "clave": "zeroIconoEstandarte_copo_nieve",
+                "nombreEs": "Copo de nieve",
+                "nombreEn": "Snowflake"
+            }
+        ]
+    }
+}

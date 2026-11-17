@@ -1,0 +1,19 @@
+{
+    "formato": 1,
+    "id": "ZeroMunicion5",
+    "nombre": "Zero - Munición x5 (Ammo x5)",
+    "version": "1.0.0",
+    "nucleoMinimo": "0.7.7",
+    "activoPorDefecto": false,
+    "dependencias": [],
+    "efectos": {
+        "municionJugador": {
+            "multiplicador": 5,
+            "tipos": [
+                "Ranged",
+                "Hybrid",
+                "Artillery"
+            ]
+        }
+    }
+}

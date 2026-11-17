@@ -1,0 +1,7 @@
+{
+    "displayName": "Zero - Más oro, tope de intereses 30 (More Gold)",
+    "author": "ZeroitMods",
+    "version": "1.2.1",
+    "description": "Sube el tope de interés del banco a 30 de oro por turno (de serie, 5). Es un mod JSON del juego: funciona también sin el núcleo si se copia a mano en la carpeta Mods. / Raises the bank's interest cap to 30 gold per turn (5 by default). It is a plain JSON game mod: it also works without the core if copied by hand into the Mods folder.",
+    "workshopFileId": ""
+}

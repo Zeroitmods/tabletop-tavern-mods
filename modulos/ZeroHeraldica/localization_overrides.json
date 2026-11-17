@@ -1,0 +1,3054 @@
+{
+    "overrides": [
+        {
+            "locale": "es",
+            "key": "zeroMultijugadorBloqueado",
+            "text": "Con mods de Zero activos no se puede jugar en línea. Desactívalos en el menú de mods y reinicia el juego."
+        },
+        {
+            "locale": "en",
+            "key": "zeroMultijugadorBloqueado",
+            "text": "Online play is disabled while Zero's mods are enabled. Disable them in the mod menu and restart the game."
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_corona",
+            "text": "Corona"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_corona",
+            "text": "Crown"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_flor_de_lis",
+            "text": "Flor de lis"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_flor_de_lis",
+            "text": "Fleur-de-lis"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_sol",
+            "text": "Sol radiante"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_sol",
+            "text": "Radiant Sun"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_luna",
+            "text": "Luna creciente"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_luna",
+            "text": "Crescent Moon"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_estrella",
+            "text": "Estrella de ocho puntas"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_estrella",
+            "text": "Eight-pointed Star"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_llama",
+            "text": "Llama"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_llama",
+            "text": "Flame"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_rayo",
+            "text": "Rayo"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_rayo",
+            "text": "Lightning Bolt"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_ancla",
+            "text": "Ancla"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_ancla",
+            "text": "Anchor"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_arbol",
+            "text": "Árbol"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_arbol",
+            "text": "Tree"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_ojo",
+            "text": "Ojo vigilante"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_ojo",
+            "text": "Watchful Eye"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_tridente",
+            "text": "Tridente"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_tridente",
+            "text": "Trident"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_guadana",
+            "text": "Guadaña"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_guadana",
+            "text": "Scythe"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_daga",
+            "text": "Daga"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_daga",
+            "text": "Dagger"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_mangual",
+            "text": "Mangual"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_mangual",
+            "text": "Flail"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_yelmo",
+            "text": "Yelmo"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_yelmo",
+            "text": "Great Helm"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_guantelete",
+            "text": "Guantelete"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_guantelete",
+            "text": "Gauntlet"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_leon",
+            "text": "León rampante"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_leon",
+            "text": "Rampant Lion"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_aguila",
+            "text": "Águila"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_aguila",
+            "text": "Eagle"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_oso",
+            "text": "Oso"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_oso",
+            "text": "Bear"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_jabali",
+            "text": "Jabalí"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_jabali",
+            "text": "Boar"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_cuervo",
+            "text": "Cuervo"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_cuervo",
+            "text": "Raven"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_serpiente",
+            "text": "Serpiente"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_serpiente",
+            "text": "Serpent"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_toro",
+            "text": "Toro"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_toro",
+            "text": "Bull"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_ciervo",
+            "text": "Ciervo"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_ciervo",
+            "text": "Stag"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_dragon",
+            "text": "Dragón"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_dragon",
+            "text": "Dragon"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_kraken",
+            "text": "Kraken"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_kraken",
+            "text": "Kraken"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_fenix",
+            "text": "Fénix"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_fenix",
+            "text": "Phoenix"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_reloj_arena",
+            "text": "Reloj de arena"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_reloj_arena",
+            "text": "Hourglass"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_llave",
+            "text": "Llave"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_llave",
+            "text": "Key"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_caliz",
+            "text": "Cáliz"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_caliz",
+            "text": "Chalice"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_yunque",
+            "text": "Yunque"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_yunque",
+            "text": "Anvil"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_seta",
+            "text": "Seta"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_seta",
+            "text": "Mushroom"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_montana",
+            "text": "Montañas"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_montana",
+            "text": "Mountains"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarte_copo_nieve",
+            "text": "Copo de nieve"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarte_copo_nieve",
+            "text": "Snowflake"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarteHeroe",
+            "text": "Icono del héroe"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarteHeroe",
+            "text": "Hero's icon"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoEstandarteTitulo",
+            "text": "Icono del estandarte"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoEstandarteTitulo",
+            "text": "Banner icon"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconosEstandarteSeccion",
+            "text": "Iconos"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconosEstandarteSeccion",
+            "text": "Icons"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoJuegoBallista",
+            "text": "Balista"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoJuegoBallista",
+            "text": "Ballista"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoJuegoCannon",
+            "text": "Cañón"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoJuegoCannon",
+            "text": "Cannon"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoJuegoCannon2",
+            "text": "Cañón pesado"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoJuegoCannon2",
+            "text": "Heavy Cannon"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoJuegoCavalry",
+            "text": "Caballería"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoJuegoCavalry",
+            "text": "Cavalry"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoJuegoClub",
+            "text": "Garrote"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoJuegoClub",
+            "text": "Club"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoJuegoCrossbows",
+            "text": "Ballestas"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoJuegoCrossbows",
+            "text": "Crossbows"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoJuegoDirewolves",
+            "text": "Lobos"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoJuegoDirewolves",
+            "text": "Wolves"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoJuegoDoubleAxes",
+            "text": "Hachas cruzadas"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoJuegoDoubleAxes",
+            "text": "Crossed Axes"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoJuegoGate",
+            "text": "Fortaleza"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoJuegoGate",
+            "text": "Fortress"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoJuegoGlaive",
+            "text": "Guja"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoJuegoGlaive",
+            "text": "Glaive"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoJuegoGobberLobber",
+            "text": "Catapulta goblin"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoJuegoGobberLobber",
+            "text": "Goblin Catapult"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoJuegoGreatAxe",
+            "text": "Gran hacha"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoJuegoGreatAxe",
+            "text": "Great Axe"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoJuegoHammer",
+            "text": "Martillo"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoJuegoHammer",
+            "text": "Hammer"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoJuegoMageBook",
+            "text": "Libro de magia"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoJuegoMageBook",
+            "text": "Spellbook"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoJuegoMageStaff",
+            "text": "Bastón de mago"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoJuegoMageStaff",
+            "text": "Mage Staff"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoJuegoMelee",
+            "text": "Espada"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoJuegoMelee",
+            "text": "Sword"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoJuegoMonster",
+            "text": "Monstruo"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoJuegoMonster",
+            "text": "Monster"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoJuegoRanged",
+            "text": "Arco"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoJuegoRanged",
+            "text": "Bow"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoJuegoRaptors",
+            "text": "Raptores"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoJuegoRaptors",
+            "text": "Raptors"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoJuegoRifle",
+            "text": "Fusil"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoJuegoRifle",
+            "text": "Rifle"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoJuegoShielded",
+            "text": "Escudo"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoJuegoShielded",
+            "text": "Shield"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoJuegoSpearShield",
+            "text": "Lanza y escudo"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoJuegoSpearShield",
+            "text": "Spear and Shield"
+        },
+        {
+            "locale": "es",
+            "key": "zeroIconoJuegoSpears",
+            "text": "Lanzas"
+        },
+        {
+            "locale": "en",
+            "key": "zeroIconoJuegoSpears",
+            "text": "Spears"
+        },
+        {
+            "locale": "de",
+            "key": "zeroMultijugadorBloqueado",
+            "text": "Online-Spiel ist deaktiviert, solange die Mods von Zero aktiviert sind. Deaktiviere sie im Mod-Menü und starte das Spiel neu."
+        },
+        {
+            "locale": "fr",
+            "key": "zeroMultijugadorBloqueado",
+            "text": "Le jeu en ligne est désactivé tant que les mods de Zero sont activés. Désactivez-les dans le menu des mods et redémarrez le jeu."
+        },
+        {
+            "locale": "ja",
+            "key": "zeroMultijugadorBloqueado",
+            "text": "ZeroのMODが有効な間、オンラインプレイは無効です。MODメニューで無効にして、ゲームを再起動してください。"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroMultijugadorBloqueado",
+            "text": "Zero의 모드가 활성화된 동안에는 온라인 플레이를 사용할 수 없습니다. 모드 메뉴에서 비활성화한 후 게임을 다시 시작하세요."
+        },
+        {
+            "locale": "ru",
+            "key": "zeroMultijugadorBloqueado",
+            "text": "Сетевая игра отключена, пока включены моды Zero. Отключите их в меню модов и перезапустите игру."
+        },
+        {
+            "locale": "uk",
+            "key": "zeroMultijugadorBloqueado",
+            "text": "Онлайн-гра вимкнена, поки увімкнені модифікації Zero. Вимкніть їх у меню модифікацій і перезапустіть гру."
+        },
+        {
+            "locale": "zh",
+            "key": "zeroMultijugadorBloqueado",
+            "text": "启用Zero的模组期间,在线游戏已被禁用。请在模组菜单中禁用它们,然后重启游戏。"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroMultijugadorBloqueado",
+            "text": "啟用Zero的模組時,線上遊玩將被停用。請在模組選單中停用它們並重新啟動遊戲。"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_corona",
+            "text": "Krone"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_corona",
+            "text": "Couronne"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_corona",
+            "text": "王冠"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_corona",
+            "text": "왕관"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_corona",
+            "text": "Корона"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_corona",
+            "text": "Корона"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_corona",
+            "text": "王冠"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_corona",
+            "text": "王冠"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_flor_de_lis",
+            "text": "Lilie"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_flor_de_lis",
+            "text": "Fleur de lys"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_flor_de_lis",
+            "text": "フルール・ド・リス"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_flor_de_lis",
+            "text": "백합 문장"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_flor_de_lis",
+            "text": "Лилия"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_flor_de_lis",
+            "text": "Геральдична лілія"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_flor_de_lis",
+            "text": "鸢尾花"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_flor_de_lis",
+            "text": "百合花紋"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_sol",
+            "text": "Strahlende Sonne"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_sol",
+            "text": "Soleil radieux"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_sol",
+            "text": "輝く太陽"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_sol",
+            "text": "빛나는 태양"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_sol",
+            "text": "Сияющее солнце"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_sol",
+            "text": "Сяюче сонце"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_sol",
+            "text": "光芒太阳"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_sol",
+            "text": "光輝太陽"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_luna",
+            "text": "Mondsichel"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_luna",
+            "text": "Croissant de lune"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_luna",
+            "text": "三日月"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_luna",
+            "text": "초승달"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_luna",
+            "text": "Полумесяц"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_luna",
+            "text": "Півмісяць"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_luna",
+            "text": "弯月"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_luna",
+            "text": "新月"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_estrella",
+            "text": "Achtzackiger Stern"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_estrella",
+            "text": "Étoile à huit branches"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_estrella",
+            "text": "八芒星"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_estrella",
+            "text": "팔각별"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_estrella",
+            "text": "Восьмиконечная звезда"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_estrella",
+            "text": "Восьмикутна зірка"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_estrella",
+            "text": "八角星"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_estrella",
+            "text": "八芒星"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_llama",
+            "text": "Flamme"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_llama",
+            "text": "Flamme"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_llama",
+            "text": "炎"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_llama",
+            "text": "불꽃"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_llama",
+            "text": "Пламя"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_llama",
+            "text": "Полум'я"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_llama",
+            "text": "火焰"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_llama",
+            "text": "火焰"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_rayo",
+            "text": "Blitz"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_rayo",
+            "text": "Éclair"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_rayo",
+            "text": "稲妻"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_rayo",
+            "text": "번개"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_rayo",
+            "text": "Молния"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_rayo",
+            "text": "Блискавка"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_rayo",
+            "text": "闪电"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_rayo",
+            "text": "閃電"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_ancla",
+            "text": "Anker"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_ancla",
+            "text": "Ancre"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_ancla",
+            "text": "錨"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_ancla",
+            "text": "닻"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_ancla",
+            "text": "Якорь"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_ancla",
+            "text": "Якір"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_ancla",
+            "text": "船锚"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_ancla",
+            "text": "船錨"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_arbol",
+            "text": "Baum"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_arbol",
+            "text": "Arbre"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_arbol",
+            "text": "樹木"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_arbol",
+            "text": "나무"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_arbol",
+            "text": "Дерево"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_arbol",
+            "text": "Дерево"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_arbol",
+            "text": "树"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_arbol",
+            "text": "樹"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_ojo",
+            "text": "Wachsames Auge"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_ojo",
+            "text": "Œil vigilant"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_ojo",
+            "text": "見張る目"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_ojo",
+            "text": "감시하는 눈"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_ojo",
+            "text": "Бдительное око"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_ojo",
+            "text": "Пильне око"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_ojo",
+            "text": "警惕之眼"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_ojo",
+            "text": "警戒之眼"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_tridente",
+            "text": "Dreizack"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_tridente",
+            "text": "Trident"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_tridente",
+            "text": "トライデント"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_tridente",
+            "text": "삼지창"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_tridente",
+            "text": "Трезубец"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_tridente",
+            "text": "Тризуб"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_tridente",
+            "text": "三叉戟"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_tridente",
+            "text": "三叉戟"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_guadana",
+            "text": "Sense"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_guadana",
+            "text": "Faux"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_guadana",
+            "text": "大鎌"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_guadana",
+            "text": "큰 낫"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_guadana",
+            "text": "Коса"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_guadana",
+            "text": "Коса"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_guadana",
+            "text": "镰刀"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_guadana",
+            "text": "鐮刀"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_daga",
+            "text": "Dolch"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_daga",
+            "text": "Dague"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_daga",
+            "text": "短剣"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_daga",
+            "text": "단검"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_daga",
+            "text": "Кинжал"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_daga",
+            "text": "Кинджал"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_daga",
+            "text": "匕首"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_daga",
+            "text": "匕首"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_mangual",
+            "text": "Flegel"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_mangual",
+            "text": "Fléau d'armes"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_mangual",
+            "text": "フレイル"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_mangual",
+            "text": "도리깨"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_mangual",
+            "text": "Цеп"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_mangual",
+            "text": "Ціп"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_mangual",
+            "text": "链枷"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_mangual",
+            "text": "連枷"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_yelmo",
+            "text": "Topfhelm"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_yelmo",
+            "text": "Grand heaume"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_yelmo",
+            "text": "グレートヘルム"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_yelmo",
+            "text": "대형 투구"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_yelmo",
+            "text": "Топфхельм"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_yelmo",
+            "text": "Великий шолом"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_yelmo",
+            "text": "大头盔"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_yelmo",
+            "text": "大盔"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_guantelete",
+            "text": "Panzerhandschuh"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_guantelete",
+            "text": "Gantelet"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_guantelete",
+            "text": "ガントレット"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_guantelete",
+            "text": "건틀릿"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_guantelete",
+            "text": "Латная перчатка"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_guantelete",
+            "text": "Рукавиця"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_guantelete",
+            "text": "护手"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_guantelete",
+            "text": "護手鎧"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_leon",
+            "text": "Steigender Löwe"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_leon",
+            "text": "Lion rampant"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_leon",
+            "text": "立ち上がる獅子"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_leon",
+            "text": "일어선 사자"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_leon",
+            "text": "Лев на дыбах"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_leon",
+            "text": "Лев дибки"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_leon",
+            "text": "跃立雄狮"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_leon",
+            "text": "躍立雄獅"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_aguila",
+            "text": "Adler"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_aguila",
+            "text": "Aigle"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_aguila",
+            "text": "鷲"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_aguila",
+            "text": "독수리"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_aguila",
+            "text": "Орёл"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_aguila",
+            "text": "Орел"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_aguila",
+            "text": "鹰"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_aguila",
+            "text": "老鷹"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_oso",
+            "text": "Bär"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_oso",
+            "text": "Ours"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_oso",
+            "text": "熊"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_oso",
+            "text": "곰"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_oso",
+            "text": "Медведь"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_oso",
+            "text": "Ведмідь"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_oso",
+            "text": "熊"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_oso",
+            "text": "熊"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_jabali",
+            "text": "Eber"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_jabali",
+            "text": "Sanglier"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_jabali",
+            "text": "猪"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_jabali",
+            "text": "멧돼지"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_jabali",
+            "text": "Кабан"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_jabali",
+            "text": "Вепр"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_jabali",
+            "text": "野猪"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_jabali",
+            "text": "野豬"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_cuervo",
+            "text": "Rabe"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_cuervo",
+            "text": "Corbeau"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_cuervo",
+            "text": "ワタリガラス"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_cuervo",
+            "text": "까마귀"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_cuervo",
+            "text": "Ворон"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_cuervo",
+            "text": "Крук"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_cuervo",
+            "text": "渡鸦"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_cuervo",
+            "text": "渡鴉"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_serpiente",
+            "text": "Schlange"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_serpiente",
+            "text": "Serpent"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_serpiente",
+            "text": "大蛇"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_serpiente",
+            "text": "뱀"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_serpiente",
+            "text": "Змей"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_serpiente",
+            "text": "Змій"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_serpiente",
+            "text": "毒蛇"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_serpiente",
+            "text": "巨蛇"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_toro",
+            "text": "Stier"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_toro",
+            "text": "Taureau"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_toro",
+            "text": "雄牛"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_toro",
+            "text": "황소"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_toro",
+            "text": "Бык"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_toro",
+            "text": "Бик"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_toro",
+            "text": "公牛"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_toro",
+            "text": "公牛"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_ciervo",
+            "text": "Hirsch"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_ciervo",
+            "text": "Cerf"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_ciervo",
+            "text": "牡鹿"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_ciervo",
+            "text": "수사슴"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_ciervo",
+            "text": "Олень"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_ciervo",
+            "text": "Олень"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_ciervo",
+            "text": "雄鹿"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_ciervo",
+            "text": "雄鹿"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_dragon",
+            "text": "Drache"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_dragon",
+            "text": "Dragon"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_dragon",
+            "text": "ドラゴン"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_dragon",
+            "text": "용"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_dragon",
+            "text": "Дракон"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_dragon",
+            "text": "Дракон"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_dragon",
+            "text": "龙"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_dragon",
+            "text": "巨龍"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_kraken",
+            "text": "Kraken"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_kraken",
+            "text": "Kraken"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_kraken",
+            "text": "クラーケン"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_kraken",
+            "text": "크라켄"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_kraken",
+            "text": "Кракен"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_kraken",
+            "text": "Кракен"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_kraken",
+            "text": "克拉肯"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_kraken",
+            "text": "海怪"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_fenix",
+            "text": "Phönix"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_fenix",
+            "text": "Phénix"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_fenix",
+            "text": "フェニックス"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_fenix",
+            "text": "불사조"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_fenix",
+            "text": "Феникс"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_fenix",
+            "text": "Фенікс"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_fenix",
+            "text": "凤凰"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_fenix",
+            "text": "鳳凰"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_reloj_arena",
+            "text": "Sanduhr"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_reloj_arena",
+            "text": "Sablier"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_reloj_arena",
+            "text": "砂時計"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_reloj_arena",
+            "text": "모래시계"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_reloj_arena",
+            "text": "Песочные часы"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_reloj_arena",
+            "text": "Пісочний годинник"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_reloj_arena",
+            "text": "沙漏"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_reloj_arena",
+            "text": "沙漏"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_llave",
+            "text": "Schlüssel"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_llave",
+            "text": "Clé"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_llave",
+            "text": "鍵"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_llave",
+            "text": "열쇠"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_llave",
+            "text": "Ключ"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_llave",
+            "text": "Ключ"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_llave",
+            "text": "钥匙"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_llave",
+            "text": "鑰匙"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_caliz",
+            "text": "Kelch"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_caliz",
+            "text": "Calice"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_caliz",
+            "text": "聖杯"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_caliz",
+            "text": "성배"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_caliz",
+            "text": "Чаша"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_caliz",
+            "text": "Чаша"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_caliz",
+            "text": "圣杯"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_caliz",
+            "text": "聖杯"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_yunque",
+            "text": "Amboss"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_yunque",
+            "text": "Enclume"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_yunque",
+            "text": "金床"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_yunque",
+            "text": "모루"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_yunque",
+            "text": "Наковальня"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_yunque",
+            "text": "Ковадло"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_yunque",
+            "text": "铁砧"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_yunque",
+            "text": "鐵砧"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_seta",
+            "text": "Pilz"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_seta",
+            "text": "Champignon"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_seta",
+            "text": "キノコ"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_seta",
+            "text": "버섯"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_seta",
+            "text": "Гриб"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_seta",
+            "text": "Гриб"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_seta",
+            "text": "蘑菇"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_seta",
+            "text": "蘑菇"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_montana",
+            "text": "Berge"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_montana",
+            "text": "Montagnes"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_montana",
+            "text": "山々"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_montana",
+            "text": "산맥"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_montana",
+            "text": "Горы"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_montana",
+            "text": "Гори"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_montana",
+            "text": "山脉"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_montana",
+            "text": "群山"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarte_copo_nieve",
+            "text": "Schneeflocke"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarte_copo_nieve",
+            "text": "Flocon de neige"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarte_copo_nieve",
+            "text": "雪の結晶"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarte_copo_nieve",
+            "text": "눈송이"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarte_copo_nieve",
+            "text": "Снежинка"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarte_copo_nieve",
+            "text": "Сніжинка"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarte_copo_nieve",
+            "text": "雪花"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarte_copo_nieve",
+            "text": "雪花"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarteHeroe",
+            "text": "Heldensymbol"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarteHeroe",
+            "text": "Emblème du héros"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarteHeroe",
+            "text": "ヒーローのアイコン"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarteHeroe",
+            "text": "영웅 문장"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarteHeroe",
+            "text": "Значок героя"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarteHeroe",
+            "text": "Значок героя"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarteHeroe",
+            "text": "英雄图标"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarteHeroe",
+            "text": "英雄圖示"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoEstandarteTitulo",
+            "text": "Bannersymbol"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoEstandarteTitulo",
+            "text": "Emblème de bannière"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoEstandarteTitulo",
+            "text": "軍旗アイコン"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoEstandarteTitulo",
+            "text": "군기 문장"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoEstandarteTitulo",
+            "text": "Значок знамени"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoEstandarteTitulo",
+            "text": "Значок прапора"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoEstandarteTitulo",
+            "text": "军旗图标"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoEstandarteTitulo",
+            "text": "軍旗圖示"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconosEstandarteSeccion",
+            "text": "Symbole"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconosEstandarteSeccion",
+            "text": "Icônes"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconosEstandarteSeccion",
+            "text": "アイコン"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconosEstandarteSeccion",
+            "text": "아이콘"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconosEstandarteSeccion",
+            "text": "Значки"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconosEstandarteSeccion",
+            "text": "Значки"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconosEstandarteSeccion",
+            "text": "图标"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconosEstandarteSeccion",
+            "text": "圖示"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoJuegoBallista",
+            "text": "Balliste"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoJuegoBallista",
+            "text": "Baliste"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoJuegoBallista",
+            "text": "バリスタ"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoJuegoBallista",
+            "text": "발리스타"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoJuegoBallista",
+            "text": "Баллиста"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoJuegoBallista",
+            "text": "Баліста"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoJuegoBallista",
+            "text": "弩炮"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoJuegoBallista",
+            "text": "弩砲"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoJuegoCannon",
+            "text": "Kanone"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoJuegoCannon",
+            "text": "Canon"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoJuegoCannon",
+            "text": "大砲"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoJuegoCannon",
+            "text": "대포"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoJuegoCannon",
+            "text": "Пушка"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoJuegoCannon",
+            "text": "Гармата"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoJuegoCannon",
+            "text": "火炮"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoJuegoCannon",
+            "text": "大砲"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoJuegoCannon2",
+            "text": "Schwere Kanone"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoJuegoCannon2",
+            "text": "Canon lourd"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoJuegoCannon2",
+            "text": "重砲"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoJuegoCannon2",
+            "text": "중대포"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoJuegoCannon2",
+            "text": "Тяжёлая пушка"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoJuegoCannon2",
+            "text": "Важка гармата"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoJuegoCannon2",
+            "text": "重型火炮"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoJuegoCannon2",
+            "text": "重型大砲"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoJuegoCavalry",
+            "text": "Kavallerie"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoJuegoCavalry",
+            "text": "Cavalerie"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoJuegoCavalry",
+            "text": "騎兵"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoJuegoCavalry",
+            "text": "기병대"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoJuegoCavalry",
+            "text": "Кавалерия"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoJuegoCavalry",
+            "text": "Кавалерія"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoJuegoCavalry",
+            "text": "骑兵"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoJuegoCavalry",
+            "text": "騎兵"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoJuegoClub",
+            "text": "Keule"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoJuegoClub",
+            "text": "Massue"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoJuegoClub",
+            "text": "棍棒"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoJuegoClub",
+            "text": "곤봉"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoJuegoClub",
+            "text": "Дубина"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoJuegoClub",
+            "text": "Булава"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoJuegoClub",
+            "text": "棍棒"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoJuegoClub",
+            "text": "棍棒"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoJuegoCrossbows",
+            "text": "Armbrüste"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoJuegoCrossbows",
+            "text": "Arbalètes"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoJuegoCrossbows",
+            "text": "クロスボウ"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoJuegoCrossbows",
+            "text": "석궁"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoJuegoCrossbows",
+            "text": "Арбалеты"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoJuegoCrossbows",
+            "text": "Арбалети"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoJuegoCrossbows",
+            "text": "弩"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoJuegoCrossbows",
+            "text": "弩"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoJuegoDirewolves",
+            "text": "Wölfe"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoJuegoDirewolves",
+            "text": "Loups"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoJuegoDirewolves",
+            "text": "狼"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoJuegoDirewolves",
+            "text": "늑대"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoJuegoDirewolves",
+            "text": "Волки"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoJuegoDirewolves",
+            "text": "Вовки"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoJuegoDirewolves",
+            "text": "群狼"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoJuegoDirewolves",
+            "text": "群狼"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoJuegoDoubleAxes",
+            "text": "Gekreuzte Äxte"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoJuegoDoubleAxes",
+            "text": "Haches croisées"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoJuegoDoubleAxes",
+            "text": "交差した斧"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoJuegoDoubleAxes",
+            "text": "교차된 도끼"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoJuegoDoubleAxes",
+            "text": "Скрещённые топоры"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoJuegoDoubleAxes",
+            "text": "Схрещені сокири"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoJuegoDoubleAxes",
+            "text": "交叉战斧"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoJuegoDoubleAxes",
+            "text": "交叉戰斧"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoJuegoGate",
+            "text": "Festung"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoJuegoGate",
+            "text": "Forteresse"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoJuegoGate",
+            "text": "要塞"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoJuegoGate",
+            "text": "요새"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoJuegoGate",
+            "text": "Крепость"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoJuegoGate",
+            "text": "Фортеця"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoJuegoGate",
+            "text": "要塞"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoJuegoGate",
+            "text": "要塞"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoJuegoGlaive",
+            "text": "Glefe"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoJuegoGlaive",
+            "text": "Glaive"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoJuegoGlaive",
+            "text": "グレイヴ"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoJuegoGlaive",
+            "text": "글레이브"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoJuegoGlaive",
+            "text": "Глефа"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoJuegoGlaive",
+            "text": "Глевія"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoJuegoGlaive",
+            "text": "长柄刀"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoJuegoGlaive",
+            "text": "戰刃長刀"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoJuegoGobberLobber",
+            "text": "Goblin-Katapult"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoJuegoGobberLobber",
+            "text": "Catapulte gobeline"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoJuegoGobberLobber",
+            "text": "ゴブリンのカタパルト"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoJuegoGobberLobber",
+            "text": "고블린 투석기"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoJuegoGobberLobber",
+            "text": "Гоблинская катапульта"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoJuegoGobberLobber",
+            "text": "Гоблінська катапульта"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoJuegoGobberLobber",
+            "text": "哥布林投石机"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoJuegoGobberLobber",
+            "text": "哥布林投石機"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoJuegoGreatAxe",
+            "text": "Großaxt"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoJuegoGreatAxe",
+            "text": "Grande hache"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoJuegoGreatAxe",
+            "text": "大斧"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoJuegoGreatAxe",
+            "text": "대형 도끼"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoJuegoGreatAxe",
+            "text": "Большой топор"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoJuegoGreatAxe",
+            "text": "Велика сокира"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoJuegoGreatAxe",
+            "text": "巨斧"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoJuegoGreatAxe",
+            "text": "巨斧"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoJuegoHammer",
+            "text": "Hammer"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoJuegoHammer",
+            "text": "Marteau"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoJuegoHammer",
+            "text": "ハンマー"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoJuegoHammer",
+            "text": "망치"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoJuegoHammer",
+            "text": "Молот"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoJuegoHammer",
+            "text": "Молот"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoJuegoHammer",
+            "text": "战锤"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoJuegoHammer",
+            "text": "戰錘"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoJuegoMageBook",
+            "text": "Zauberbuch"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoJuegoMageBook",
+            "text": "Grimoire"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoJuegoMageBook",
+            "text": "魔導書"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoJuegoMageBook",
+            "text": "마법서"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoJuegoMageBook",
+            "text": "Книга заклинаний"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoJuegoMageBook",
+            "text": "Книга заклять"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoJuegoMageBook",
+            "text": "魔法书"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoJuegoMageBook",
+            "text": "法術書"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoJuegoMageStaff",
+            "text": "Magierstab"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoJuegoMageStaff",
+            "text": "Bâton de mage"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoJuegoMageStaff",
+            "text": "魔術師の杖"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoJuegoMageStaff",
+            "text": "마법사 지팡이"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoJuegoMageStaff",
+            "text": "Посох мага"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoJuegoMageStaff",
+            "text": "Посох мага"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoJuegoMageStaff",
+            "text": "法师法杖"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoJuegoMageStaff",
+            "text": "法師法杖"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoJuegoMelee",
+            "text": "Schwert"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoJuegoMelee",
+            "text": "Épée"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoJuegoMelee",
+            "text": "剣"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoJuegoMelee",
+            "text": "검"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoJuegoMelee",
+            "text": "Меч"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoJuegoMelee",
+            "text": "Меч"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoJuegoMelee",
+            "text": "剑"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoJuegoMelee",
+            "text": "劍"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoJuegoMonster",
+            "text": "Monster"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoJuegoMonster",
+            "text": "Monstre"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoJuegoMonster",
+            "text": "怪物"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoJuegoMonster",
+            "text": "괴물"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoJuegoMonster",
+            "text": "Чудовище"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoJuegoMonster",
+            "text": "Чудовисько"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoJuegoMonster",
+            "text": "怪物"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoJuegoMonster",
+            "text": "怪物"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoJuegoRanged",
+            "text": "Bogen"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoJuegoRanged",
+            "text": "Arc"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoJuegoRanged",
+            "text": "弓"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoJuegoRanged",
+            "text": "활"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoJuegoRanged",
+            "text": "Лук"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoJuegoRanged",
+            "text": "Лук"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoJuegoRanged",
+            "text": "弓"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoJuegoRanged",
+            "text": "弓"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoJuegoRaptors",
+            "text": "Raptoren"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoJuegoRaptors",
+            "text": "Raptors"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoJuegoRaptors",
+            "text": "ラプトル"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoJuegoRaptors",
+            "text": "랩터"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoJuegoRaptors",
+            "text": "Рапторы"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoJuegoRaptors",
+            "text": "Раптори"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoJuegoRaptors",
+            "text": "迅猛龙"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoJuegoRaptors",
+            "text": "迅猛龍"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoJuegoRifle",
+            "text": "Gewehr"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoJuegoRifle",
+            "text": "Fusil"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoJuegoRifle",
+            "text": "ライフル"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoJuegoRifle",
+            "text": "소총"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoJuegoRifle",
+            "text": "Винтовка"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoJuegoRifle",
+            "text": "Гвинтівка"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoJuegoRifle",
+            "text": "步枪"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoJuegoRifle",
+            "text": "步槍"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoJuegoShielded",
+            "text": "Schild"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoJuegoShielded",
+            "text": "Bouclier"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoJuegoShielded",
+            "text": "盾"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoJuegoShielded",
+            "text": "방패"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoJuegoShielded",
+            "text": "Щит"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoJuegoShielded",
+            "text": "Щит"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoJuegoShielded",
+            "text": "盾牌"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoJuegoShielded",
+            "text": "盾牌"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoJuegoSpearShield",
+            "text": "Speer und Schild"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoJuegoSpearShield",
+            "text": "Lance et bouclier"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoJuegoSpearShield",
+            "text": "槍と盾"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoJuegoSpearShield",
+            "text": "창과 방패"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoJuegoSpearShield",
+            "text": "Копьё и щит"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoJuegoSpearShield",
+            "text": "Спис і щит"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoJuegoSpearShield",
+            "text": "长矛与盾牌"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoJuegoSpearShield",
+            "text": "長矛與盾牌"
+        },
+        {
+            "locale": "de",
+            "key": "zeroIconoJuegoSpears",
+            "text": "Speere"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroIconoJuegoSpears",
+            "text": "Lances"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroIconoJuegoSpears",
+            "text": "槍"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroIconoJuegoSpears",
+            "text": "창"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroIconoJuegoSpears",
+            "text": "Копья"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroIconoJuegoSpears",
+            "text": "Списи"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroIconoJuegoSpears",
+            "text": "长矛"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroIconoJuegoSpears",
+            "text": "長矛"
+        }
+    ]
+}

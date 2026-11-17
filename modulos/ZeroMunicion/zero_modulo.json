@@ -1,0 +1,19 @@
+{
+    "formato": 1,
+    "id": "ZeroMunicion",
+    "nombre": "Zero - Munición x3 (Ammo x3)",
+    "version": "1.0.1",
+    "nucleoMinimo": "0.7.7",
+    "activoPorDefecto": true,
+    "dependencias": [],
+    "efectos": {
+        "municionJugador": {
+            "multiplicador": 3,
+            "tipos": [
+                "Ranged",
+                "Hybrid",
+                "Artillery"
+            ]
+        }
+    }
+}

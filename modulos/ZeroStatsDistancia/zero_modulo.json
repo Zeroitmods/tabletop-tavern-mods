@@ -1,0 +1,19 @@
+{
+    "formato": 1,
+    "id": "ZeroStatsDistancia",
+    "nombre": "Zero - Mejores estadísticas a distancia (Better Ranged Stats)",
+    "version": "1.0.1",
+    "nucleoMinimo": "0.7.7",
+    "activoPorDefecto": true,
+    "dependencias": [],
+    "efectos": {
+        "distanciaJugador": {
+            "alcance": 10,
+            "precision": 10,
+            "dano": 3,
+            "tipos": [
+                "Ranged"
+            ]
+        }
+    }
+}

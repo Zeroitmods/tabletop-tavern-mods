@@ -1,0 +1,19 @@
+{
+    "formato": 1,
+    "id": "ZeroMunicion2",
+    "nombre": "Zero - Munición x2 (Ammo x2)",
+    "version": "1.0.0",
+    "nucleoMinimo": "0.7.7",
+    "activoPorDefecto": false,
+    "dependencias": [],
+    "efectos": {
+        "municionJugador": {
+            "multiplicador": 2,
+            "tipos": [
+                "Ranged",
+                "Hybrid",
+                "Artillery"
+            ]
+        }
+    }
+}

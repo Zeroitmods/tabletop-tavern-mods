@@ -1,0 +1,81 @@
+<!--
+  PruebasSaneado.csproj
+  Pruebas fuera del juego del saneado de saves (SaneadoSaves + RegistroGuardias), del manifiesto de la fábrica (Manifiesto), del lector de WAV (LectorWav) desde la 0.6.0, de los objetos nuevos (SaneadoObjetos, SorteoObjetos, ReglasObjetos) y, desde la 0.7.0, de los módulos (Modulos, OrdenMods; también la sincronización fichero a fichero desde su revisión) y, desde la 0.7.2, de la interfaz, la pantalla de héroes, los héroes en campaña y los logros filtrados. No usa tipos del juego.
+-->
+<!--
+  PruebasSaneado.csproj
+  Out-of-game tests for save sanitizing (SaneadoSaves + RegistroGuardias), the factory manifest (Manifiesto), the WAV reader (LectorWav) since 0.6.0, new gear (SaneadoObjetos, SorteoObjetos, ReglasObjetos) and, since 0.7.0, modules (Modulos, OrdenMods; also file-by-file synchronization since its review) and, since 0.7.2, the interface, the heroes screen, heroes in the campaign and filtered achievements. It uses no game types.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Sección: consola .NET 8 que compila los ficheros puros del plugin -->
+  <!-- Section: .NET 8 console app that compiles the plugin's pure files -->
+  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net8.0</TargetFramework><Nullable>disable</Nullable><ImplicitUsings>disable</ImplicitUsings></PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\src\SaneadoSaves.cs" />
+    <Compile Include="..\src\RegistroGuardias.cs" />
+    <Compile Include="..\src\LectorWav.cs" />
+    <Compile Include="..\src\Manifiesto.cs" />
+    <Compile Include="..\src\SaneadoObjetos.cs" />
+    <Compile Include="..\src\SorteoObjetos.cs" />
+    <Compile Include="..\src\ReglasObjetos.cs" />
+    <Compile Include="..\src\ArmeriaObjetos.cs" />
+    <Compile Include="..\src\Modulos.cs" />
+    <Compile Include="..\src\OrdenMods.cs" />
+    <Compile Include="..\src\Omisiones.cs" />
+    <!-- Prueba 11: cálculos de las rejillas con desplazamiento de la interfaz (PruebasInterfaz.cs) -->
+    <!-- Test 11: calculations of the interface's offset grids (PruebasInterfaz.cs) -->
+    <Compile Include="..\src\RejillaDesplazable.cs" />
+    <!-- Prueba 12: casillas de la pantalla de héroes y ejército inicial de los héroes nuevos (PruebasHeroes.cs) -->
+    <!-- Test 12: slots of the heroes screen and starting army of the new heroes (PruebasHeroes.cs) -->
+    <Compile Include="..\src\CasillasHeroes.cs" />
+    <!-- Prueba 13: héroes nuevos en el mapa de campaña, assets sin entrada y contador de la Colección (PruebasCampana.cs) -->
+    <!-- Test 13: new heroes on the campaign map, assets without an entry and the Collection counter (PruebasCampana.cs) -->
+    <Compile Include="..\src\LogicaCampanaHeroes.cs" />
+    <!-- Prueba 14 (0.7.2): logros de Steam filtrados sin contenido nuevo (PruebasLogros.cs) -->
+    <!-- Test 14 (0.7.2): Steam achievements filtered without new content (PruebasLogros.cs) -->
+    <Compile Include="..\src\LogicaLogros.cs" />
+    <!-- Prueba 16 (F5): formato ZHM1 del modelo 3D propio de los héroes nuevos (PruebasModeloHeroes.cs) -->
+    <!-- Test 16 (F5): ZHM1 format of the new heroes' own 3D model (PruebasModeloHeroes.cs) -->
+    <Compile Include="..\src\FormatoModeloHeroe.cs" />
+    <!-- Prueba 17: arreglos de inlining (contexto, raza de la ciudad, región del nodo y UnitKills sin 9xx; PruebasInlineados.cs) -->
+    <!-- Test 17: inlining fixes (context, city race, node region and UnitKills without 9xx; PruebasInlineados.cs) -->
+    <Compile Include="..\src\LogicaInlineados.cs" />
+    <!-- Prueba 18 (revisión del 18-10): pausa del vigilante y reescritura segura de saves (PruebasArreglos18.cs) -->
+    <!-- Test 18 (review of 18-10): watcher pause and safe rewriting of saves (PruebasArreglos18.cs) -->
+    <Compile Include="..\src\VigilanteSeguro.cs" />
+    <!-- Prueba 19 (18-10): Tesorería imperial, el x2 solo sobre los primeros 5 de interés (PruebasInteres.cs) -->
+    <!-- Test 19 (18-10): Imperial Treasury, the x2 only on the first 5 of interest (PruebasInteres.cs) -->
+    <Compile Include="..\src\LogicaInteres.cs" />
+    <!-- Prueba 20 (18-10, noche): encaje del icono en el lienzo 2:3 de los retratos de unidad (PruebasRonda2.cs) -->
+    <!-- Test 20 (18-10, night): fitting the icon into the 2:3 canvas of unit portraits (PruebasRonda2.cs) -->
+    <Compile Include="..\src\LogicaIconos.cs" />
+    <!-- Prueba 21 (18-10, noche): aviso de versión del juego (PruebasRevisionExterna.cs) -->
+    <!-- Test 21 (10-18, night): game version warning (PruebasRevisionExterna.cs) -->
+    <Compile Include="..\src\LogicaVersion.cs" />
+    <!-- Prueba 22 (18-10): acción propia de los héroes nuevos en «Elige uno» tras la batalla (PruebasAccionesHeroes.cs) -->
+    <!-- Test 22 (18-10): own action of the new heroes in «Elige uno» after the battle (PruebasAccionesHeroes.cs) -->
+    <Compile Include="..\src\LogicaAccionesHeroes.cs" />
+    <!-- Prueba 23 (18-10): sonido láser de las armas de energía, tipos, capas y WAV de los módulos (PruebasSonidos.cs) -->
+    <!-- Test 23 (18-10): laser sound of energy weapons, types, layers and module WAVs (PruebasSonidos.cs) -->
+    <Compile Include="..\src\LogicaSonidos.cs" />
+    <!-- Prueba 24 (01-11, juego 1.11.1): carga tolerante a tipos y métodos que el juego quita o mueve (PruebasCarga.cs) -->
+    <!-- Test 24 (01-11, game 1.11.1): tolerant loading of types and methods that the game removes or moves (PruebasCarga.cs) -->
+    <Compile Include="..\src\LogicaCarga.cs" />
+    <!-- Prueba 25 (01-11, juego 1.11.1): hechizo emblema registrado de los héroes nuevos (PruebasDatos1111.cs) -->
+    <!-- Test 25 (01-11, game 1.11.1): registered emblem spell of the new heroes (PruebasDatos1111.cs) -->
+    <Compile Include="..\src\LogicaHechizos.cs" />
+    <!-- Prueba 26 (02-11, 0.7.4): saneado de los hechizos propios 1900-1999 en los saves (PruebasHechizos.cs) -->
+    <!-- Test 26 (02-11, 0.7.4): sanitizing of custom spells 1900-1999 in saves (PruebasHechizos.cs) -->
+    <Compile Include="..\src\SaneadoHechizos.cs" />
+    <Compile Include="..\src\TuberiaSaneado.cs" />
+    <!-- Prueba 29 (03-11-2026, núcleo 0.7.6): moral del jugador del módulo «Impertérritos» (PruebasMoral.cs) -->
+    <!-- Test 29 (03-11-2026, core 0.7.6): player morale of the «Impertérritos» module (PruebasMoral.cs) -->
+    <Compile Include="..\src\LogicaMoral.cs" />
+    <!-- Prueba 30 (03-11-2026, núcleo 0.7.7): iconos del estandarte (PruebasEstandarte.cs) -->
+    <!-- Test 30 (03-11-2026, core 0.7.7): banner icons (PruebasEstandarte.cs) -->
+    <Compile Include="..\src\LogicaEstandarte.cs" />
+    <!-- Prueba 32 (17-11-2026, núcleo 0.7.9): ficheros del juego reconstruidos desde la instalación (PruebasFicherosJuego.cs) -->
+    <!-- Test 32 (17-11-2026, core 0.7.9): game files rebuilt from the installation (PruebasFicherosJuego.cs) -->
+    <Compile Include="..\src\FicherosJuego.cs" />
+  </ItemGroup>
+</Project>

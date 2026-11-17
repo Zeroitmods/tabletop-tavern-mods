@@ -1,0 +1,104 @@
+{
+    "overrides": [
+        {
+            "locale": "en",
+            "key": "zeroMunicionTriple",
+            "text": "Deep Supplies"
+        },
+        {
+            "locale": "es",
+            "key": "zeroMunicionTriple",
+            "text": "Intendencia"
+        },
+        {
+            "locale": "es",
+            "key": "zeroMultijugadorBloqueado",
+            "text": "Con mods de Zero activos no se puede jugar en línea. Desactívalos en el menú de mods y reinicia el juego."
+        },
+        {
+            "locale": "en",
+            "key": "zeroMultijugadorBloqueado",
+            "text": "Online play is disabled while Zero's mods are enabled. Disable them in the mod menu and restart the game."
+        },
+        {
+            "locale": "de",
+            "key": "zeroMunicionTriple",
+            "text": "Tiefe Vorräte"
+        },
+        {
+            "locale": "fr",
+            "key": "zeroMunicionTriple",
+            "text": "Provisions abondantes"
+        },
+        {
+            "locale": "ja",
+            "key": "zeroMunicionTriple",
+            "text": "豊富な補給"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroMunicionTriple",
+            "text": "풍부한 보급품"
+        },
+        {
+            "locale": "ru",
+            "key": "zeroMunicionTriple",
+            "text": "Глубокие запасы"
+        },
+        {
+            "locale": "uk",
+            "key": "zeroMunicionTriple",
+            "text": "Глибокі запаси"
+        },
+        {
+            "locale": "zh",
+            "key": "zeroMunicionTriple",
+            "text": "充足补给"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroMunicionTriple",
+            "text": "充足補給"
+        },
+        {
+            "locale": "de",
+            "key": "zeroMultijugadorBloqueado",
+            "text": "Online-Spiel ist deaktiviert, solange die Mods von Zero aktiviert sind. Deaktiviere sie im Mod-Menü und starte das Spiel neu."
+        },
+        {
+            "locale": "fr",
+            "key": "zeroMultijugadorBloqueado",
+            "text": "Le jeu en ligne est désactivé tant que les mods de Zero sont activés. Désactivez-les dans le menu des mods et redémarrez le jeu."
+        },
+        {
+            "locale": "ja",
+            "key": "zeroMultijugadorBloqueado",
+            "text": "ZeroのMODが有効な間、オンラインプレイは無効です。MODメニューで無効にして、ゲームを再起動してください。"
+        },
+        {
+            "locale": "ko",
+            "key": "zeroMultijugadorBloqueado",
+            "text": "Zero의 모드가 활성화된 동안에는 온라인 플레이를 사용할 수 없습니다. 모드 메뉴에서 비활성화한 후 게임을 다시 시작하세요."
+        },
+        {
+            "locale": "ru",
+            "key": "zeroMultijugadorBloqueado",
+            "text": "Сетевая игра отключена, пока включены моды Zero. Отключите их в меню модов и перезапустите игру."
+        },
+        {
+            "locale": "uk",
+            "key": "zeroMultijugadorBloqueado",
+            "text": "Онлайн-гра вимкнена, поки увімкнені модифікації Zero. Вимкніть їх у меню модифікацій і перезапустіть гру."
+        },
+        {
+            "locale": "zh",
+            "key": "zeroMultijugadorBloqueado",
+            "text": "启用Zero的模组期间,在线游戏已被禁用。请在模组菜单中禁用它们,然后重启游戏。"
+        },
+        {
+            "locale": "zh-Hant",
+            "key": "zeroMultijugadorBloqueado",
+            "text": "啟用Zero的模組時,線上遊玩將被停用。請在模組選單中停用它們並重新啟動遊戲。"
+        }
+    ]
+}
