@@ -47,7 +47,9 @@
     <!-- 0.7.5 (02-11-2026): full project review (internal notes (unpublished)) -->
     <!-- 0.7.9 (17-11-2026): ficheros del juego de los modelos propios reconstruidos desde la instalación del jugador (src/FicherosJuego.cs) -->
     <!-- 0.7.9 (17-11-2026): game files for the custom models rebuilt from the player's installation (src/FicherosJuego.cs) -->
-    <Version>0.7.9</Version>
+    <!-- 0.7.10 (17-11-2026): adaptado al juego 1.11.12 (raceRules; arranque colgado por el aviso en pantalla de la línea de comandos) -->
+    <!-- 0.7.10 (17-11-2026): adapted to game 1.11.12 (raceRules; startup hang caused by the on-screen notice on the command line) -->
+    <Version>0.7.10</Version>
     <!-- 0.7.1: la DLL no lleva la ruta local del proyecto (PDB y rutas de compilación se escriben relativas) -->
     <!-- 0.7.1: the DLL does not carry the project's local path (PDB and build paths are written as relative) -->
     <PathMap>$(MSBuildProjectDirectory)=.</PathMap>

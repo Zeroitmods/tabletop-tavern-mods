@@ -793,7 +793,17 @@ namespace ZeroNucleo
             catch (Exception e) { Linea(false, "Unidades de las razas nuevas", e.ToString(), ref ok, ref total); }
 
             // --- 14) Generación de razas: actos de campaña, infinitos, Marcha, ciudades y general rival ---
-            // --- 14) Race generation: campaign acts, endless, March, towns and rival general ---
+            // 0.7.10 (juego 1.11.12): GenerateRaceForMap y GetEnemyHeroForCampaign piden «raceRules» (reglas de los actos de la
+            // partida: 0 = listas fijas de siempre, las partidas empezadas antes; StoryRaces.CURRENT_RULES = las de una partida
+            // nueva, orden abierto). Se comprueba con las dos, con las mismas condiciones
+            // --- 14) Race generation: campaign acts, endless, March, cities and rival general ---
+            // 0.7.10 (game 1.11.12): GenerateRaceForMap and GetEnemyHeroForCampaign take «raceRules» (rules for the acts of the
+            // run: 0 = the usual fixed lists, for runs started earlier; StoryRaces.CURRENT_RULES = those of a new
+            // run, open order). It is checked with both, under the same conditions
+            var reglasCampana = new List<int> { 0 };
+            try { int actuales = StoryRaces.CURRENT_RULES; if (actuales != 0) reglasCampana.Add(actuales); }
+            catch (Exception e) { Linea(false, "Generación de razas nuevas", "no se pudo leer StoryRaces.CURRENT_RULES: " + e.Message, ref ok, ref total); }
+            foreach (int reglas in reglasCampana)
             try
             {
                 const int Semillas = 300;
@@ -801,10 +811,10 @@ namespace ZeroNucleo
                 int semillaActo2 = -1;
                 for (int s = 0; s < Semillas; s++)
                 {
-                    Race a2 = data.GenerateRaceForMap(2, s, Race.Gruntkin);
+                    Race a2 = data.GenerateRaceForMap(2, s, Race.Gruntkin, reglas);
                     if ((int)a2 == 40) { acto2++; if (semillaActo2 < 0) semillaActo2 = s; }
-                    if ((int)data.GenerateRaceForMap(3, s, Race.Gruntkin) == 41) acto3++;
-                    if (FaccionesNuevas.EsNueva(data.GenerateRaceForMap(6, s, Race.Gruntkin))) infinito++;
+                    if ((int)data.GenerateRaceForMap(3, s, Race.Gruntkin, reglas) == 41) acto3++;
+                    if (FaccionesNuevas.EsNueva(data.GenerateRaceForMap(6, s, Race.Gruntkin, reglas))) infinito++;
                     // Juego 1.11.1: GenerateTownRace(nodo, semilla de la campaña, acto); revisión: nodo y semilla varían a la vez
                     // (300 semillas de campaña distintas), no solo el nodo con la semilla 0
                     // Game 1.11.1: GenerateTownRace(node, campaign seed, act); review: node and seed vary at the same time
@@ -812,7 +822,7 @@ namespace ZeroNucleo
                     if (FaccionesNuevas.EsNueva(CampaignSaveManager.GenerateTownRace(s % 30, s * 7919 + 13, 1))) ciudades++;
                     // Jugando con la facción A, el acto 2 nunca debe dar su propia raza
                     // When playing as faction A, act 2 must never give its own race
-                    if ((int)data.GenerateRaceForMap(2, s, (Race)40) == 40) propias++;
+                    if ((int)data.GenerateRaceForMap(2, s, (Race)40, reglas) == 40) propias++;
                 }
                 int anfitriones = FaccionesNuevas.AnfitrionesNuevos();
                 bool hay40 = FaccionesNuevas.Razas.ContainsKey(40), hay41 = FaccionesNuevas.Razas.ContainsKey(41);
@@ -820,7 +830,7 @@ namespace ZeroNucleo
                 bool generalOk = !hay40;
                 if (hay40 && semillaActo2 >= 0)
                 {
-                    var rival = data.GetEnemyHeroForCampaign(1, 2, semillaActo2, false);
+                    var rival = data.GetEnemyHeroForCampaign(1, 2, semillaActo2, reglas, false);
                     generalOk = (rival.HeroID == 901 || rival.HeroID == 902) && (int)rival.Race == 40;
                     general = $"con Edric, acto 2, semilla {semillaActo2}: héroe rival {rival.HeroID} de la raza {(int)rival.Race}";
                 }
@@ -831,12 +841,12 @@ namespace ZeroNucleo
                 // Without an act's race, that act must never give it (and with it, sometimes)
                 bool bien = (hay40 ? acto2 > 0 : acto2 == 0) && (hay41 ? acto3 > 0 : acto3 == 0) && infinito > 0 && ciudades > 0
                             && propias == 0 && anfitriones == nuevas.Count && generalOk && senorOk;
-                Linea(bien, "Generación de razas nuevas",
+                Linea(bien, $"Generación de razas nuevas (reglas de los actos {reglas})",
                     $"de {Semillas} semillas: acto 2 con Astra Militarum {acto2}, acto 3 con Imperio Galáctico {acto3}, acto 6 (infinito) con una nueva {infinito}, " +
                     $"ciudades nuevas {ciudades} ({ciudades * 100 / Semillas} %), acto 2 con la propia raza 40 {propias} (esperado 0); anfitriones de la Marcha nuevos {anfitriones}; " +
                     $"general rival {general}; señor de la guerra del Imperio: héroe {(hay41 ? senorId.ToString() : "(sin Imperio: no se comprueba)")}", ref ok, ref total);
             }
-            catch (Exception e) { Linea(false, "Generación de razas nuevas", e.ToString(), ref ok, ref total); }
+            catch (Exception e) { Linea(false, $"Generación de razas nuevas (reglas de los actos {reglas})", e.ToString(), ref ok, ref total); }
 
             // --- 15) Bonus de los héroes nuevos (hero_bonus_rules.json del mod oficial) ---
             // --- 15) Bonuses of the new heroes (hero_bonus_rules.json from the official mod) ---
@@ -988,7 +998,10 @@ namespace ZeroNucleo
                 {
                     for (int s = 0; s < 300; s++)
                     {
-                        if (data.GenerateRaceForMap(acto0, s, Race.Gruntkin) == r0) actoSin++;
+                        // 0.7.10 (juego 1.11.12): con las dos reglas de los actos (0 = listas fijas; CURRENT_RULES = orden abierto)
+                        // 0.7.10 (game 1.11.12): with both act rules (0 = fixed lists; CURRENT_RULES = open order)
+                        if (data.GenerateRaceForMap(acto0, s, Race.Gruntkin, 0) == r0) actoSin++;
+                        if (StoryRaces.CURRENT_RULES != 0 && data.GenerateRaceForMap(acto0, s, Race.Gruntkin, StoryRaces.CURRENT_RULES) == r0) actoSin++;
                         Race c = CampaignSaveManager.GenerateTownRace(s % 30, s * 7919 + 13, 1);   // juego 1.11.1: (nodo, semilla, acto), varias semillas
                                                                                                    // game 1.11.1: (node, seed, act), several seeds
                         if (c == r0) ciudadesSin++;

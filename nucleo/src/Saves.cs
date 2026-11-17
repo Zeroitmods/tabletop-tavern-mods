@@ -712,8 +712,18 @@ namespace ZeroNucleo
         internal static bool BloquearOnline(string donde) => BloquearOnline(donde, true);
 
         // <contar> = false (0.7.5): decide igual, pero no suma al contador ni avisa (VersusRejoin.Resume, que el menú llama siempre)
-        // <contar> = false (0.7.5): decides the same, but does not add to the counter or warn (VersusRejoin.Resume, which the menu always calls)
-        internal static bool BloquearOnline(string donde, bool contar)
+        // <pantalla> = false (0.7.10, 17-11-2026): sin aviso en pantalla, solo el log. Para las dos entradas por línea de
+        // comandos (BootFromCommandLine), que el juego 1.11.12 llama en el arranque, cuando NotificationManager ya existe pero
+        // el juego aún no ha cargado (tablas de texto sin cargar): el aviso en ese momento dejaba el juego colgado al
+        // arrancar (3 de 3 arranques con Multijugador.Bloquear = true; con false arrancaba). En el arranque no hay ningún clic
+        // del jugador al que contestar, así que basta con el log
+        // <contar> = false (0.7.5): decides the same, but does not add to the counter or notify (VersusRejoin.Resume, which the menu always calls)
+        // <pantalla> = false (0.7.10, 17-11-2026): no on-screen notice, only the log. For the two command-line
+        // entry points (BootFromCommandLine), which game 1.11.12 calls at startup, when NotificationManager already exists but
+        // the game has not finished loading (text tables not loaded): the notice at that moment left the game hanging on
+        // startup (3 of 3 startups with Multijugador.Bloquear = true; with false it started). At startup there is no player
+        // click to respond to, so the log is enough
+        internal static bool BloquearOnline(string donde, bool contar, bool pantalla = true)
         {
             bool modificada;
             try { modificada = Nucleo.PartidaModificada; }
@@ -737,7 +747,7 @@ namespace ZeroNucleo
             catch { }
             // Aparte y dentro de un try: si el tipo de los avisos cambia, el fallo de JIT sale aquí y el bloqueo sigue
             // Separate and inside a try: if the type of the notices changes, the JIT failure surfaces here and the block continues
-            try { AvisarEnPantalla(donde); } catch { }
+            if (pantalla) { try { AvisarEnPantalla(donde); } catch { } }
             return true;
         }
 
@@ -889,11 +899,15 @@ namespace ZeroNucleo
 
         /// <summary>Prefix de QuickBattleQueue.BootFromCommandLine() (0.7.5, hallazgo 36): sin cola por línea de comandos.</summary>
         /// Prefix of QuickBattleQueue.BootFromCommandLine() (0.7.5, finding 36): no command-line queue.
-        public static bool AntesDeBootColaRapida() => !BloquearOnline("cola en línea por línea de comandos");
+        // 0.7.10: sin aviso en pantalla (se llama en el arranque; ver BloquearOnline)
+        // 0.7.10: no on-screen notice (called at startup; see BloquearOnline)
+        public static bool AntesDeBootColaRapida() => !BloquearOnline("cola en línea por línea de comandos", true, false);
 
         /// <summary>Prefix de VersusNet.BootFromCommandLine() (0.7.5, hallazgo 36): sin enlace por línea de comandos.</summary>
         /// Prefix of VersusNet.BootFromCommandLine() (0.7.5, finding 36): no command-line link.
-        public static bool AntesDeBootVersusNet() => !BloquearOnline("enlace en línea por línea de comandos");
+        // 0.7.10: sin aviso en pantalla (se llama en el arranque; ver BloquearOnline)
+        // 0.7.10: no on-screen notice (called at startup; see BloquearOnline)
+        public static bool AntesDeBootVersusNet() => !BloquearOnline("enlace en línea por línea de comandos", true, false);
 
         /// <summary>
         /// Prefix de TJ.Versus.Net.VersusLobby.StartLink(host, ownerId, ranked, coop): última red. Si se llega aquí con módulos

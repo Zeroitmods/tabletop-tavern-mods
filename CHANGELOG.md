@@ -5,6 +5,11 @@ Published versions of each package, with notes in Spanish and English.
 
 ## Zero - Núcleo (Core)
 
+### 0.7.10 (17-11-2026)
+
+- Adaptado a la versión 1.11.12 del juego. Con ella, el juego se quedaba colgado al arrancar (también con la 0.7.8): el aviso en pantalla de «no se puede jugar en línea con mods» salía antes de que el juego terminara de cargar. Ahora, en el arranque, ese aviso solo va al log. También se adapta a las reglas nuevas de las razas de los actos de la campaña (sin esto, el sorteo de razas de los actos infinitos con las facciones nuevas fallaba).
+- Updated for game version 1.11.12. With it, the game froze at startup (also with 0.7.8): the on-screen "online play is disabled with mods" notice was shown before the game had finished loading. At startup that notice now only goes to the log. Also updated for the new campaign act race rules (without it, the endless act race draw failed with the new factions).
+
 ### 0.7.9 (17-11-2026)
 
 - Los modelos 3D de las unidades nuevas usan la animación de su unidad base del juego. Los módulos ya no la traen: el núcleo la toma de tu instalación del juego al arrancar, la comprueba (SHA-256) y la deja junto al modelo. Si falta o una actualización del juego la cambia, esa unidad usa el modelo de su unidad base y el log lo dice. Los módulos Más unidades y los de las dos facciones nuevas 1.1.1 necesitan esta versión.

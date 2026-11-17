@@ -290,12 +290,18 @@ namespace ZeroNucleo
             { 3, new[] { Race.DrakosaurBrood, Race.DeepstoneHold, Race.TaelindorForest } },
         };
 
+        // 0.7.10 (juego 1.11.12): GenerateRaceForMap tiene un 4.º parámetro, raceRules (0 = listas fijas por acto; 1 o más =
+        // orden abierto de StoryRaces.OpenOrder). Este postfix no lo necesita: actúa sobre el resultado con las dos reglas.
+        // El peso del sorteo sigue saliendo de ActosSerie (listas fijas); con el orden abierto es una aproximación
         // Postfix de GenerateRaceForMap: en los actos 1-3, las razas nuevas de ese acto entran en el sorteo con el mismo peso
         // que cada raza de serie (0.7.6: las dos en los tres actos, «actosCampana» del manifiesto; antes una por acto). El sorteo es determinista (misma semilla, mismo resultado) y aparte del del juego: si
         // no toca la raza nueva, se queda lo que eligió el juego.
+        // 0.7.10 (game 1.11.12): GenerateRaceForMap has a 4th parameter, raceRules (0 = fixed lists per act; 1 or more =
+        // open order from StoryRaces.OpenOrder). This postfix does not need it: it acts on the result with both rules.
+        // The draw weight still comes from ActosSerie (fixed lists); with open order it is an approximation
         // Postfix of GenerateRaceForMap: in acts 1-3, the new races of that act enter the draw with the same weight
-        // as each base-game race (0.7.6: both in all three acts, «actosCampana» from the manifest; before, one per act). The draw is deterministic (same seed, same result) and separate from the game's own: if
-        // it does not pick the new race, whatever the game chose stays.
+        // as each base-series race (0.7.6: both in all three acts, «actosCampana» from the manifest; before, one per act). The draw is deterministic (same seed, same result) and separate from the game's: if
+        // it does not pick the new race, whatever the game chose is kept.
         public static void TrasGenerateRaceForMap(int __0, int __1, Race __2, ref Race __result)
         {
             try
@@ -349,18 +355,24 @@ namespace ZeroNucleo
 
         // Prefix de GenerateEndlessRace: misma lógica que el juego (todas las razas que la partida aún no ha visto, en
         // orden sorteado con la semilla) pero con las razas nuevas en el bombo (Enum.GetValues no las ve)
+        // 0.7.10 (17-11-2026, juego 1.11.12): el juego añade «raceRules» (__3, reglas de los actos de la partida: 0 = listas fijas
+        // de siempre, 1 o más = orden abierto de StoryRaces.OpenOrder; la partida la guarda en CampaignSaveData.storyRaceRules).
+        // Se pasa tal cual a GenerateRaceForMap, como hace el juego (desensamblado de GenerateEndlessRace de la build 26621364)
         // Prefix of GenerateEndlessRace: same logic as the game (all the races the run has not seen yet, in
         // order shuffled with the seed) but with the new races in the pool (Enum.GetValues does not see them)
-        public static bool AntesDeGenerateEndlessRace(TabletopTavernData __instance, int __0, int __1, Race __2, ref Race __result)
+        // 0.7.10 (17-11-2026, game 1.11.12): the game adds «raceRules» (__3, rules for the acts of the run: 0 = the usual fixed lists,
+        // 1 or more = open order from StoryRaces.OpenOrder; the run saves it in CampaignSaveData.storyRaceRules).
+        // It is passed as is to GenerateRaceForMap, as the game does (disassembly of GenerateEndlessRace from build 26621364)
+        public static bool AntesDeGenerateEndlessRace(TabletopTavernData __instance, int __0, int __1, Race __2, int __3, ref Race __result)
         {
             if (!Activas || !RazasJugables.Any()) return true;
             try
             {
-                int acto = __0, semilla = __1;
+                int acto = __0, semilla = __1, reglas = __3;
                 Race propia = __2;
                 var sinVer = BomboInfinito(propia);
                 int ultimoActo = TabletopTavernConstants.FINAL_STORY_ACT;
-                for (int a = 1; a <= ultimoActo; a++) sinVer.Remove(__instance.GenerateRaceForMap(a, semilla, propia));
+                for (int a = 1; a <= ultimoActo; a++) sinVer.Remove(__instance.GenerateRaceForMap(a, semilla, propia, reglas));
                 Race eleccion = propia;
                 for (int a = ultimoActo + 1; a <= acto; a++)
                 {

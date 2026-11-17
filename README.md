@@ -26,7 +26,7 @@ Los comentarios del código están en español, con su traducción al inglés ju
 
 | Mod | Carpeta | Versión | Página |
 |---|---|---|---|
-| Zero - Núcleo (Core) | `nucleo/` | 0.7.9 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/12) |
+| Zero - Núcleo (Core) | `nucleo/` | 0.7.10 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/12) |
 | Zero - Escuadras más grandes x50% / x100% / x150% (Bigger Squads) | `modulos/ZeroEscuadras50`, `ZeroEscuadras100`, `ZeroEscuadras150` | 1.0.1 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/13) |
 | Zero - Munición x2 / x3 / x5 (Ammo) | `modulos/ZeroMunicion2`, `ZeroMunicion`, `ZeroMunicion5` | 1.0.0 / 1.0.1 / 1.0.0 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/14) |
 | Zero - Mejores estadísticas a distancia (Better Ranged Stats) | `modulos/ZeroStatsDistancia` | 1.0.1 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/15) |
@@ -36,11 +36,11 @@ Los comentarios del código están en español, con su traducción al inglés ju
 
 Cada módulo lleva su propio `README.md` con lo que hace, cómo se instala y sus problemas conocidos.
 
-Otros mods de ZeroitMods para el juego (las facciones nuevas y «Más unidades») no están en este repositorio, porque llevan modelos 3D, sonidos y datos del juego que no se pueden repartir aquí. El núcleo sí contiene el código que les da soporte, porque es el mismo plugin.
+Otros mods de ZeroitMods para el juego (los de unidades y facciones nuevas, versión 1.1.1, que piden el núcleo 0.7.9 o más nuevo) no están en este repositorio, porque llevan modelos 3D y sonidos que no se pueden repartir aquí. El núcleo sí contiene el código que les da soporte, porque es el mismo plugin.
 
 ### Requisitos
 
-- **Tabletop Tavern** para Windows, versión **1.11.1** (build 26359415). Una actualización del juego puede necesitar una versión nueva del núcleo.
+- **Tabletop Tavern** para Windows, versión **1.11.12** (build 26621364); el núcleo 0.7.10 es el primero que arranca con ella (las versiones anteriores cuelgan el juego al arrancar). Una actualización del juego puede necesitar una versión nueva del núcleo.
 - **BepInEx 6.0.0-be.788 IL2CPP (win-x64)**: [descarga oficial](https://builds.bepinex.dev/projects/bepinex_be/788/BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.788%2B5b766a3.zip). Los paquetes de BepInEx 5 (Mono) no cargan este plugin.
 - Para compilar: **.NET SDK 8** o más nuevo (el plugin se compila para `net6.0` y las pruebas para `net8.0`).
 
@@ -109,7 +109,7 @@ Code comments are in Spanish, with their English translation right below. Log an
 
 | Mod | Folder | Version | Page |
 |---|---|---|---|
-| Zero - Core (Núcleo) | `nucleo/` | 0.7.9 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/12) |
+| Zero - Core (Núcleo) | `nucleo/` | 0.7.10 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/12) |
 | Zero - Bigger Squads x50% / x100% / x150% | `modulos/ZeroEscuadras50`, `ZeroEscuadras100`, `ZeroEscuadras150` | 1.0.1 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/13) |
 | Zero - Ammo x2 / x3 / x5 | `modulos/ZeroMunicion2`, `ZeroMunicion`, `ZeroMunicion5` | 1.0.0 / 1.0.1 / 1.0.0 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/14) |
 | Zero - Better Ranged Stats | `modulos/ZeroStatsDistancia` | 1.0.1 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/15) |
@@ -119,11 +119,11 @@ Code comments are in Spanish, with their English translation right below. Log an
 
 Each module has its own `README.md` with what it does, how to install it and its known issues.
 
-ZeroitMods' other mods for the game (the new factions and "More Units") are not in this repository, because they ship 3D models, sounds and game data that cannot be shared here. The core does contain the code that supports them, because it is the same plugin.
+ZeroitMods' other mods for the game (the ones with new units and factions, version 1.1.1, which need core 0.7.9 or newer) are not in this repository, because they ship 3D models and sounds that cannot be shared here. The core does contain the code that supports them, because it is the same plugin.
 
 ### Requirements
 
-- **Tabletop Tavern** for Windows, version **1.11.1** (build 26359415). A game update may need a new version of the core.
+- **Tabletop Tavern** for Windows, version **1.11.12** (build 26621364); core 0.7.10 is the first version that starts on it (older versions freeze the game at startup). A game update may need a new version of the core.
 - **BepInEx 6.0.0-be.788 IL2CPP (win-x64)**: [official download](https://builds.bepinex.dev/projects/bepinex_be/788/BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.788%2B5b766a3.zip). BepInEx 5 (Mono) packs do not load this plugin.
 - To build: **.NET SDK 8** or newer (the plugin targets `net6.0` and the tests `net8.0`).
 
