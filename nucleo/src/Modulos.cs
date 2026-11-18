@@ -79,6 +79,11 @@ namespace ZeroNucleo
         public string Contenido { get; set; }              // fichero de manifiesto del módulo (relativo a su carpeta) o null
                                                            // module manifest file (relative to its folder) or null
         public EfectosModulo Efectos { get; set; } = new EfectosModulo();
+        // 0.7.12: nombre corto para el menú de mods del juego por código de idioma («es», «en», «zh-Hant»...); null = el de
+        // mod.json. Los núcleos anteriores ignoran el campo (System.Text.Json no falla con propiedades desconocidas)
+        // 0.7.12: short name for the game's mod menu per language code («es», «en», «zh-Hant»...); null = the mod.json
+        // one. Older cores ignore the field (System.Text.Json does not fail on unknown properties)
+        public Dictionary<string, string> NombreMenu { get; set; }
     }
 
     /// <summary>Efectos que puede declarar un módulo (cada uno null = no lo trae).</summary>

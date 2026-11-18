@@ -2,7 +2,7 @@
     "formato": 1,
     "id": "ZeroMunicion5",
     "nombre": "Zero - Munición x5 (Ammo x5)",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "nucleoMinimo": "0.7.7",
     "activoPorDefecto": false,
     "dependencias": [],
@@ -15,5 +15,17 @@
                 "Artillery"
             ]
         }
+    },
+    "nombreMenu": {
+        "es": "Zero · Munición x5",
+        "en": "Zero · Ammo x5",
+        "fr": "Zero · Munitions x5",
+        "de": "Zero · Munition x5",
+        "ja": "Zero · 弾数 x5",
+        "ko": "Zero · 탄약 x5",
+        "ru": "Zero · Боезапас x5",
+        "uk": "Zero · Набої x5",
+        "zh": "Zero · 弹药 x5",
+        "zh-Hant": "Zero · 彈藥 x5"
     }
 }

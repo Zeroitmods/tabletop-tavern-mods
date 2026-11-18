@@ -2,7 +2,7 @@
     "formato": 1,
     "id": "ZeroHeraldica",
     "nombre": "Zero - Más iconos (More Banner Icons)",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "nucleoMinimo": "0.7.7",
     "activoPorDefecto": true,
     "dependencias": [],
@@ -247,5 +247,17 @@
                 "nombreEn": "Snowflake"
             }
         ]
+    },
+    "nombreMenu": {
+        "es": "Zero · Más iconos",
+        "en": "Zero · More Icons",
+        "fr": "Zero · Plus d'icônes",
+        "de": "Zero · Mehr Symbole",
+        "ja": "Zero · アイコン追加",
+        "ko": "Zero · 아이콘 추가",
+        "ru": "Zero · Больше значков",
+        "uk": "Zero · Більше значків",
+        "zh": "Zero · 更多图标",
+        "zh-Hant": "Zero · 更多圖示"
     }
 }

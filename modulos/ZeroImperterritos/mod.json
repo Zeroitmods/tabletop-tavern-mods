@@ -1,7 +1,7 @@
 {
-    "displayName": "Zero - Indesmoralizables (Unbreakable)",
+    "displayName": "Zero · Unbreakable",
     "author": "ZeroitMods",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Las escuadras de tu ejército no flaquean ni huyen por la moral: aguantan hasta el último soldado, con cualquier héroe y también en la batalla personalizada y en la resolución automática. Siguen muriendo con normalidad y puedes ordenarles la retirada. La IA no. / Your army's squads never waver or rout from morale: they hold to the last soldier, with any hero, also in custom battles and auto-resolve. They still die as usual and you can still order them to withdraw. The AI does not. NECESITA / REQUIRES: Zero - Núcleo (BepInEx).",
     "workshopFileId": ""
 }

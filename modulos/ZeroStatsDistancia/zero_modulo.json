@@ -2,7 +2,7 @@
     "formato": 1,
     "id": "ZeroStatsDistancia",
     "nombre": "Zero - Mejores estadísticas a distancia (Better Ranged Stats)",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "nucleoMinimo": "0.7.7",
     "activoPorDefecto": true,
     "dependencias": [],
@@ -15,5 +15,17 @@
                 "Ranged"
             ]
         }
+    },
+    "nombreMenu": {
+        "es": "Zero · Mejor a distancia",
+        "en": "Zero · Better Ranged",
+        "fr": "Zero · Meilleur à distance",
+        "de": "Zero · Besser auf Distanz",
+        "ja": "Zero · 遠距離強化",
+        "ko": "Zero · 원거리 강화",
+        "ru": "Zero · Лучший дальний бой",
+        "uk": "Zero · Кращий дальній бій",
+        "zh": "Zero · 远程强化",
+        "zh-Hant": "Zero · 遠程強化"
     }
 }

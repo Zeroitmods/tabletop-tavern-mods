@@ -1,6 +1,6 @@
 # Zero - Munición x3 (Ammo x3)
 
-Mod para **Tabletop Tavern** (Steam 3337380). Autor: ZeroitMods. Versión 1.0.1.
+Mod para **Tabletop Tavern** (Steam 3337380). Autor: ZeroitMods. Versión 1.0.2.
 
 ## Español
 
@@ -12,7 +12,7 @@ Tu ejército (el del jugador, con cualquier héroe) lleva el triple de munición
 
 ### Requisitos
 
-- **Zero - Núcleo** (`Zero-Nucleo`, plugin `ZeroNucleo.dll`, versión 0.7.8 o más nueva).
+- **Zero - Núcleo** (`Zero-Nucleo`, plugin `ZeroNucleo.dll`, versión 0.7.10 o más nueva).
 - **BepInEx 6 IL2CPP** (be.788 o compatible) instalado en el juego.
 
 ### Instalación con un gestor (Thunderstore / r2modman)
@@ -36,7 +36,7 @@ Tu ejército (el del jugador, con cualquier héroe) lleva el triple de munición
 
 ### Problemas conocidos
 
-- Hecho para el juego 1.11.1 (build 26359415), en el que se probó el núcleo 0.7.6. Una actualización del juego puede necesitar una versión nueva del núcleo y de los módulos.
+- Hecho para el juego 1.11.17.2 (build 26749277), con el núcleo 0.7.12 (arranque y autoprueba del núcleo correctos). Con el núcleo 0.7.8 o 0.7.9 el juego se queda colgado al arrancar desde la 1.11.12: actualiza el núcleo primero.
 - Sin soporte en cooperativo ni versus: con cualquier módulo de Zero activo (también este), el núcleo no deja abrir ni unirse a partidas en línea (por defecto; se puede cambiar con `Multijugador.Bloquear` en la configuración del núcleo, pero entonces el desajuste es responsabilidad tuya), porque el otro jugador no tendría el mismo contenido, y lo avisa en pantalla.
 - Partidas modificadas: con cualquier módulo de Zero activo (también este), el núcleo no envía tus partidas a las clasificaciones online ni deja salir la telemetría del juego (los datos de partida que el juego envía al estudio).
 
@@ -59,7 +59,7 @@ Your army (the player's, with any hero) carries triple ammunition on every unit 
 
 ### Requirements
 
-- **Zero - Nucleo** (`Zero-Nucleo`, plugin `ZeroNucleo.dll`, version 0.7.8 or newer).
+- **Zero - Nucleo** (`Zero-Nucleo`, plugin `ZeroNucleo.dll`, version 0.7.10 or newer).
 - **BepInEx 6 IL2CPP** (be.788 or compatible) installed in the game.
 
 ### Installing with a mod manager (Thunderstore / r2modman)
@@ -83,7 +83,7 @@ Your army (the player's, with any hero) carries triple ammunition on every unit 
 
 ### Known issues
 
-- Made for game version 1.11.1 (build 26359415), on which core 0.7.6 was tested. A game update may need a new version of the core and the modules.
+- Made for game version 1.11.17.2 (build 26749277), with core 0.7.12 (core startup and self-test pass). With core 0.7.8 or 0.7.9 the game freezes at startup since 1.11.12: update the core first.
 - Co-op and versus are not supported: with any of Zero's modules enabled (this one included), the core does not let you host or join online matches (by default; `Multijugador.Bloquear` in the core's settings can turn it off, but then any mismatch is on you), because the other player would not have the same content, and it says so on screen.
 - Modded runs: with any of Zero's modules enabled (this one included), the core does not submit your runs to the online leaderboards and blocks the game's telemetry (the run data the game sends to the studio).
 

@@ -2,7 +2,7 @@
     "formato": 1,
     "id": "ZeroMunicion",
     "nombre": "Zero - Munición x3 (Ammo x3)",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "nucleoMinimo": "0.7.7",
     "activoPorDefecto": true,
     "dependencias": [],
@@ -15,5 +15,17 @@
                 "Artillery"
             ]
         }
+    },
+    "nombreMenu": {
+        "es": "Zero · Munición x3",
+        "en": "Zero · Ammo x3",
+        "fr": "Zero · Munitions x3",
+        "de": "Zero · Munition x3",
+        "ja": "Zero · 弾数 x3",
+        "ko": "Zero · 탄약 x3",
+        "ru": "Zero · Боезапас x3",
+        "uk": "Zero · Набої x3",
+        "zh": "Zero · 弹药 x3",
+        "zh-Hant": "Zero · 彈藥 x3"
     }
 }

@@ -2,7 +2,7 @@
     "formato": 1,
     "id": "ZeroMunicion2",
     "nombre": "Zero - Munición x2 (Ammo x2)",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "nucleoMinimo": "0.7.7",
     "activoPorDefecto": false,
     "dependencias": [],
@@ -15,5 +15,17 @@
                 "Artillery"
             ]
         }
+    },
+    "nombreMenu": {
+        "es": "Zero · Munición x2",
+        "en": "Zero · Ammo x2",
+        "fr": "Zero · Munitions x2",
+        "de": "Zero · Munition x2",
+        "ja": "Zero · 弾数 x2",
+        "ko": "Zero · 탄약 x2",
+        "ru": "Zero · Боезапас x2",
+        "uk": "Zero · Набої x2",
+        "zh": "Zero · 弹药 x2",
+        "zh-Hant": "Zero · 彈藥 x2"
     }
 }

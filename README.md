@@ -26,17 +26,17 @@ Los comentarios del código están en español, con su traducción al inglés ju
 
 | Mod | Carpeta | Versión | Página |
 |---|---|---|---|
-| Zero - Núcleo (Core) | `nucleo/` | 0.7.11 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/12) |
-| Zero - Escuadras más grandes x50% / x100% / x150% (Bigger Squads) | `modulos/ZeroEscuadras50`, `ZeroEscuadras100`, `ZeroEscuadras150` | 1.0.1 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/13) |
-| Zero - Munición x2 / x3 / x5 (Ammo) | `modulos/ZeroMunicion2`, `ZeroMunicion`, `ZeroMunicion5` | 1.0.0 / 1.0.1 / 1.0.0 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/14) |
-| Zero - Mejores estadísticas a distancia (Better Ranged Stats) | `modulos/ZeroStatsDistancia` | 1.0.1 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/15) |
-| Zero - Indesmoralizables (Unbreakable) | `modulos/ZeroImperterritos` | 1.0.0 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/16) |
-| Zero - Más iconos (More Banner Icons) | `modulos/ZeroHeraldica` | 1.0.0 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/17) |
-| Zero - Más oro, tope de intereses 30 (More Gold) | `modulos/ZeroEconomia` | 1.2.1 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/18) |
+| Zero - Núcleo (Core) | `nucleo/` | 0.7.12 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/12) |
+| Zero - Escuadras más grandes x50% / x100% / x150% (Bigger Squads) | `modulos/ZeroEscuadras50`, `ZeroEscuadras100`, `ZeroEscuadras150` | 1.0.2 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/13) |
+| Zero - Munición x2 / x3 / x5 (Ammo) | `modulos/ZeroMunicion2`, `ZeroMunicion`, `ZeroMunicion5` | 1.0.1 / 1.0.2 / 1.0.1 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/14) |
+| Zero - Mejores estadísticas a distancia (Better Ranged Stats) | `modulos/ZeroStatsDistancia` | 1.0.2 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/15) |
+| Zero - Indesmoralizables (Unbreakable) | `modulos/ZeroImperterritos` | 1.0.1 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/16) |
+| Zero - Más iconos (More Banner Icons) | `modulos/ZeroHeraldica` | 1.0.1 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/17) |
+| Zero - Más oro, tope de intereses 30 (More Gold) | `modulos/ZeroEconomia` | 1.2.2 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/18) |
 
 Cada módulo lleva su propio `README.md` con lo que hace, cómo se instala y sus problemas conocidos.
 
-Otros mods de ZeroitMods para el juego (los de unidades y facciones nuevas, versión 1.1.1, que piden el núcleo 0.7.9 o más nuevo) no están en este repositorio, porque llevan modelos 3D y sonidos que no se pueden repartir aquí. El núcleo sí contiene el código que les da soporte, porque es el mismo plugin.
+Otros mods de ZeroitMods para el juego (los de unidades y facciones nuevas, versión 1.1.3, que piden el núcleo 0.7.10 o más nuevo) no están en este repositorio, porque llevan modelos 3D y sonidos que no se pueden repartir aquí. El núcleo sí contiene el código que les da soporte, porque es el mismo plugin.
 
 ### Requisitos
 
@@ -109,17 +109,17 @@ Code comments are in Spanish, with their English translation right below. Log an
 
 | Mod | Folder | Version | Page |
 |---|---|---|---|
-| Zero - Core (Núcleo) | `nucleo/` | 0.7.11 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/12) |
-| Zero - Bigger Squads x50% / x100% / x150% | `modulos/ZeroEscuadras50`, `ZeroEscuadras100`, `ZeroEscuadras150` | 1.0.1 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/13) |
-| Zero - Ammo x2 / x3 / x5 | `modulos/ZeroMunicion2`, `ZeroMunicion`, `ZeroMunicion5` | 1.0.0 / 1.0.1 / 1.0.0 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/14) |
-| Zero - Better Ranged Stats | `modulos/ZeroStatsDistancia` | 1.0.1 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/15) |
-| Zero - Unbreakable | `modulos/ZeroImperterritos` | 1.0.0 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/16) |
-| Zero - More Banner Icons | `modulos/ZeroHeraldica` | 1.0.0 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/17) |
-| Zero - More Gold (interest cap 30) | `modulos/ZeroEconomia` | 1.2.1 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/18) |
+| Zero - Core (Núcleo) | `nucleo/` | 0.7.12 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/12) |
+| Zero - Bigger Squads x50% / x100% / x150% | `modulos/ZeroEscuadras50`, `ZeroEscuadras100`, `ZeroEscuadras150` | 1.0.2 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/13) |
+| Zero - Ammo x2 / x3 / x5 | `modulos/ZeroMunicion2`, `ZeroMunicion`, `ZeroMunicion5` | 1.0.1 / 1.0.2 / 1.0.1 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/14) |
+| Zero - Better Ranged Stats | `modulos/ZeroStatsDistancia` | 1.0.2 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/15) |
+| Zero - Unbreakable | `modulos/ZeroImperterritos` | 1.0.1 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/16) |
+| Zero - More Banner Icons | `modulos/ZeroHeraldica` | 1.0.1 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/17) |
+| Zero - More Gold (interest cap 30) | `modulos/ZeroEconomia` | 1.2.2 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/18) |
 
 Each module has its own `README.md` with what it does, how to install it and its known issues.
 
-ZeroitMods' other mods for the game (the ones with new units and factions, version 1.1.1, which need core 0.7.9 or newer) are not in this repository, because they ship 3D models and sounds that cannot be shared here. The core does contain the code that supports them, because it is the same plugin.
+ZeroitMods' other mods for the game (the ones with new units and factions, version 1.1.3, which need core 0.7.10 or newer) are not in this repository, because they ship 3D models and sounds that cannot be shared here. The core does contain the code that supports them, because it is the same plugin.
 
 ### Requirements
 

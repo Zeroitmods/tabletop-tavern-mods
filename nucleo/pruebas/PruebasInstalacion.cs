@@ -31,6 +31,7 @@ internal static class PruebasInstalacion
             PruebaRevisar(comprobar, raiz);
             PruebaTextos(comprobar);
             PruebaEstadoFila(comprobar);
+            PruebaNombreMenu(comprobar);
             PruebaEnLinea(comprobar);
         }
         finally { try { Directory.Delete(raiz, true); } catch { } }
@@ -154,6 +155,52 @@ internal static class PruebasInstalacion
         string l = LogicaInstalacion.LineaListo("0.7.11", new[] { "ZeroMunicion", "ZeroEconomia" }, 0);
         comprobar(l == "Zero - Núcleo 0.7.11 listo: 2 módulos activos (ZeroMunicion, ZeroEconomia); instalación correcta.", "Log: línea de resumen con los módulos activos");
         comprobar(LogicaInstalacion.LineaListo("0.7.11", null, 3).Contains("0 módulos activos (ninguno); 3 problemas"), "Log: resumen sin módulos y con problemas");
+    }
+
+    // ---------------------------------------------------------------
+    // Sección: nombre corto de la fila del menú de mods (0.7.12)
+    // Section: short name of the mod menu row (0.7.12)
+    // ---------------------------------------------------------------
+    // Nombre corto del menú de mods por idioma (LogicaInstalacion.NombreMenu) y lectura del campo «nombreMenu»
+    // Short name for the mod menu per language (LogicaInstalacion.NombreMenu) and reading of the «nombreMenu» field
+    private static void PruebaNombreMenu(Action<bool, string> comprobar)
+    {
+        var n = new Dictionary<string, string>
+        {
+            ["es"] = "Zero · Más oro", ["en"] = "Zero · More Gold", ["zh"] = "Zero · 更多金币", ["zh-Hant"] = "Zero · 更多金幣", ["de"] = "",
+        };
+        comprobar(LogicaInstalacion.NombreMenu(n, "es") == "Zero · Más oro", "Nombre del menú: idioma exacto");
+        comprobar(LogicaInstalacion.NombreMenu(n, "ES") == "Zero · Más oro", "Nombre del menú: sin distinguir mayúsculas");
+        comprobar(LogicaInstalacion.NombreMenu(n, "es-ES") == "Zero · Más oro" && LogicaInstalacion.NombreMenu(n, "es_MX") == "Zero · Más oro",
+                  "Nombre del menú: «es-ES» y «es_MX» van a «es»");
+        comprobar(LogicaInstalacion.NombreMenu(n, "zh-Hant") == "Zero · 更多金幣" && LogicaInstalacion.NombreMenu(n, "zh-TW") == "Zero · 更多金幣",
+                  "Nombre del menú: chino tradicional");
+        comprobar(LogicaInstalacion.NombreMenu(n, "zh-Hans") == "Zero · 更多金币" && LogicaInstalacion.NombreMenu(n, "zh-CN") == "Zero · 更多金币",
+                  "Nombre del menú: chino simplificado");
+        comprobar(LogicaInstalacion.NombreMenu(n, "ja") == "Zero · More Gold", "Nombre del menú: idioma sin nombre: inglés");
+        comprobar(LogicaInstalacion.NombreMenu(n, "de") == "Zero · More Gold", "Nombre del menú: nombre vacío: inglés");
+        comprobar(LogicaInstalacion.NombreMenu(n, null) == "Zero · More Gold", "Nombre del menú: sin idioma: inglés");
+        comprobar(LogicaInstalacion.NombreMenu(null, "es") == null && LogicaInstalacion.NombreMenu(new Dictionary<string, string>(), "es") == null,
+                  "Nombre del menú: módulo sin nombres: null (se queda el de mod.json)");
+        comprobar(LogicaInstalacion.NombreMenu(new Dictionary<string, string> { ["fr"] = "Zero · Plus d'or" }, "es") == null,
+                  "Nombre del menú: sin el idioma ni inglés: null");
+        // El campo se lee del zero_modulo.json; sin él (módulo anterior) queda null
+        // The field is read from zero_modulo.json; without it (older module) it stays null
+        string dir = Path.Combine(Path.GetTempPath(), "zero_prueba_nombre_menu_" + Guid.NewGuid().ToString("N"));
+        try
+        {
+            Directory.CreateDirectory(dir);
+            string ruta = Path.Combine(dir, DeclaracionModulo.NombreFichero);
+            File.WriteAllText(ruta, "{\"formato\": 1, \"id\": \"ZeroEconomia\", \"version\": \"1.2.2\", \"nucleoMinimo\": \"0.7.7\", " +
+                                    "\"nombreMenu\": {\"es\": \"Zero · Más oro\", \"en\": \"Zero · More Gold\"}}");
+            var d = Modulos.LeerDeclaracion(ruta, out string motivo);
+            comprobar(d != null && motivo == null && d.NombreMenu != null && d.NombreMenu.Count == 2 && d.NombreMenu["es"] == "Zero · Más oro",
+                      "Nombre del menú: zero_modulo.json con «nombreMenu» se lee");
+            File.WriteAllText(ruta, "{\"formato\": 1, \"id\": \"ZeroEconomia\", \"version\": \"1.2.1\", \"nucleoMinimo\": \"0.7.7\"}");
+            var v = Modulos.LeerDeclaracion(ruta, out string motivo2);
+            comprobar(v != null && motivo2 == null && v.NombreMenu == null, "Nombre del menú: zero_modulo.json sin el campo (módulo anterior): null");
+        }
+        finally { try { Directory.Delete(dir, true); } catch { } }
     }
 
     // ---------------------------------------------------------------

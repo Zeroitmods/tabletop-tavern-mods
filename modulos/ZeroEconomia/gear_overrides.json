@@ -1,0 +1,8 @@
+{
+    "overrides": [
+        {
+            "gearID": "DwarvenTaxCollectors",
+            "gearModifierValue": "40"
+        }
+    ]
+}

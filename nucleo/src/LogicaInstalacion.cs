@@ -255,6 +255,44 @@ namespace ZeroNucleo
             return espanol ? "NO: ver log" : "NO: see log";
         }
 
+        /// <summary>
+        /// 0.7.12: nombre corto de un módulo para el menú de mods en el idioma del juego. Busca el código tal cual (sin
+        /// distinguir mayúsculas), luego su parte antes del guion («es-ES» → «es»; el chino tradicional, «zh-TW»/«zh-HK»/
+        /// «zh-Hant», va a «zh-Hant»; el resto de «zh-…», a «zh») y por último el inglés. null si el módulo no trae nombres
+        /// (se queda el de mod.json).
+        /// 0.7.12: short name of a module for the mod menu in the game's language. Looks up the code as is (case-
+        /// insensitive), then its part before the dash («es-ES» → «es»; Traditional Chinese, «zh-TW»/«zh-HK»/
+        /// «zh-Hant», goes to «zh-Hant»; any other «zh-…», to «zh») and finally English. null if the module has no names
+        /// (the mod.json one stays).
+        /// </summary>
+        public static string NombreMenu(IDictionary<string, string> nombres, string codigo)
+        {
+            if (nombres == null || nombres.Count == 0) return null;
+            string Buscar(string c)
+            {
+                if (string.IsNullOrWhiteSpace(c)) return null;
+                foreach (var kv in nombres)
+                    if (string.Equals(kv.Key, c, StringComparison.OrdinalIgnoreCase) && !string.IsNullOrWhiteSpace(kv.Value)) return kv.Value;
+                return null;
+            }
+            string r = Buscar(codigo);
+            if (r == null && !string.IsNullOrWhiteSpace(codigo))
+            {
+                string c = codigo.Trim().Replace('_', '-');
+                string baseC = c.Split('-')[0];
+                if (string.Equals(baseC, "zh", StringComparison.OrdinalIgnoreCase))
+                {
+                    string resto = c.Length > 2 ? c.Substring(3) : "";
+                    bool tradicional = resto.IndexOf("Hant", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                                       resto.Equals("TW", StringComparison.OrdinalIgnoreCase) || resto.Equals("HK", StringComparison.OrdinalIgnoreCase) ||
+                                       resto.Equals("MO", StringComparison.OrdinalIgnoreCase);
+                    r = Buscar(tradicional ? "zh-Hant" : "zh");
+                }
+                r ??= Buscar(baseC);
+            }
+            return r ?? Buscar("en");
+        }
+
         /// <summary>Línea de resumen del log: «Zero - Núcleo X listo: N módulos activos (a, b); M problemas de instalación».</summary>
         /// Log summary line: «Zero - Núcleo X listo: N módulos activos (a, b); M problemas de instalación».
         public static string LineaListo(string version, IEnumerable<string> aplicados, int problemas)

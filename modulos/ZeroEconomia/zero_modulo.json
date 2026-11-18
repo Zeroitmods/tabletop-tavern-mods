@@ -2,9 +2,21 @@
     "formato": 1,
     "id": "ZeroEconomia",
     "nombre": "Zero - Más oro, tope de intereses 30 (More Gold)",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "nucleoMinimo": "0.7.7",
     "activoPorDefecto": true,
     "dependencias": [],
-    "efectos": {}
+    "efectos": {},
+    "nombreMenu": {
+        "es": "Zero · Más oro",
+        "en": "Zero · More Gold",
+        "fr": "Zero · Plus d'or",
+        "de": "Zero · Mehr Gold",
+        "ja": "Zero · ゴールド追加",
+        "ko": "Zero · 골드 추가",
+        "ru": "Zero · Больше золота",
+        "uk": "Zero · Більше золота",
+        "zh": "Zero · 更多金币",
+        "zh-Hant": "Zero · 更多金幣"
+    }
 }

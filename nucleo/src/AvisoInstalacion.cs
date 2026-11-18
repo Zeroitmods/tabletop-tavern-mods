@@ -24,11 +24,13 @@
 // copia inlineada, xref de la build 26749277, juego 1.11.17, 18-11-2026). En las filas de las carpetas de módulos de Zero añade al texto de versión y
 // autor el estado que midió el núcleo al arrancar: «OK» o «NO: ...» (corto: la fila es estrecha). Las demás filas no se
 // tocan. El menú de mods se abre siempre después de Plugin.Load (Nucleo.Iniciar ya ha leído los módulos).
+// Núcleo 0.7.12 (18-11-2026): en la misma fila pone el nombre corto del módulo en el idioma del juego (PonerNombreFila).
 // Autor: ZeroitMods.
 // Mod menu: postfix of TJ.ModListRow.Setup (real method of ~0x1D7 bytes; ModListPanel.Refresh calls it with call, without
 // an inlined copy, xref from build 26749277, game 1.11.17, 18-11-2026). On the rows of Zero module folders it appends to the version and
 // author text the status measured by the core at startup: «OK» or «NO: ...» (short: the row is narrow). Other rows are not
 // touched. The mod menu is always opened after Plugin.Load (Nucleo.Iniciar has already read the modules).
+// Core 0.7.12 (18-11-2026): on the same row it puts the module's short name in the game's language (PonerNombreFila).
 // Author: ZeroitMods.
 
 using System;
@@ -149,15 +151,41 @@ namespace ZeroNucleo
         // Menú de mods: estado de cada módulo de Zero en su fila
         // Mod menu: status of each Zero module in its row
         // ---------------------------------------------------------------
-        /// <summary>Postfix de TJ.ModListRow.Setup: añade el estado medido por el núcleo a las filas de módulos de Zero. Nunca lanza.</summary>
-        /// Postfix of TJ.ModListRow.Setup: appends the status measured by the core to Zero module rows. Never throws.
+        /// <summary>
+        /// Postfix de TJ.ModListRow.Setup: en las filas de módulos de Zero pone el nombre corto en el idioma del juego (0.7.12)
+        /// y añade el estado medido por el núcleo. Cada cosa en su try: si una falla, la otra sigue. Nunca lanza.
+        /// Postfix of TJ.ModListRow.Setup: on Zero module rows it puts the short name in the game's language (0.7.12)
+        /// and appends the status measured by the core. Each one in its own try: if one fails, the other goes on. Never throws.
+        /// </summary>
         public static void TrasModListRowSetup(TJ.ModListRow __instance)
         {
+            try
+            {
+                PonerNombreFila(__instance);
+            }
+            catch { }
             try
             {
                 PonerEstadoFila(__instance);
             }
             catch { }
+        }
+
+        // 0.7.12: nombre corto del módulo en el idioma activo (zero_modulo.json, «nombreMenu»). Sin nombres (módulo anterior)
+        // se queda el de mod.json, que ya pone el juego. El juego vuelve a montar las filas cada vez que se abre el menú, así
+        // que un cambio de idioma en Ajustes se ve al volver a abrirlo
+        // 0.7.12: short name of the module in the active language (zero_modulo.json, «nombreMenu»). Without names (older module)
+        // the mod.json one stays, which the game already sets. The game rebuilds the rows every time the menu opens, so
+        // a language change in Settings shows when the menu is opened again
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]
+        private static void PonerNombreFila(TJ.ModListRow fila)
+        {
+            string carpeta = fila?._folder;
+            if (string.IsNullOrEmpty(carpeta) || fila.nameText == null) return;
+            var m = Nucleo.Encontrados.FirstOrDefault(x => string.Equals(x.NombreCarpeta, carpeta, StringComparison.OrdinalIgnoreCase));
+            string nombre = LogicaInstalacion.NombreMenu(m?.Declaracion?.NombreMenu, AccionesHeroes.CodigoIdioma());
+            if (string.IsNullOrEmpty(nombre) || fila.nameText.text == nombre) return;
+            fila.nameText.text = nombre;
         }
 
         // Cuerpo del postfix de la fila (aparte y sin inlining: los tipos del juego se resuelven aquí, dentro del try)

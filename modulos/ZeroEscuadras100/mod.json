@@ -1,7 +1,7 @@
 {
-    "displayName": "Zero - Escuadras más grandes x100% (Bigger Squads x100%)",
+    "displayName": "Zero · Squads x2",
     "author": "ZeroitMods",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Todas las escuadras de 2 o más soldados llevan el doble de soldados, con la munición escalada igual, en los dos bandos. Viene DESACTIVADO: actívalo en el menú de mods del juego. / Every squad with 2 or more soldiers gets double the soldiers, with ammunition scaled the same, for both sides. Ships DISABLED: enable it in the game's mod menu. NECESITA / REQUIRES: Zero - Núcleo (BepInEx).",
     "workshopFileId": ""
 }

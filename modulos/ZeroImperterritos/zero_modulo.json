@@ -2,7 +2,7 @@
     "formato": 1,
     "id": "ZeroImperterritos",
     "nombre": "Zero - Indesmoralizables (Unbreakable)",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "nucleoMinimo": "0.7.7",
     "activoPorDefecto": true,
     "dependencias": [],
@@ -11,5 +11,17 @@
             "sinHuida": true,
             "sinVacilar": true
         }
+    },
+    "nombreMenu": {
+        "es": "Zero · Indesmoralizables",
+        "en": "Zero · Unbreakable",
+        "fr": "Zero · Inébranlables",
+        "de": "Zero · Unerschütterlich",
+        "ja": "Zero · 不屈",
+        "ko": "Zero · 불굴",
+        "ru": "Zero · Несгибаемые",
+        "uk": "Zero · Незламні",
+        "zh": "Zero · 不屈",
+        "zh-Hant": "Zero · 不屈"
     }
 }

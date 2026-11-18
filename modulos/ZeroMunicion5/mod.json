@@ -1,7 +1,7 @@
 {
-    "displayName": "Zero - Munición x5 (Ammo x5)",
+    "displayName": "Zero · Ammo x5",
     "author": "ZeroitMods",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Tu ejército (el del jugador, con cualquier héroe) lleva cinco veces su munición en todas las unidades con munición (a distancia, híbridas y artillería). La IA no. Viene DESACTIVADO: actívalo en el menú de mods del juego. / Your army (the player's, with any hero) carries five times its ammunition on every unit that uses it (ranged, hybrid and artillery). The AI does not. Ships DISABLED: enable it in the game's mod menu. NECESITA / REQUIRES: Zero - Núcleo (BepInEx).",
     "workshopFileId": ""
 }

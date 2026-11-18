@@ -1,12 +1,12 @@
 # Zero - Más oro, tope de intereses 30 (More Gold)
 
-Mod para **Tabletop Tavern** (Steam 3337380). Autor: ZeroitMods. Versión 1.2.1.
+Mod para **Tabletop Tavern** (Steam 3337380). Autor: ZeroitMods. Versión 1.2.2.
 
 ## Español
 
 ### Qué hace
 
-Sube el tope de interés del banco a 30 de oro por turno (de serie, 5). Es un mod JSON del juego: funciona también sin el núcleo si se copia a mano en la carpeta Mods. Viene **activado**.
+Sube el tope de interés del banco a 30 de oro por turno (de serie, 5). Con el objeto «Cobradores de impuestos enanos», a 40 (de serie, 10). Es un mod JSON del juego: funciona también sin el núcleo si se copia a mano en la carpeta Mods. Viene **activado**.
 
 **Textos y datos hechos con ayuda de IA generativa.** Los textos y los datos de este módulo se hicieron con ayuda de herramientas de IA generativa.
 
@@ -33,7 +33,7 @@ Sube el tope de interés del banco a 30 de oro por turno (de serie, 5). Es un mo
 
 ### Problemas conocidos
 
-- Hecho para el juego 1.11.1 (build 26359415), en el que se probó el núcleo 0.7.6. Una actualización del juego puede necesitar una versión nueva del núcleo y de los módulos.
+- Hecho para el juego 1.11.17.2 (build 26749277), en el que se midió el tope: 30 sin los Cobradores de impuestos enanos y 40 con ellos. Si una actualización del juego cambia cómo calcula el tope con ese objeto, puede hacer falta una versión nueva. Si lo instalas con el núcleo, usa la 0.7.10 o más nueva: con la 0.7.8 o la 0.7.9 el juego se queda colgado al arrancar desde la 1.11.12.
 - Sin soporte en cooperativo ni versus: con el núcleo instalado y este módulo activo, el núcleo no deja abrir ni unirse a partidas en línea (por defecto; se puede cambiar con `Multijugador.Bloquear` en la configuración del núcleo, pero entonces el desajuste es responsabilidad tuya), porque el otro jugador no tendría el mismo contenido, y lo avisa en pantalla. Instalado a mano sin el núcleo, nada bloquea las partidas en línea: no lo uses en cooperativo ni versus.
 - Partidas modificadas: con el núcleo instalado y este módulo activo, el núcleo no envía tus partidas a las clasificaciones online ni deja salir la telemetría del juego (los datos de partida que el juego envía al estudio). Instalado a mano sin el núcleo, nada bloquea esos envíos.
 
@@ -50,7 +50,7 @@ ZeroitMods. Tabletop Tavern es de Memori Studios.
 
 ### What it does
 
-Raises the bank's interest cap to 30 gold per turn (5 by default). It is a plain JSON game mod: it also works without the core if copied by hand into the Mods folder. It ships **enabled**.
+Raises the bank's interest cap to 30 gold per turn (5 by default). With the Dwarven Tax Collectors gear, to 40 (10 by default). It is a plain JSON game mod: it also works without the core if copied by hand into the Mods folder. It ships **enabled**.
 
 **Texts and data made with the help of generative AI.** This module's texts and data were made with the help of generative AI tools.
 
@@ -77,7 +77,7 @@ Raises the bank's interest cap to 30 gold per turn (5 by default). It is a plain
 
 ### Known issues
 
-- Made for game version 1.11.1 (build 26359415), on which core 0.7.6 was tested. A game update may need a new version of the core and the modules.
+- Made for game version 1.11.17.2 (build 26749277), where the cap was measured: 30 without the Dwarven Tax Collectors and 40 with them. If a game update changes how the cap is worked out with that gear, a new version may be needed. If you install it with the core, use 0.7.10 or newer: with 0.7.8 or 0.7.9 the game freezes at startup since 1.11.12.
 - Co-op and versus are not supported: with the core installed and this module enabled, the core does not let you host or join online matches (by default; `Multijugador.Bloquear` in the core's settings can turn it off, but then any mismatch is on you), because the other player would not have the same content, and it says so on screen. Installed by hand without the core, nothing blocks online matches: don't use it in co-op or versus.
 - Modded runs: with the core installed and this module enabled, the core does not submit your runs to the online leaderboards and blocks the game's telemetry (the run data the game sends to the studio). Installed by hand without the core, nothing blocks them.
 

@@ -2,7 +2,7 @@
     "formato": 1,
     "id": "ZeroEscuadras50",
     "nombre": "Zero - Escuadras más grandes x50% (Bigger Squads x50%)",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "nucleoMinimo": "0.7.7",
     "activoPorDefecto": true,
     "dependencias": [],
@@ -11,5 +11,17 @@
             "multiplicador": 1.5,
             "minimoSoldados": 2
         }
+    },
+    "nombreMenu": {
+        "es": "Zero · Escuadras x1,5",
+        "en": "Zero · Squads x1.5",
+        "fr": "Zero · Escouades x1,5",
+        "de": "Zero · Trupps x1,5",
+        "ja": "Zero · 部隊 x1.5",
+        "ko": "Zero · 분대 x1.5",
+        "ru": "Zero · Отряды x1,5",
+        "uk": "Zero · Загони x1,5",
+        "zh": "Zero · 小队 x1.5",
+        "zh-Hant": "Zero · 小隊 x1.5"
     }
 }

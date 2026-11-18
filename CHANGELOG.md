@@ -5,6 +5,11 @@ Published versions of each package, with notes in Spanish and English.
 
 ## Zero - Núcleo (Core)
 
+### 0.7.12 (18-11-2026)
+
+- En el menú de mods del juego, cada módulo de Zero sale con su nombre corto en el idioma del juego (los nombres largos se montaban sobre la línea de versión). Necesita los módulos con nombre corto: Escuadras y Munición x3 1.0.2, Munición x2 y x5 1.0.1, Estadísticas a distancia 1.0.2, Más unidades y los de las dos facciones nuevas 1.1.3, Indesmoralizables y Más iconos 1.0.1, Más oro 1.2.2 (con una versión anterior sale su nombre de siempre).
+- In the game's mod menu, each of Zero's modules shows its short name in the game's language (the long names overlapped the version line). Needs the modules with short names: Bigger Squads and Ammo x3 1.0.2, Ammo x2 and x5 1.0.1, Better Ranged Stats 1.0.2, More Units and the two new factions' 1.1.3, Unbreakable and More Banner Icons 1.0.1, More Gold 1.2.2 (an older version keeps its usual name).
+
 ### 0.7.11 (18-11-2026)
 
 - Adaptado a la versión 1.11.17.2 del juego. Esa actualización cambió la animación de 14 unidades base y sus unidades nuevas volvían a su modelo de serie: ahora el núcleo usa los ficheros que ya tenías o adapta el modelo a la animación nueva del juego, y solo si no se puede usa el de la unidad base. En el menú de mods del juego, cada módulo de Zero dice «OK» junto a su versión cuando el núcleo lo ha aplicado (si no sale, el núcleo no está funcionando). Aviso en pantalla, ya en el menú principal, si un módulo está en una carpeta equivocada o pide un núcleo más nuevo. Fuera los dos avisos falsos de «multijugador bloqueado» de cada arranque.
@@ -67,6 +72,11 @@ Published versions of each package, with notes in Spanish and English.
 
 ## Zero - Escuadras más grandes x50% (Bigger Squads x50%)
 
+### 1.0.2 (18-11-2026)
+
+- Nombre corto en el menú de mods del juego, en el idioma del juego con el núcleo 0.7.12 (el largo se montaba sobre la línea de versión). Sin núcleo o con uno anterior sale el nombre corto en inglés. Mismos datos.
+- Short name in the game's mod menu, in the game's language with core 0.7.12 (the long one overlapped the version line). Without the core, or with an older one, the short English name shows. Same data.
+
 ### 1.0.1 (03-11-2026)
 
 - README revisado: clasificaciones online (no se envían partidas con módulos de Zero activos) y compatibilidad. Además, el README avisa de que no hay soporte en cooperativo ni versus con los módulos de Zero y pone al día la compatibilidad (adaptado al juego 1.11.1). Trae el texto del aviso en pantalla cuando el núcleo bloquea el juego en línea (traducido a los idiomas del juego), y el README dice en qué idiomas van los textos y qué se hizo con IA generativa. Autor visible: ZeroitMods. Pide el núcleo 0.7.7.
@@ -78,6 +88,11 @@ Published versions of each package, with notes in Spanish and English.
 - First version as a standalone module of the Zero - Nucleo core.
 
 ## Zero - Escuadras más grandes x100% (Bigger Squads x100%)
+
+### 1.0.2 (18-11-2026)
+
+- Nombre corto en el menú de mods del juego, en el idioma del juego con el núcleo 0.7.12 (el largo se montaba sobre la línea de versión). Sin núcleo o con uno anterior sale el nombre corto en inglés. Mismos datos.
+- Short name in the game's mod menu, in the game's language with core 0.7.12 (the long one overlapped the version line). Without the core, or with an older one, the short English name shows. Same data.
 
 ### 1.0.1 (03-11-2026)
 
@@ -91,6 +106,11 @@ Published versions of each package, with notes in Spanish and English.
 
 ## Zero - Escuadras más grandes x150% (Bigger Squads x150%)
 
+### 1.0.2 (18-11-2026)
+
+- Nombre corto en el menú de mods del juego, en el idioma del juego con el núcleo 0.7.12 (el largo se montaba sobre la línea de versión). Sin núcleo o con uno anterior sale el nombre corto en inglés. Mismos datos.
+- Short name in the game's mod menu, in the game's language with core 0.7.12 (the long one overlapped the version line). Without the core, or with an older one, the short English name shows. Same data.
+
 ### 1.0.1 (03-11-2026)
 
 - README revisado: clasificaciones online (no se envían partidas con módulos de Zero activos) y compatibilidad. Además, el README avisa de que no hay soporte en cooperativo ni versus con los módulos de Zero y pone al día la compatibilidad (adaptado al juego 1.11.1). Trae el texto del aviso en pantalla cuando el núcleo bloquea el juego en línea (traducido a los idiomas del juego), y el README dice en qué idiomas van los textos y qué se hizo con IA generativa. Autor visible: ZeroitMods. Pide el núcleo 0.7.7.
@@ -103,12 +123,22 @@ Published versions of each package, with notes in Spanish and English.
 
 ## Zero - Munición x2 (Ammo x2)
 
+### 1.0.1 (18-11-2026)
+
+- Nombre corto en el menú de mods del juego, en el idioma del juego con el núcleo 0.7.12 (el largo se montaba sobre la línea de versión). Sin núcleo o con uno anterior sale el nombre corto en inglés. Mismos datos.
+- Short name in the game's mod menu, in the game's language with core 0.7.12 (the long one overlapped the version line). Without the core, or with an older one, the short English name shows. Same data.
+
 ### 1.0.0 (03-11-2026)
 
 - Primera versión: el doble de munición para tu ejército; variante de «Munición x3» (necesita el núcleo 0.7.7).
 - First version: double ammunition for your army; a variant of "Ammo x3" (requires core 0.7.7).
 
 ## Zero - Munición x3 (Ammo x3)
+
+### 1.0.2 (18-11-2026)
+
+- Nombre corto en el menú de mods del juego, en el idioma del juego con el núcleo 0.7.12 (el largo se montaba sobre la línea de versión). Sin núcleo o con uno anterior sale el nombre corto en inglés. Mismos datos.
+- Short name in the game's mod menu, in the game's language with core 0.7.12 (the long one overlapped the version line). Without the core, or with an older one, the short English name shows. Same data.
 
 ### 1.0.1 (03-11-2026)
 
@@ -122,12 +152,22 @@ Published versions of each package, with notes in Spanish and English.
 
 ## Zero - Munición x5 (Ammo x5)
 
+### 1.0.1 (18-11-2026)
+
+- Nombre corto en el menú de mods del juego, en el idioma del juego con el núcleo 0.7.12 (el largo se montaba sobre la línea de versión). Sin núcleo o con uno anterior sale el nombre corto en inglés. Mismos datos.
+- Short name in the game's mod menu, in the game's language with core 0.7.12 (the long one overlapped the version line). Without the core, or with an older one, the short English name shows. Same data.
+
 ### 1.0.0 (03-11-2026)
 
 - Primera versión: cinco veces la munición para tu ejército; variante de «Munición x3» (necesita el núcleo 0.7.7).
 - First version: five times the ammunition for your army; a variant of "Ammo x3" (requires core 0.7.7).
 
 ## Zero - Mejores estadísticas a distancia (Better Ranged Stats)
+
+### 1.0.2 (18-11-2026)
+
+- Nombre corto en el menú de mods del juego, en el idioma del juego con el núcleo 0.7.12 (el largo se montaba sobre la línea de versión). Sin núcleo o con uno anterior sale el nombre corto en inglés. Mismos datos.
+- Short name in the game's mod menu, in the game's language with core 0.7.12 (the long one overlapped the version line). Without the core, or with an older one, the short English name shows. Same data.
 
 ### 1.0.1 (03-11-2026)
 
@@ -141,6 +181,11 @@ Published versions of each package, with notes in Spanish and English.
 
 ## Zero - Indesmoralizables (Unbreakable)
 
+### 1.0.1 (18-11-2026)
+
+- Nombre corto en el menú de mods del juego, en el idioma del juego con el núcleo 0.7.12 (el largo se montaba sobre la línea de versión). Sin núcleo o con uno anterior sale el nombre corto en inglés. Mismos datos.
+- Short name in the game's mod menu, in the game's language with core 0.7.12 (the long one overlapped the version line). Without the core, or with an older one, the short English name shows. Same data.
+
 ### 1.0.0 (03-11-2026)
 
 - Primera versión: las escuadras del jugador no flaquean ni huyen por la moral, en batalla y en la resolución automática (necesita el núcleo 0.7.7).
@@ -148,12 +193,22 @@ Published versions of each package, with notes in Spanish and English.
 
 ## Zero - Más iconos (More Banner Icons)
 
+### 1.0.1 (18-11-2026)
+
+- Nombre corto en el menú de mods del juego, en el idioma del juego con el núcleo 0.7.12 (el largo se montaba sobre la línea de versión). Sin núcleo o con uno anterior sale el nombre corto en inglés. Mismos datos.
+- Short name in the game's mod menu, in the game's language with core 0.7.12 (the long one overlapped the version line). Without the core, or with an older one, the short English name shows. Same data.
+
 ### 1.0.0 (03-11-2026)
 
 - Primera versión: 34 iconos para el estandarte y el selector de iconos en la pestaña «Estandarte» (necesita el núcleo 0.7.7).
 - First version: 34 banner icons and the icon picker in the Banner tab (requires core 0.7.7).
 
 ## Zero - Más oro, tope de intereses 30 (More Gold)
+
+### 1.2.2 (18-11-2026)
+
+- El objeto «Cobradores de impuestos enanos» (Dwarven Tax Collectors) ya no baja el tope de interés: el juego pone el tope en el valor del objeto (10 de serie), así que con este mod lo bajaba de 30 a 10. Ahora lo sube a 40 (el tope del mod más los 10 del objeto), y su texto en el juego dice «hasta +40». Probado en el juego 1.11.17.2 (build 26749277). Nombre corto en el menú de mods del juego, en el idioma del juego con el núcleo 0.7.12 (el largo se montaba sobre la línea de versión). Sin núcleo o con uno anterior sale el nombre corto en inglés.
+- The Dwarven Tax Collectors gear no longer lowers the interest cap: the game sets the cap to the gear's value (10 by default), so with this mod it dropped from 30 to 10. It now raises it to 40 (the mod's cap plus the gear's 10), and its in-game text says "up to +40". Tested on game version 1.11.17.2 (build 26749277). Short name in the game's mod menu, in the game's language with core 0.7.12 (the long one overlapped the version line). Without the core, or with an older one, the short English name shows.
 
 ### 1.2.1 (03-11-2026)
 

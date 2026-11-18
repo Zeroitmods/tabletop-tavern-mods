@@ -1,7 +1,7 @@
 {
-    "displayName": "Zero - Más iconos (More Banner Icons)",
+    "displayName": "Zero · More Icons",
     "author": "ZeroitMods",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Iconos nuevos para tu estandarte y un selector en la pestaña «Estandarte» de la preparación: los iconos de las banderas del juego, los de este módulo (34 emblemas: armas, animales, criaturas, símbolos, herramientas y naturaleza) y los de las facciones activas. El icono elegido se ve en la vista previa y en las banderas de tus escuadras en batalla. La IA no. / New icons for your banner and a picker in the \"Banner\" tab of the run setup: the game's flag icons, this module's (34 emblems: weapons, animals, creatures, symbols, tools and nature) and those of the enabled factions. The chosen icon shows in the preview and on your squads' flags in battle. The AI does not. NECESITA / REQUIRES: Zero - Núcleo (BepInEx).",
     "workshopFileId": ""
 }
