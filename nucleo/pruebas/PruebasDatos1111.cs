@@ -234,8 +234,13 @@ internal static class PruebasDatos1111
             if (deContenido.Contains(Path.GetFileName(dir))) minimosContenido.Add(minimo);
             else minimos.Add(minimo);
         }
-        comprobar(minimosContenido.Count == 3 && minimosContenido.All(m => m == "0.7.10") && Modulos.CompararVersiones("0.7.10", Program.VersionNucleo) <= 0,
-            $"datos 1.11.1: Más unidades, Astra Militarum e Imperio Galáctico piden el núcleo 0.7.10 (1.1.2, 18-11-2026: la 0.7.8 y la 0.7.9 cuelgan el juego desde la 1.11.12) ({string.Join(", ", minimosContenido)})");
+        // 18-11-2026 (tarde, módulos 1.1.4): piden la 0.7.13 (jinete de las caballerías encendido por defecto); un núcleo
+        // anterior (0.7.12) no los aplica, porque con él saldrían reclutables pero sin jinete
+        // 18-11-2026 (afternoon, modules 1.1.4): they require 0.7.13 (cavalry rider on by default); an older
+        // core (0.7.12) does not apply them, because with it they would be recruitable but without a rider
+        comprobar(minimosContenido.Count == 3 && minimosContenido.All(m => m == "0.7.13") && Modulos.CompararVersiones("0.7.13", Program.VersionNucleo) <= 0
+                  && Modulos.CompararVersiones("0.7.13", "0.7.12") > 0,
+            $"datos 1.11.1: Más unidades, Astra Militarum e Imperio Galáctico piden el núcleo 0.7.13 (1.1.4, caballería con jinete; la 0.7.12 no los aplica) ({string.Join(", ", minimosContenido)})");
         // 0.7.4: el mínimo sube con el núcleo (hechizos propios y munición de las híbridas); se compara con su VERSION
         // 0.7.6 (03-11-2026): 10 módulos (+ Impertérritos); 0.7.7: 11 (+ Heráldica)
         // 03-11 noche: 13 (+ Munición x2 y x5). El núcleo 0.7.8 solo cambia el propio núcleo (textos del estandarte al

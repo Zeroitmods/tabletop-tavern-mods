@@ -5,6 +5,11 @@ Published versions of each package, with notes in Spanish and English.
 
 ## Zero - Núcleo (Core)
 
+### 0.7.13 (18-11-2026)
+
+- La opción «Batalla.JineteCaballeria» viene encendida: las caballerías con jinete de los módulos de contenido (1.1.4, ahora reclutables) salen con su jinete. Si ya tenías el núcleo, tu configuración la tenía en false (el valor de antes) y pasa a true una sola vez (también si la habías puesto tú a mano); si después la apagas, se queda apagada.
+- The "Batalla.JineteCaballeria" setting is now on by default: the mounted cavalry from the content modules (1.1.4, now recruitable) shows its rider. If you already had the core, your settings had it at false (the old default) and it switches to true once (also if you had set it yourself); if you turn it off afterwards, it stays off.
+
 ### 0.7.12 (18-11-2026)
 
 - En el menú de mods del juego, cada módulo de Zero sale con su nombre corto en el idioma del juego (los nombres largos se montaban sobre la línea de versión). Necesita los módulos con nombre corto: Escuadras y Munición x3 1.0.2, Munición x2 y x5 1.0.1, Estadísticas a distancia 1.0.2, Más unidades y los de las dos facciones nuevas 1.1.3, Indesmoralizables y Más iconos 1.0.1, Más oro 1.2.2 (con una versión anterior sale su nombre de siempre).

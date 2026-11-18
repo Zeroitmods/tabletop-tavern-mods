@@ -78,5 +78,8 @@
     <!-- Prueba 32 (17-11-2026, núcleo 0.7.9): ficheros del juego reconstruidos desde la instalación (PruebasFicherosJuego.cs) -->
     <!-- Test 32 (17-11-2026, core 0.7.9): game files rebuilt from the installation (PruebasFicherosJuego.cs) -->
     <Compile Include="..\src\FicherosJuego.cs" />
+    <!-- Prueba 34 (18-11-2026, núcleo 0.7.13): migración de la opción del jinete de las caballerías nuevas (PruebasJinete.cs) -->
+    <!-- Test 34 (18-11-2026, core 0.7.13): migration of the rider setting of the new cavalry (PruebasJinete.cs) -->
+    <Compile Include="..\src\LogicaJinete.cs" />
   </ItemGroup>
 </Project>

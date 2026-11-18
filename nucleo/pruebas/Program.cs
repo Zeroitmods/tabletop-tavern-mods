@@ -14,6 +14,7 @@
 // revisión de la 0.7.2, prueba 15: doble pasada del saneado y victorias de héroes nuevos (PruebasDoblePasada.cs).
 // Prueba 18 (18-10-2026): arreglos de la revisión de código del 18-10 (PruebasArreglos18.cs).
 // Prueba 19 (18-10-2026): Tesorería imperial con el x2 solo sobre los primeros 5 de interés (PruebasInteres.cs).
+// Prueba 34 (18-11-2026, núcleo 0.7.13): migración de Batalla.JineteCaballeria a encendida (PruebasJinete.cs).
 // Prueba 20 (18-10-2026, noche): arreglos de la segunda revisión (registro bloqueado, campos nuevos, iconos 2:3; PruebasRonda2.cs).
 // Prueba 21 (18-10-2026, noche): revisión externa (informes de fallo sin módulos, aviso de versión; PruebasRevisionExterna.cs).
 // Prueba 24 (01-11-2026, juego 1.11.1): carga tolerante a tipos y métodos que el juego quita o mueve (fases de Load() y tipos
@@ -41,6 +42,7 @@
 // review of 0.7.2, test 15: double pass of the sanitizing and wins of new heroes (PruebasDoblePasada.cs).
 // Test 18 (18-10-2026): fixes from the code review of 10-18 (PruebasArreglos18.cs).
 // Test 19 (18-10-2026): Imperial Treasury with the x2 only on the first 5 of interest (PruebasInteres.cs).
+// Test 34 (18-11-2026, core 0.7.13): migration of Batalla.JineteCaballeria to on (PruebasJinete.cs).
 // Test 20 (18-10-2026, night): fixes from the second review (locked registry, new fields, 2:3 icons; PruebasRonda2.cs).
 // Test 21 (18-10-2026, night): external review (crash reports without modules, version notice; PruebasRevisionExterna.cs).
 // Test 24 (01-11-2026, game 1.11.1): loading tolerant of types and methods that the game removes or moves (phases of Load() and types
@@ -594,10 +596,14 @@ internal static class Program
             var m = ManifiestoDe(args[1], out string motivo2);
             int activas = m.Unidades.Count(u => u.Activa);
             Console.WriteLine($"      manifiesto {args[1]}: {m.Unidades.Count} unidades, {activas} activas, {m.Razas.Count} razas, {m.Heroes.Count} héroes");
-            Comprobar(motivo2 == null && m.Unidades.Count == 60 && activas == 53 && m.Razas.Count == 2 && m.Heroes.Count == 4,
-                "manifiesto generado: 60 unidades, 53 activas (todas menos las 7 caballerías con jinete), 2 razas y 4 héroes");
-            Comprobar(new[] { 902, 923, 926, 947, 950, 963, 967 }.All(id => { var u = m.Unidades.Find(x => x.Id == id); return u != null && !u.Activa && u.Caballeria; }),
-                "manifiesto: las 7 caballerías con jinete (902, 923, 926, 947, 950, 963, 967) quedan solo en datos hasta probar el jinete");
+            // 18-11-2026 (módulos 1.1.4, núcleo 0.7.13): las 7 caballerías con jinete pasan a activas (jinete probado en batalla)
+            // 18-11-2026 (modules 1.1.4, core 0.7.13): the 7 mounted cavalry units become active (rider tested in battle)
+            Comprobar(motivo2 == null && m.Unidades.Count == 60 && activas == 60 && m.Razas.Count == 2 && m.Heroes.Count == 4,
+                "manifiesto generado: 60 unidades, las 60 activas (también las 7 caballerías con jinete), 2 razas y 4 héroes");
+            Comprobar(new[] { 902, 923, 926, 947, 950, 963, 967 }.All(id => { var u = m.Unidades.Find(x => x.Id == id); return u != null && u.Activa && u.Caballeria; }),
+                "manifiesto: las 7 caballerías con jinete (902, 923, 926, 947, 950, 963, 967) activas y marcadas como caballería");
+            Comprobar(m.Unidades.Where(u => u.Caballeria).Select(u => u.Id).OrderBy(x => x).SequenceEqual(new[] { 902, 923, 926, 947, 950, 963, 967 }),
+                "manifiesto: solo esas 7 llevan la marca de caballería con jinete");
             // F2: razas y héroes tipados y activos, con lo prestado y la raza sustituta para el disco
             // F2: typed and active races and heroes, with the borrowed ones and the substitute race for disk
             var r40 = m.Razas.Find(r => r.Id == 40); var r41 = m.Razas.Find(r => r.Id == 41);
@@ -617,8 +623,10 @@ internal static class Program
                 "manifiesto: 4 héroes activos, 2 por raza nueva, con figura prestada, oro, retrato y ejército inicial de 3 unidades (17-10-2026)");
             Comprobar(m.Heroes.All(h => h.Muestra.All(id => m.Unidades.Find(x => x.Id == id)?.Activa == true)),
                 "manifiesto: todas las unidades de los ejércitos de muestra de los héroes están activas");
-            Comprobar(m.Unidades.Where(u => u.Raza == "40" || u.Raza == "41").Count(u => u.Activa) == 24,
-                "manifiesto: 24 unidades de Astra Militarum e Imperio Galáctico activas (27 menos las 3 con jinete)");
+            // 18-11-2026 (módulos 1.1.4): las 27, también las 3 con jinete (902, 923, 926)
+            // 18-11-2026 (modules 1.1.4): all 27, the 3 with a rider included (902, 923, 926)
+            Comprobar(m.Unidades.Where(u => u.Raza == "40" || u.Raza == "41").Count(u => u.Activa) == 27,
+                "manifiesto: las 27 unidades de Astra Militarum e Imperio Galáctico activas (también las 3 con jinete)");
             var u944 = m.Unidades.Find(u => u.Id == 944);
             Comprobar(u944 != null && u944.Base == "Oni" && u944.Raza == "IronLegion" && u944.Activa && u944.Reclutamiento == Manifiesto.ReclutaPorRaza,
                 "manifiesto: 944 (Ogros de Asedio) clona Oni, raza IronLegion, activa, por raza");
@@ -725,6 +733,9 @@ internal static class Program
         // Prueba 33 (18-11-2026, núcleo 0.7.11): instalación de los módulos y entradas en línea por línea de comandos (PruebasInstalacion.cs)
         // Test 33 (18-11-2026, core 0.7.11): module installation and online command-line entries (PruebasInstalacion.cs)
         PruebasInstalacion.Todas(Comprobar);
+        // Prueba 34 (18-11-2026, núcleo 0.7.13): migración de Batalla.JineteCaballeria a encendida (PruebasJinete.cs)
+        // Test 34 (18-11-2026, core 0.7.13): migration of Batalla.JineteCaballeria to on (PruebasJinete.cs)
+        PruebasJinete.Todas(Comprobar);
 
         Console.WriteLine(fallos == 0 ? "TODAS LAS PRUEBAS OK" : $"{fallos} FALLOS");
         return fallos == 0 ? 0 : 1;
