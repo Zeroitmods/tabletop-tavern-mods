@@ -156,9 +156,21 @@ internal static class PruebasFicherosJuego
             animNueva[700] ^= 0xFF;
             Escribir(Path.Combine(uv, "Base", "anim.bin"), animNueva);
             byte[] antes = File.ReadAllBytes(Path.Combine(visual, "anim.bin"));
+            // 0.7.11: si en la carpeta ya están los ficheros de cuando se hizo el módulo (los dejó un núcleo anterior), valen
+            // tal cual (Previos), sin tocar nada; sin ellos, un parche sobre una base cambiada sigue fallando sin escribir
+            // 0.7.11: if the files from when the module was made are already in the folder (left by an earlier core), they are used
+            // as-is (Previos), without touching anything; without them, a patch on a changed base still fails without writing
             var r5b = FicherosJuego.Preparar(visual, uv);
-            comprobar(!r5b.Ok && r5b.Motivo.Contains("Base/anim.bin") && MismosBytes(Path.Combine(visual, "anim.bin"), antes),
-                $"ficheros del juego: un parche sobre una base cambiada falla sin tocar la carpeta ({r5b.Motivo})");
+            comprobar(r5b.Ok && r5b.Modo == FicherosJuego.Modo.Previos && r5b.Escritos == 0 && r5b.CarpetaFinal == visual
+                      && MismosBytes(Path.Combine(visual, "anim.bin"), antes) && r5b.Avisos.Any(a => a.Contains("Base/anim.bin")),
+                $"ficheros del juego: base cambiada pero con los ficheros de antes en la carpeta: se usan tal cual (Previos) ({r5b.Motivo})");
+            string sinPrevios = Path.Combine(raiz, "Mods", "ZeroPrueba", "unit_visuals", "_908");
+            Escribir(Path.Combine(sinPrevios, "anim.bin.zpar"), Parche(animDerivado, anim));
+            Declarar(sinPrevios, Entrada("anim.bin", "Base/anim.bin", anim, animDerivado, "anim.bin.zpar"));
+            var r5c = FicherosJuego.Preparar(sinPrevios, uv, Path.Combine(raiz, "adaptados"));
+            comprobar(!r5c.Ok && r5c.Motivo.Contains("Base/anim.bin") && r5c.Motivo.Contains("parche") && !File.Exists(Path.Combine(sinPrevios, "anim.bin"))
+                      && !Directory.Exists(Path.Combine(raiz, "adaptados")),
+                $"ficheros del juego: un parche sobre una base cambiada y sin ficheros de antes falla sin escribir ni adaptar ({r5c.Motivo})");
             Escribir(Path.Combine(uv, "Base", "anim.bin"), anim);
             Escribir(Path.Combine(uv, "Base", "anchors.bin"), anclas);
             // Cabecera distinta (otros huesos): ni la copia
@@ -273,6 +285,10 @@ internal static class PruebasFicherosJuego
                 $"ficheros del juego: lo reconstruido por el núcleo se queda en Mods sin aviso en las actualizaciones [{s2}]");
             comprobar(FicherosJuego.DestinosDeclarados(fuente).SetEquals(new[] { "unit_visuals/_900/anim.bin" }),
                 "ficheros del juego: DestinosDeclarados da las rutas relativas al módulo");
+
+            // 12) 0.7.11: adaptación a la base actual (el juego volvió a hornear la base: mismos huesos, más fotogramas)
+            // 12) 0.7.11: adaptation to the current base (the game re-baked the base: same bones, more frames)
+            Adaptacion(comprobar, raiz);
         }
         finally
         {
@@ -283,6 +299,125 @@ internal static class PruebasFicherosJuego
         // 11) Módulos reales contra el juego instalado
         // 11) Real modules against the installed game
         Reales(comprobar, carpetaModulos);
+    }
+
+    // -----------------------------------------------------------------------
+    // Sección: 0.7.11, adaptación a la base actual del juego
+    // Section: 0.7.11, adaptation to the current game base
+    // -----------------------------------------------------------------------
+    // unit.json mínimo: esqueleto, ritmo, slots (inicio y largo) y anclas
+    // Minimal unit.json: skeleton, pace, slots (start and length) and anchors
+    private static string UnitJson(string[] huesos, int ritmo, (int inicio, int largo)[] slots, string[] anclas) => JsonSerializer.Serialize(new
+    {
+        format = 1, kind = "unit", unitName = "x",
+        skeleton = new { boneCount = huesos.Length, names = huesos },
+        frameRate = ritmo,
+        slots = slots.Select((s, i) => new { id = i, name = "s" + i, start = s.inicio, count = s.largo, loop = true }).ToArray(),
+        anchors = anclas,
+        materials = new object[0],
+        variants = new[] { new { lods = new[] { new { meshes = new[] { new { file = "body_0.mesh.bin", material = 0 } } } } } },
+    });
+
+    private static void Adaptacion(Action<bool, string> comprobar, string raiz)
+    {
+        string uv = Path.Combine(raiz, "juego2", "UnitVisuals");
+        string adaptados = Path.Combine(raiz, "adaptados2");
+        string[] huesos = { "Hips", "Spine", "Head" };
+        string[] anclas = { "RightHand", "LeftHand" };
+        // Base vieja (la del módulo): 4 fotogramas; base nueva del juego: 6 (re-horneada), mismos huesos y anclas
+        // Old base (the module's): 4 frames; new game base: 6 (re-baked), same bones and anchors
+        byte[] animVieja = FicheroJuego("TJBA", 3, 4, 32 + 3 * 4 * 24, 11), anclasViejas = FicheroJuego("TJBK", 2, 4, 32 + 2 * 4 * 48, 12);
+        byte[] animNueva = FicheroJuego("TJBA", 3, 6, 32 + 3 * 6 * 24, 13), anclasNuevas = FicheroJuego("TJBK", 2, 6, 32 + 2 * 6 * 48, 14);
+        byte[] marcador = FicheroJuego("TJBM", 1, 1, 100, 15);
+        Escribir(Path.Combine(uv, "Oni", "anim.bin"), animNueva);
+        Escribir(Path.Combine(uv, "Oni", "anchors.bin"), anclasNuevas);
+        Escribir(Path.Combine(uv, "Oni", "attach_0.mesh.bin"), marcador);
+        File.WriteAllText(Path.Combine(uv, "Oni", "unit.json"), UnitJson(huesos, 30, new[] { (0, 4), (4, 2) }, anclas));
+
+        // Módulo: unit.json con los slots viejos (hechos contra 4 fotogramas), malla y textura propias, y la declaración
+        // Module: unit.json with the old slots (made against 4 frames), custom mesh and texture, and the declaration
+        string visual = Path.Combine(raiz, "Mods2", "ZeroPrueba", "unit_visuals", "_944");
+        Directory.CreateDirectory(visual);
+        File.WriteAllText(Path.Combine(visual, "unit.json"), UnitJson(huesos, 25, new[] { (0, 3), (3, 1) }, anclas));
+        Escribir(Path.Combine(visual, "body_0.mesh.bin"), new byte[] { 1, 2, 3 });
+        Escribir(Path.Combine(visual, "cuerpo.png"), new byte[] { 4, 5, 6 });
+        Declarar(visual, Entrada("anim.bin", "Oni/anim.bin", animVieja, animVieja), Entrada("anchors.bin", "Oni/anchors.bin", anclasViejas, anclasViejas),
+                 Entrada("marcador_attach_0.mesh.bin", "Oni/attach_0.mesh.bin", marcador, marcador));
+
+        // a) Sin carpeta de adaptados: falla como en la 0.7.10 (nada que usar)
+        // a) Without an adapted folder: fails as in 0.7.10 (nothing to use)
+        comprobar(!FicherosJuego.Preparar(visual, uv).Ok, "adaptación: sin carpeta de adaptados, una base cambiada sigue cayendo al modelo base");
+
+        // b) Con carpeta de adaptados: visual montado aparte con los ficheros ACTUALES y los slots de la base actual
+        // b) With an adapted folder: visual assembled separately with the CURRENT files and the current base's slots
+        var r = FicherosJuego.Preparar(visual, uv, adaptados);
+        string final = r.CarpetaFinal ?? "";
+        bool fuera = final.StartsWith(adaptados, StringComparison.OrdinalIgnoreCase) && Path.GetFileName(final) == "ZeroPrueba_944";
+        var json = File.Exists(Path.Combine(final, "unit.json")) ? JsonDocument.Parse(File.ReadAllText(Path.Combine(final, "unit.json"))).RootElement : default;
+        bool slotsNuevos = json.ValueKind == JsonValueKind.Object && json.GetProperty("slots").GetArrayLength() == 2
+                           && json.GetProperty("slots")[1].GetProperty("start").GetInt32() == 4 && json.GetProperty("slots")[1].GetProperty("count").GetInt32() == 2
+                           && json.GetProperty("frameRate").GetInt32() == 30;
+        comprobar(r.Ok && r.Modo == FicherosJuego.Modo.Adaptado && fuera && slotsNuevos
+                  && MismosBytes(Path.Combine(final, "anim.bin"), animNueva) && MismosBytes(Path.Combine(final, "anchors.bin"), anclasNuevas)
+                  && MismosBytes(Path.Combine(final, "marcador_attach_0.mesh.bin"), marcador)
+                  && MismosBytes(Path.Combine(final, "body_0.mesh.bin"), new byte[] { 1, 2, 3 }) && MismosBytes(Path.Combine(final, "cuerpo.png"), new byte[] { 4, 5, 6 })
+                  && !File.Exists(Path.Combine(final, FicherosJuego.NombreDeclaracion))
+                  && !File.Exists(Path.Combine(visual, "anim.bin")) && File.ReadAllText(Path.Combine(visual, "unit.json")).Contains("\"count\":1"),
+            $"adaptación: base re-horneada, visual montado aparte con los ficheros y slots actuales y el módulo sin tocar ({r.Motivo}; {final})");
+        var r2 = FicherosJuego.Preparar(visual, uv, adaptados);
+        comprobar(r2.Ok && r2.Modo == FicherosJuego.Modo.Adaptado && r2.Escritos == 0, "adaptación: la segunda vez no reescribe nada");
+
+        // c) Casos en los que NO se adapta (más seguro el modelo base)
+        // c1) otro esqueleto en la base
+        // c) Cases where adaptation is NOT done (base model is safer)
+        // c1) different skeleton in the base
+        File.WriteAllText(Path.Combine(uv, "Oni", "unit.json"), UnitJson(new[] { "Hips", "Spine", "Cabeza" }, 30, new[] { (0, 4), (4, 2) }, anclas));
+        var c1 = FicherosJuego.Preparar(visual, uv, adaptados);
+        // c2) slots que no llegan a los fotogramas del anim.bin
+        // c2) slots that do not reach the anim.bin frames
+        File.WriteAllText(Path.Combine(uv, "Oni", "unit.json"), UnitJson(huesos, 30, new[] { (0, 4), (4, 1) }, anclas));
+        var c2 = FicherosJuego.Preparar(visual, uv, adaptados);
+        // c3) anchors.bin con otro número de anclas que su unit.json
+        // c3) anchors.bin with a different anchor count than its unit.json
+        File.WriteAllText(Path.Combine(uv, "Oni", "unit.json"), UnitJson(huesos, 30, new[] { (0, 4), (4, 2) }, new[] { "RightHand" }));
+        var c3 = FicherosJuego.Preparar(visual, uv, adaptados);
+        // c4) anim.bin truncado (la cabecera pide más bytes)
+        // c4) truncated anim.bin (header requests more bytes)
+        File.WriteAllText(Path.Combine(uv, "Oni", "unit.json"), UnitJson(huesos, 30, new[] { (0, 4), (4, 2) }, anclas));
+        Escribir(Path.Combine(uv, "Oni", "anim.bin"), animNueva.Take(animNueva.Length - 1).ToArray());
+        var c4 = FicherosJuego.Preparar(visual, uv, adaptados);
+        Escribir(Path.Combine(uv, "Oni", "anim.bin"), animNueva);
+        // c5) anclas propias sin declarar (como la 952): calculadas para los fotogramas viejos
+        // c5) custom anchors without declaration (like the 952): calculated for the old frames
+        string propias = Path.Combine(raiz, "Mods2", "ZeroPrueba", "unit_visuals", "_952");
+        Directory.CreateDirectory(propias);
+        File.WriteAllText(Path.Combine(propias, "unit.json"), UnitJson(huesos, 25, new[] { (0, 3), (3, 1) }, anclas));
+        Escribir(Path.Combine(propias, "anchors.bin"), anclasViejas);
+        Declarar(propias, Entrada("anim.bin", "Oni/anim.bin", animVieja, animVieja));
+        var c5 = FicherosJuego.Preparar(propias, uv, adaptados);
+        comprobar(!c1.Ok && c1.Motivo.Contains("esqueleto") && !c2.Ok && c2.Motivo.Contains("fotogramas") && !c3.Ok && c3.Motivo.Contains("anclas")
+                  && !c4.Ok && c4.Motivo.Contains("formato") && !c5.Ok && c5.Motivo.Contains("anclas propias"),
+            $"adaptación: no se adapta con otro esqueleto, slots o anclas que no cuadran, anim.bin truncado ni anclas propias " +
+            $"({c1.Motivo} | {c2.Motivo} | {c3.Motivo} | {c4.Motivo} | {c5.Motivo})");
+        // e) Caja de las mallas: agrandada por eje en max(mitad del tamaño, 1); lo que no es TJBM o tiene caja rota, igual
+        // e) Mesh bounding box: enlarged per axis by max(half the size, 1); anything that is not TJBM or has a broken box, unchanged
+        var malla = new byte[64];
+        System.Text.Encoding.ASCII.GetBytes("TJBM").CopyTo(malla, 0);
+        float[] caja = { -1f, 0f, -0.5f, 1f, 4f, 0.5f };
+        for (int i = 0; i < 6; i++) BitConverter.GetBytes(caja[i]).CopyTo(malla, 20 + 4 * i);
+        byte[] grande = FicherosJuego.AgrandarCaja(malla);
+        float G(int i) => BitConverter.ToSingle(grande, 20 + 4 * i);
+        var rota = (byte[])malla.Clone();
+        BitConverter.GetBytes(float.NaN).CopyTo(rota, 20);
+        comprobar(G(0) == -2f && G(3) == 2f && G(1) == -2f && G(4) == 6f && G(2) == -1.5f && G(5) == 1.5f
+                  && malla.Skip(44).SequenceEqual(grande.Skip(44)) && BitConverter.ToSingle(malla, 20) == -1f
+                  && FicherosJuego.AgrandarCaja(new byte[] { 1, 2, 3 }).Length == 3 && FicherosJuego.AgrandarCaja(rota) == rota,
+            "adaptación: la caja de la malla se agranda con margen (el resto de la malla y el original no cambian)");
+        // d) La cabecera: lectura correcta y rechazo de otra magia o versión
+        // d) The header: correct reading and rejection of a different magic value or version
+        comprobar(FicherosJuego.LeerCabecera(animNueva, "TJBA", 2, out int h, out int f) && h == 3 && f == 6
+                  && !FicherosJuego.LeerCabecera(anclasNuevas, "TJBA", 2, out _, out _) && !FicherosJuego.LeerCabecera(new byte[10], "TJBA", 2, out _, out _),
+            "adaptación: cabecera TJBA/TJBK leída (huesos y fotogramas) y rechazada si no es la esperada");
     }
 
     // Carpeta StreamingAssets\UnitVisuals del juego instalado (TABLETOP_TAVERN_JUEGO o la ruta conocida), o null

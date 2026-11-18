@@ -52,6 +52,7 @@
     <!-- Prueba 21 (18-10, noche): aviso de versión del juego (PruebasRevisionExterna.cs) -->
     <!-- Test 21 (10-18, night): game version warning (PruebasRevisionExterna.cs) -->
     <Compile Include="..\src\LogicaVersion.cs" />
+    <Compile Include="..\src\LogicaInstalacion.cs" />
     <!-- Prueba 22 (18-10): acción propia de los héroes nuevos en «Elige uno» tras la batalla (PruebasAccionesHeroes.cs) -->
     <!-- Test 22 (18-10): own action of the new heroes in «Elige uno» after the battle (PruebasAccionesHeroes.cs) -->
     <Compile Include="..\src\LogicaAccionesHeroes.cs" />

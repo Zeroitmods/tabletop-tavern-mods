@@ -171,7 +171,7 @@ internal static class PruebasDatos1111
         // --- Hero spells: all registered in game 1.11.1 and hero 902 with IronRain.
         // 0.7.4 (Zero's decision 01-11): each hero has their OWN spell (id + 1000, test 26) and the official one becomes their
         // «planB»; what is registered is now checked in plan B (hero 902 keeps IronRain as a fallback)
-        string lista = Path.GetFullPath(Path.Combine(modulos, "..", "herramientas", "csharp", "volcado", "hechizos_registrados_1.11.1.txt"));
+        string lista = Path.GetFullPath(Path.Combine(modulos, "..", "herramientas", "csharp", "volcado", "hechizos_registrados_1.11.12.txt"));
         var registrados = File.Exists(lista)
             ? new HashSet<string>(File.ReadAllLines(lista).Select(l => l.Split('#')[0].Trim()).Where(l => l.Length > 0))
             : new HashSet<string>();
@@ -234,8 +234,8 @@ internal static class PruebasDatos1111
             if (deContenido.Contains(Path.GetFileName(dir))) minimosContenido.Add(minimo);
             else minimos.Add(minimo);
         }
-        comprobar(minimosContenido.Count == 3 && minimosContenido.All(m => m == "0.7.9") && Modulos.CompararVersiones("0.7.9", Program.VersionNucleo) <= 0,
-            $"datos 1.11.1: Más unidades, Astra Militarum e Imperio Galáctico piden el núcleo 0.7.9 ({string.Join(", ", minimosContenido)})");
+        comprobar(minimosContenido.Count == 3 && minimosContenido.All(m => m == "0.7.10") && Modulos.CompararVersiones("0.7.10", Program.VersionNucleo) <= 0,
+            $"datos 1.11.1: Más unidades, Astra Militarum e Imperio Galáctico piden el núcleo 0.7.10 (1.1.2, 18-11-2026: la 0.7.8 y la 0.7.9 cuelgan el juego desde la 1.11.12) ({string.Join(", ", minimosContenido)})");
         // 0.7.4: el mínimo sube con el núcleo (hechizos propios y munición de las híbridas); se compara con su VERSION
         // 0.7.6 (03-11-2026): 10 módulos (+ Impertérritos); 0.7.7: 11 (+ Heráldica)
         // 03-11 noche: 13 (+ Munición x2 y x5). El núcleo 0.7.8 solo cambia el propio núcleo (textos del estandarte al

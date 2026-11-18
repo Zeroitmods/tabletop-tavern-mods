@@ -205,6 +205,11 @@ namespace ZeroNucleo
                 // --- M3) Combinations applied to the game (at the end: they rebuild the catalog and return to the real one) ---
                 PruebasModulosJuego(data, ref ok, ref total);
 
+                // --- E1 y E2) Tope de interés del banco y escuadras/munición en todo el catálogo (AutoPruebaModulos.cs) ---
+                // --- E1 and E2) Bank interest cap and squads/ammo across the entire catalog (AutoPruebaModulos.cs) ---
+                PruebaTopeInteres(ref ok, ref total);
+                PruebaCatalogoEscuadrasMunicion(data, ref ok, ref total);
+
                 Plugin.Info($"[autoprueba] Resultado: {ok}/{total} comprobaciones correctas" + (ok == total ? " (todo OK)." : " (hay FALLOS: ver arriba)."));
                 DiagnosticoPantalla.FinAutoprueba = UnityEngine.Time.realtimeSinceStartup;
             }
@@ -511,6 +516,56 @@ namespace ZeroNucleo
             }
             catch (Exception e) { Plugin.Error("[autoprueba] Unidades 9xx FALLO: " + e); }
 
+            // --- 6 b) 0.7.11: modelos propios por modo (FicherosJuego): cuántos quedaron con los ficheros exactos del juego,
+            //     con los que ya estaban en la carpeta, adaptados a la base actual, y cuántos cayeron al modelo de su base.
+            //     La autoprueba del 18-11 con el núcleo 0.7.10 dio 55/55 con 14 modelos caídos: ahora eso cuenta como fallo
+            // --- 6 b) 0.7.11: custom models by mode (FicherosJuego): how many ended up with the game's exact files,
+            //     with those already in the folder, adapted to the current base, and how many fell back to their base model.
+            //     The self-test of 18-11 with core 0.7.10 gave 55/55 with 14 fallen models: that now counts as a failure
+            if (ModeloGuardia.ModoPorUnidad.Count + ModeloGuardia.CaidasPorFicheros.Count > 0)
+            {
+                var porModo = ModeloGuardia.ModoPorUnidad.GroupBy(kv => kv.Value).OrderBy(g => g.Key)
+                    .Select(g => $"{g.Key} {g.Count()}" + (g.Key == FicherosJuego.Modo.Exacto ? "" : $" [{string.Join(",", g.Select(kv => kv.Key).OrderBy(x => x))}]"));
+                var caidas = ModeloGuardia.CaidasPorFicheros.OrderBy(x => x).ToList();
+                Linea(caidas.Count == 0, "Modelos propios por modo",
+                      $"registrados {ModeloGuardia.ModoPorUnidad.Count} ({string.Join("; ", porModo)}); con el modelo de su base por los ficheros del juego {caidas.Count}" +
+                      (caidas.Count > 0 ? $" [{string.Join(",", caidas)}]" : ""), ref ok, ref total);
+
+                // Cada visual ADAPTADO (carpeta fuera de Mods) se lee con el mismo lector que usa el juego en batalla
+                // (TJBakeVisualLoader.Load + GpuAnimVisualImport.From), sin crear entidades, y se libera: que el juego acepta
+                // la carpeta y que huesos y fotogramas cuadran con la base actual
+                // Each ADAPTED visual (folder outside Mods) is read with the same loader the game uses in battle
+                // (TJBakeVisualLoader.Load + GpuAnimVisualImport.From), without creating entities, and released: that the game accepts
+                // the folder and that bones and frames match the current base
+                var adaptadas = ModeloGuardia.ModoPorUnidad.Where(kv => kv.Value == FicherosJuego.Modo.Adaptado).Select(kv => kv.Key).OrderBy(x => x).ToList();
+                if (adaptadas.Count > 0)
+                {
+                    var partes = new List<string>();
+                    bool todas = true;
+                    foreach (int id in adaptadas)
+                    {
+                        var propios = new Il2CppSystem.Collections.Generic.List<UnityEngine.Object>();
+                        try
+                        {
+                            if (!UnitVisualOverrides.TryGet(id.ToString(), out string carpeta)) { todas = false; partes.Add($"{id} sin registrar"); continue; }
+                            var visual = MemoriStudios.TJBake.TJBakeVisualLoader.Load(carpeta, propios, false, null);
+                            var datos = GpuAnimVisualImport.From(visual);
+                            bool bien = datos != null && visual.Variants.Count >= 1 && visual.Slots.Count > 0 && visual.FrameCount > 0
+                                        && carpeta.IndexOf("ZeroNucleo_visuales", StringComparison.OrdinalIgnoreCase) >= 0;
+                            todas &= bien;
+                            partes.Add($"{id} {(bien ? "" : "MAL ")}({visual.BoneCount} huesos, {visual.FrameCount} frames, {visual.Slots.Count} slots)");
+                        }
+                        catch (Exception e) { todas = false; partes.Add($"{id} rechazada: {e.Message}"); }
+                        finally
+                        {
+                            for (int i = 0; i < propios.Count; i++)
+                                if (propios[i] != null) UnityEngine.Object.Destroy(propios[i]);
+                        }
+                    }
+                    Linea(todas, "Modelos adaptados leídos por el juego", string.Join("; ", partes), ref ok, ref total);
+                }
+            }
+
             // --- 7) Una suelta concreta: 944 Ogros de Asedio (Legión de Hierro, clon del Oni de Sakura); módulo de sueltas ---
             // --- 7) A specific standalone: 944 Siege Ogres (Iron Legion, clone of Sakura's Oni); standalone module ---
             bool hay944 = UnidadGuardia.Registrada(944);
@@ -796,12 +851,16 @@ namespace ZeroNucleo
             // 0.7.10 (juego 1.11.12): GenerateRaceForMap y GetEnemyHeroForCampaign piden «raceRules» (reglas de los actos de la
             // partida: 0 = listas fijas de siempre, las partidas empezadas antes; StoryRaces.CURRENT_RULES = las de una partida
             // nueva, orden abierto). Se comprueba con las dos, con las mismas condiciones
-            // --- 14) Race generation: campaign acts, endless, March, cities and rival general ---
-            // 0.7.10 (game 1.11.12): GenerateRaceForMap and GetEnemyHeroForCampaign take «raceRules» (rules for the acts of the
-            // run: 0 = the usual fixed lists, for runs started earlier; StoryRaces.CURRENT_RULES = those of a new
-            // run, open order). It is checked with both, under the same conditions
-            var reglasCampana = new List<int> { 0 };
-            try { int actuales = StoryRaces.CURRENT_RULES; if (actuales != 0) reglasCampana.Add(actuales); }
+            // 0.7.11: también se fuerza la regla 1 (StoryRaces.OPEN_POOL): CURRENT_RULES es una constante 0 en la build
+            // 26749277 y la rama del orden abierto no se ejercitaba nunca
+            // --- 14) Race generation: campaign acts, infinite acts, March, cities and rival general ---
+            // 0.7.10 (game 1.11.12): GenerateRaceForMap and GetEnemyHeroForCampaign require «raceRules» (run act rules:
+            // 0 = fixed lists as always, runs started before; StoryRaces.CURRENT_RULES = those of a new run,
+            // open order). Checked with both, under the same conditions
+            // 0.7.11: rule 1 (StoryRaces.OPEN_POOL) is also forced: CURRENT_RULES is a constant 0 in build
+            // 26749277 and the open-order branch was never exercised
+            var reglasCampana = new List<int> { 0, 1 };
+            try { int actuales = StoryRaces.CURRENT_RULES; if (!reglasCampana.Contains(actuales)) reglasCampana.Add(actuales); }
             catch (Exception e) { Linea(false, "Generación de razas nuevas", "no se pudo leer StoryRaces.CURRENT_RULES: " + e.Message, ref ok, ref total); }
             foreach (int reglas in reglasCampana)
             try

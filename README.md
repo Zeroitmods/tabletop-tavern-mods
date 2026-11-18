@@ -26,7 +26,7 @@ Los comentarios del código están en español, con su traducción al inglés ju
 
 | Mod | Carpeta | Versión | Página |
 |---|---|---|---|
-| Zero - Núcleo (Core) | `nucleo/` | 0.7.10 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/12) |
+| Zero - Núcleo (Core) | `nucleo/` | 0.7.11 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/12) |
 | Zero - Escuadras más grandes x50% / x100% / x150% (Bigger Squads) | `modulos/ZeroEscuadras50`, `ZeroEscuadras100`, `ZeroEscuadras150` | 1.0.1 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/13) |
 | Zero - Munición x2 / x3 / x5 (Ammo) | `modulos/ZeroMunicion2`, `ZeroMunicion`, `ZeroMunicion5` | 1.0.0 / 1.0.1 / 1.0.0 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/14) |
 | Zero - Mejores estadísticas a distancia (Better Ranged Stats) | `modulos/ZeroStatsDistancia` | 1.0.1 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/15) |
@@ -109,7 +109,7 @@ Code comments are in Spanish, with their English translation right below. Log an
 
 | Mod | Folder | Version | Page |
 |---|---|---|---|
-| Zero - Core (Núcleo) | `nucleo/` | 0.7.10 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/12) |
+| Zero - Core (Núcleo) | `nucleo/` | 0.7.11 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/12) |
 | Zero - Bigger Squads x50% / x100% / x150% | `modulos/ZeroEscuadras50`, `ZeroEscuadras100`, `ZeroEscuadras150` | 1.0.1 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/13) |
 | Zero - Ammo x2 / x3 / x5 | `modulos/ZeroMunicion2`, `ZeroMunicion`, `ZeroMunicion5` | 1.0.0 / 1.0.1 / 1.0.0 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/14) |
 | Zero - Better Ranged Stats | `modulos/ZeroStatsDistancia` | 1.0.1 | [Nexus Mods](https://www.nexusmods.com/tabletoptavern/mods/15) |

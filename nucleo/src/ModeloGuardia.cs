@@ -101,6 +101,18 @@ namespace ZeroNucleo
         // 0.7.9: units already warned that their game files could not be rebuilt, and the game's models folder
         private static readonly HashSet<int> _avisadoFicherosJuego = new HashSet<int>();
         private static string _raizUnitVisuals;
+        // 0.7.11: cómo quedó cada unidad con modelo propio en la sesión (id -> modo) y las que cayeron al modelo de su base
+        // por los ficheros del juego; lo lee la autoprueba («Modelos propios por modo»)
+        // 0.7.11: how each unit with a custom model ended up in the session (id -> mode) and those that fell back to their base model
+        // due to game files; read by the self-test («Modelos propios por modo»)
+        internal static readonly Dictionary<int, FicherosJuego.Modo> ModoPorUnidad = new Dictionary<int, FicherosJuego.Modo>();
+        internal static readonly HashSet<int> CaidasPorFicheros = new HashSet<int>();
+
+        /// <summary>0.7.11: carpeta donde se montan los visuales adaptados a la base actual del juego (fuera de Mods: el
+        /// módulo no se toca). BepInEx\config\ZeroNucleo_visuales\.</summary>
+        /// 0.7.11: folder where visuals adapted to the current game base are assembled (outside Mods: the
+        /// module is not touched). BepInEx\config\ZeroNucleo_visuales\.
+        internal static string RaizAdaptados() => Path.Combine(BepInEx.Paths.ConfigPath, "ZeroNucleo_visuales");
 
         /// <summary>
         /// 0.7.9: StreamingAssets\UnitVisuals de la instalación (Application.streamingAssetsPath; si Unity no la diera, la
@@ -182,7 +194,7 @@ namespace ZeroNucleo
                 // Si no se puede, la unidad se queda con el modelo de su base: aviso una vez y no se registra
                 // 0.7.9: the model's game files, rebuilt from the player's installation (once per session).
                 // If it can't be done, the unit keeps its base's model: warning once and it is not registered
-                var fj = FicherosJuego.PrepararUnaVez(carpeta, RaizUnitVisuals(), out bool fjNueva);
+                var fj = FicherosJuego.PrepararUnaVez(carpeta, RaizUnitVisuals(), out bool fjNueva, RaizAdaptados());
                 if (fjNueva && fj.Declarados > 0)
                 {
                     fjCarpetas++; fjEscritos += fj.Escritos; fjIguales += fj.Iguales;
@@ -193,13 +205,22 @@ namespace ZeroNucleo
                     if (_avisadoFicherosJuego.Add(u.Numero))
                         Plugin.Aviso($"[{origen}] La {u.Numero} usa el modelo de su base ({u.Base}): no se pudieron reconstruir los " +
                                      $"ficheros del juego de su modelo propio ({fj.Motivo}). Si el juego se ha actualizado, hace falta una versión nueva del módulo.");
+                    CaidasPorFicheros.Add(u.Numero);
+                    ModoPorUnidad.Remove(u.Numero);
                     continue;
                 }
+                // 0.7.11: se registra la carpeta final (la del módulo o, si se adaptó a la base actual, la adaptada); el icono
+                // sigue saliendo de la carpeta del módulo
+                // 0.7.11: the final folder is registered (the module's or, if adapted to the current base, the adapted one); the icon
+                // continues to be loaded from the module folder
+                string carpetaFinal = string.IsNullOrEmpty(fj.CarpetaFinal) ? carpeta : fj.CarpetaFinal;
+                ModoPorUnidad[u.Numero] = fj.Declarados > 0 ? fj.Modo : FicherosJuego.Modo.Ninguno;
+                CaidasPorFicheros.Remove(u.Numero);
                 string clave = u.Id.ToString();      // "901": es lo que busca el juego con unitName.ToString()
                                                      // "901": that's what the game looks for with unitName.ToString()
                 bool yaEstaba = UnitVisualOverrides.TryGet(clave, out string actual) &&
-                                string.Equals(actual, carpeta, StringComparison.OrdinalIgnoreCase);
-                if (!yaEstaba) UnitVisualOverrides.Register(clave, carpeta);
+                                string.Equals(actual, carpetaFinal, StringComparison.OrdinalIgnoreCase);
+                if (!yaEstaba) UnitVisualOverrides.Register(clave, carpetaFinal);
                 bool icono = RegistrarIcono(u.Id, Path.Combine(carpeta, UnitVisualOverrideLoader.IconFileName));
                 hechas.Add(u.Numero + (icono ? "" : " (sin icono)"));
             }

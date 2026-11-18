@@ -49,7 +49,7 @@
     <!-- 0.7.9 (17-11-2026): game files for the custom models rebuilt from the player's installation (src/FicherosJuego.cs) -->
     <!-- 0.7.10 (17-11-2026): adaptado al juego 1.11.12 (raceRules; arranque colgado por el aviso en pantalla de la línea de comandos) -->
     <!-- 0.7.10 (17-11-2026): adapted to game 1.11.12 (raceRules; startup hang caused by the on-screen notice on the command line) -->
-    <Version>0.7.10</Version>
+    <Version>0.7.11</Version>
     <!-- 0.7.1: la DLL no lleva la ruta local del proyecto (PDB y rutas de compilación se escriben relativas) -->
     <!-- 0.7.1: the DLL does not carry the project's local path (PDB and build paths are written as relative) -->
     <PathMap>$(MSBuildProjectDirectory)=.</PathMap>
@@ -139,6 +139,9 @@
     <Reference Include="Memori.Steamworks"><HintPath>$(InteropDir)\Memori.Steamworks.dll</HintPath><Private>false</Private></Reference>
     <!-- Acciones de los héroes nuevos tras la batalla: el aviso de error del juego (NotificationManager.ErrorNotification, AccionesHeroes.cs) -->
     <!-- Actions of the new heroes after the battle: the game's error notice (NotificationManager.ErrorNotification, AccionesHeroes.cs) -->
+    <!-- 0.7.11: aviso de instalación con el menú principal ya montado (SceneHandler.AlertOfSceneSetUpComlete, AvisoInstalacion.cs) -->
+    <!-- 0.7.11: installation warning with the main menu already set up (SceneHandler.AlertOfSceneSetUpComlete, AvisoInstalacion.cs) -->
+    <Reference Include="Memori.Scenes"><HintPath>$(InteropDir)\Memori.Scenes.dll</HintPath><Private>false</Private></Reference>
     <Reference Include="Memori.Notifications"><HintPath>$(InteropDir)\Memori.Notifications.dll</HintPath><Private>false</Private></Reference>
     <!-- Batalla personalizada: cadena de flechas de los rombos de raza (SampleNavInputHelper.previous/next, InterfazColeccion.cs) -->
     <!-- Custom battle: arrow chain of the race diamonds (SampleNavInputHelper.previous/next, InterfazColeccion.cs) -->

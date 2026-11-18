@@ -900,14 +900,42 @@ namespace ZeroNucleo
         /// <summary>Prefix de QuickBattleQueue.BootFromCommandLine() (0.7.5, hallazgo 36): sin cola por línea de comandos.</summary>
         /// Prefix of QuickBattleQueue.BootFromCommandLine() (0.7.5, finding 36): no command-line queue.
         // 0.7.10: sin aviso en pantalla (se llama en el arranque; ver BloquearOnline)
-        // 0.7.10: no on-screen notice (called at startup; see BloquearOnline)
-        public static bool AntesDeBootColaRapida() => !BloquearOnline("cola en línea por línea de comandos", true, false);
+        // 0.7.11: se sigue bloqueando SIEMPRE (como la 0.7.10: si una build nueva añade otra opción de arranque, no entra sin
+        // bloqueo), pero el aviso del log y el contador solo cuando el arranque pide la cola («-versus-queue»). El juego llama
+        // a este método en CADA arranque y, sin esa opción, no hace nada (desensamblado de la build 26749277, juego 1.11.17):
+        // hasta la 0.7.10 eso dejaba en cada arranque un aviso de «bloqueado» sin que nadie hubiera pedido nada
+        // 0.7.10: no on-screen warning (called at startup; see BloquearOnline)
+        // 0.7.11: still always blocked (like 0.7.10: if a new build adds another startup option, it does not get through without
+        // blocking), but the log warning and counter only when the startup requests the queue («-versus-queue»). The game calls
+        // this method on EVERY startup and, without that option, does nothing (disassembled from build 26749277, game 1.11.17):
+        // up to 0.7.10 that left a «blocked» warning on every startup even though nobody had requested anything
+        public static bool AntesDeBootColaRapida()
+        {
+            bool pide = LogicaInstalacion.PideEnLinea(ArgumentosArranque(), LogicaInstalacion.OpcionCola);
+            return !BloquearOnline("cola en línea por línea de comandos", pide, false);
+        }
 
         /// <summary>Prefix de VersusNet.BootFromCommandLine() (0.7.5, hallazgo 36): sin enlace por línea de comandos.</summary>
         /// Prefix of VersusNet.BootFromCommandLine() (0.7.5, finding 36): no command-line link.
         // 0.7.10: sin aviso en pantalla (se llama en el arranque; ver BloquearOnline)
-        // 0.7.10: no on-screen notice (called at startup; see BloquearOnline)
-        public static bool AntesDeBootVersusNet() => !BloquearOnline("enlace en línea por línea de comandos", true, false);
+        // 0.7.11: bloqueado siempre; aviso y contador solo si el arranque pide el enlace («-versus-host» o «-versus-join»)
+        // 0.7.10: no on-screen warning (called at startup; see BloquearOnline)
+        // 0.7.11: always blocked; warning and counter only if the startup requests the link («-versus-host» or «-versus-join»)
+        public static bool AntesDeBootVersusNet()
+        {
+            bool pide = LogicaInstalacion.PideEnLinea(ArgumentosArranque(), LogicaInstalacion.OpcionHost, LogicaInstalacion.OpcionJoin);
+            return !BloquearOnline("enlace en línea por línea de comandos", pide, false);
+        }
+
+        // Argumentos del proceso (los mismos que lee el juego con Environment.GetCommandLineArgs). Si no se pueden leer, se
+        // devuelven las opciones en línea para que salga el aviso (el bloqueo va siempre)
+        // Process arguments (the same ones the game reads with Environment.GetCommandLineArgs). If they cannot be read, the
+        // online options are returned so that the warning appears (the block is always applied)
+        private static string[] ArgumentosArranque()
+        {
+            try { return Environment.GetCommandLineArgs() ?? Array.Empty<string>(); }
+            catch { return new[] { LogicaInstalacion.OpcionCola, LogicaInstalacion.OpcionHost }; }
+        }
 
         /// <summary>
         /// Prefix de TJ.Versus.Net.VersusLobby.StartLink(host, ownerId, ranked, coop): última red. Si se llega aquí con módulos

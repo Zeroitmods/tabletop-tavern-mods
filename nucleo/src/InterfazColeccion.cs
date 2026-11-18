@@ -622,7 +622,7 @@ namespace ZeroNucleo
                 var t = toggles[i];
                 if (t == null) continue;
                 nombres.Add(t.name);
-                if (Enum.TryParse(t.name, out Race r) && Enum.IsDefined(typeof(Race), r) && r != Race.Special && r != Race.OlympianLeague && t.gameObject.activeSelf)
+                if (Enum.TryParse(t.name, out Race r) && Enum.IsDefined(typeof(Race), r) && r != Race.Special && r != Race.OlympianLeague && TabletopTavernConstants.IsRaceInBuild(r) && t.gameObject.activeSelf)
                 { plantilla = t; razaPlantilla = r; }
             }
             if (plantilla == null) { AvisoUnaVez("romboPlantilla", "Batalla personalizada: no hay ningún rombo de serie que clonar; las razas nuevas no salen en el selector."); return 0; }

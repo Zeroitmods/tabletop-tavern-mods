@@ -5,6 +5,11 @@ Published versions of each package, with notes in Spanish and English.
 
 ## Zero - Núcleo (Core)
 
+### 0.7.11 (18-11-2026)
+
+- Adaptado a la versión 1.11.17.2 del juego. Esa actualización cambió la animación de 14 unidades base y sus unidades nuevas volvían a su modelo de serie: ahora el núcleo usa los ficheros que ya tenías o adapta el modelo a la animación nueva del juego, y solo si no se puede usa el de la unidad base. En el menú de mods del juego, cada módulo de Zero dice «OK» junto a su versión cuando el núcleo lo ha aplicado (si no sale, el núcleo no está funcionando). Aviso en pantalla, ya en el menú principal, si un módulo está en una carpeta equivocada o pide un núcleo más nuevo. Fuera los dos avisos falsos de «multijugador bloqueado» de cada arranque.
+- Updated for game version 1.11.17.2. That update changed the animation of 14 base units and their new units fell back to the vanilla model: the core now uses the files you already had or adapts the model to the game's new animation, and only uses the base unit's model if neither works. In the game's mod menu, each of Zero's modules says "OK" next to its version when the core has applied it (if it doesn't, the core isn't running). On-screen notice, once in the main menu, if a module is in the wrong folder or needs a newer core. The two false "online play blocked" warnings on every start are gone.
+
 ### 0.7.10 (17-11-2026)
 
 - Adaptado a la versión 1.11.12 del juego. Con ella, el juego se quedaba colgado al arrancar (también con la 0.7.8): el aviso en pantalla de «no se puede jugar en línea con mods» salía antes de que el juego terminara de cargar. Ahora, en el arranque, ese aviso solo va al log. También se adapta a las reglas nuevas de las razas de los actos de la campaña (sin esto, el sorteo de razas de los actos infinitos con las facciones nuevas fallaba).

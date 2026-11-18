@@ -27,6 +27,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.Json;
+using Il2CppInterop.Runtime;
 using TJ;
 
 namespace ZeroNucleo
@@ -42,8 +44,10 @@ namespace ZeroNucleo
         internal const string MMunicion = "ZeroMunicion", MEsc50 = "ZeroEscuadras50", MEsc100 = "ZeroEscuadras100", MEsc150 = "ZeroEscuadras150",
                               MStats = "ZeroStatsDistancia", MSueltas = "ZeroUnidadesSueltas", MAstra = "ZeroAstraMilitarum",
                               MImperio = "ZeroImperioGalactico", MEconomia = "ZeroEconomia",
-                              MImperterritos = "ZeroImperterritos";   // 0.7.6 (03-11-2026): moral del jugador
+                              MImperterritos = "ZeroImperterritos",   // 0.7.6 (03-11-2026): moral del jugador
                                                                       // 0.7.6 (03-11-2026): player morale
+                              MMunicion2 = "ZeroMunicion2", MMunicion5 = "ZeroMunicion5";   // 03-11-2026: munición x2 y x5
+                                                                                            // 03-11-2026: ammo x2 and x5
 
         // Rangos de ids que trae cada módulo de contenido (unidades y objetos)
         // Id ranges that each content module brings (units and gear)
@@ -148,6 +152,10 @@ namespace ZeroNucleo
                     switch (m.Id)
                     {
                         case MMunicion: b &= r.Municion?.Multiplicador == 3 && r.Distancia == null && r.FactorEscuadras == 1.0 && !r.HayContenido; d = $"munición x{r.Municion?.Multiplicador}"; break;
+                        // Munición x2 y x5: mismo efecto que la x3 con otro multiplicador (reglas de +100 % y +400 %)
+                        // Ammo x2 and x5: same effect as x3 with a different multiplier (+100% and +400% rules)
+                        case MMunicion2: b &= r.Municion?.Multiplicador == 2 && r.Distancia == null && r.FactorEscuadras == 1.0 && !r.HayContenido; d = $"munición x{r.Municion?.Multiplicador}"; break;
+                        case MMunicion5: b &= r.Municion?.Multiplicador == 5 && r.Distancia == null && r.FactorEscuadras == 1.0 && !r.HayContenido; d = $"munición x{r.Municion?.Multiplicador}"; break;
                         case MEsc50: b &= Math.Abs(r.FactorEscuadras - 1.5) < 1e-9 && r.MinimoSoldados == 2 && r.Municion == null && !r.HayContenido; d = $"escuadras x{r.FactorEscuadras}"; break;
                         case MEsc100: b &= Math.Abs(r.FactorEscuadras - 2.0) < 1e-9 && r.MinimoSoldados == 2 && !r.HayContenido; d = $"escuadras x{r.FactorEscuadras}"; break;
                         case MEsc150: b &= Math.Abs(r.FactorEscuadras - 2.5) < 1e-9 && r.MinimoSoldados == 2 && !r.HayContenido; d = $"escuadras x{r.FactorEscuadras}"; break;
@@ -189,6 +197,23 @@ namespace ZeroNucleo
                         $"en otro orden x{r2.FactorEscuadras}; 48 soldados -> {Modulos.SoldadosEnCampo(48, r.FactorEscuadras)}, 1 soldado -> 1", ref ok, ref total);
                 }
                 catch (Exception e) { Linea(false, "Escuadras juntas en memoria", e.ToString(), ref ok, ref total); }
+            }
+
+            // --- M2c bis) Las tres municiones juntas: manda la mayor (x5) y se avisa; nunca se multiplican entre sí ---
+            // --- M2c bis) All three ammo modules together: the highest wins (x5) and a warning is issued; they never multiply each other ---
+            if (Instalado(MMunicion) && Instalado(MMunicion2) && Instalado(MMunicion5))
+            {
+                try
+                {
+                    var r = Combinar(MMunicion2, MMunicion, MMunicion5);
+                    var r2 = Combinar(MMunicion5, MMunicion2);
+                    bool aviso = r.Avisos.Any(a => a.Contains("varios módulos de munición"));
+                    bool bien = r.Municion?.Multiplicador == 5 && r2.Municion?.Multiplicador == 5 && aviso;
+                    Linea(bien, "Municiones juntas en memoria",
+                        $"x2, x3 y x5 activos: x{r.Municion?.Multiplicador} (esperado x5, sin multiplicarse); aviso «varios módulos de munición» {aviso}; " +
+                        $"x5 y x2 en otro orden: x{r2.Municion?.Multiplicador}", ref ok, ref total);
+                }
+                catch (Exception e) { Linea(false, "Municiones juntas en memoria", e.ToString(), ref ok, ref total); }
             }
 
             // --- M2d) Las 8 combinaciones de los módulos de contenido (la 900 solo con Astra; cada objeto con el suyo) ---
@@ -240,8 +265,11 @@ namespace ZeroNucleo
             var escenarios = new List<(string nombre, string[] ids)> { ("ninguno", new string[0]) };
             foreach (string m in new[] { MSueltas, MAstra, MImperio }) escenarios.Add((m + " solo", new[] { m }));
             escenarios.Add(("facciones sin sueltas", new[] { MAstra, MImperio }));
-            foreach (string m in new[] { MEsc50, MEsc100, MEsc150, MMunicion, MStats }) escenarios.Add((m + " solo", new[] { m }));
+            foreach (string m in new[] { MEsc50, MEsc100, MEsc150, MMunicion, MMunicion2, MMunicion5, MStats }) escenarios.Add((m + " solo", new[] { m }));
             escenarios.Add(("tres escuadras juntas", new[] { MEsc50, MEsc100, MEsc150 }));
+            // Las tres municiones juntas: manda la mayor (x5, regla de +400 %), nunca se multiplican entre sí
+            // All three ammo modules together: the highest wins (x5, +400% rule), they never multiply each other
+            escenarios.Add(("tres municiones juntas", new[] { MMunicion2, MMunicion, MMunicion5 }));
 
             int baseArqueros = -1, baseMunicion = -1;
             // 0.7.1: las reglas del jugador son solo para el héroe activo y en el menú no hay ninguno: durante las simulaciones
@@ -364,6 +392,167 @@ namespace ZeroNucleo
             if (r.Avisos.Count > 0) partes.Add($"avisos: {string.Join(" | ", r.Avisos)}");
 
             Linea(bien, $"Simulación «{nombre}»", string.Join("; ", partes), ref ok, ref total);
+        }
+
+        // ---------------------------------------------------------------
+        // E1: tope de interés del banco que el juego tiene cargado (módulo «Más oro», ZeroEconomia)
+        // E1: bank interest cap loaded by the game (module «Más oro», ZeroEconomia)
+        // ---------------------------------------------------------------
+        // Tope de interés de serie del juego (GoldManager.DefaultMaxInterest, constante: 5 en el juego 1.11.12)
+        // Stock bank interest cap (GoldManager.DefaultMaxInterest, constant: 5 in game 1.11.12)
+        private const int TopeInteresDeSerie = 5;
+        // Tope que pone ZeroEconomia en su economy_overrides.json (bank.maxInterest)
+        // Cap set by ZeroEconomia in its economy_overrides.json (bank.maxInterest)
+        private const int TopeInteresEconomia = 30;
+
+        // Lee el campo estático GoldManager.MaxInterestOverride (int? del juego) tal cual está en memoria: 8 bytes, byte 0 =
+        // hasValue y bytes 4-7 = value (el mismo acceso que hace GoldManager.GetMaxInterest en el 1.11.12). Se lee en crudo
+        // para no pasar por los métodos genéricos de Il2CppSystem.Nullable<int> desde el interop. No se llama a
+        // GetMaxInterest: es de instancia, pide CampaignManager.Instance y en el menú no hay GoldManager ni campaña.
+        // Reads the static field GoldManager.MaxInterestOverride (int? from the game) exactly as it sits in memory: 8 bytes, byte 0 =
+        // hasValue and bytes 4-7 = value (the same access GoldManager.GetMaxInterest does in 1.11.12). Read raw
+        // to avoid going through Il2CppSystem.Nullable<int> generic methods from the interop. GetMaxInterest is not called:
+        // it is an instance method, requires CampaignManager.Instance and in the menu there is no GoldManager or campaign.
+        private static unsafe bool LeerTopeInteres(out bool hayTope, out int tope)
+        {
+            hayTope = false; tope = 0;
+            IntPtr clase = Il2CppClassPointerStore<GoldManager>.NativeClassPtr;
+            IntPtr campo = clase == IntPtr.Zero ? IntPtr.Zero : IL2CPP.il2cpp_class_get_field_from_name(clase, "MaxInterestOverride");
+            if (campo == IntPtr.Zero) return false;
+            long crudo = 0;
+            IL2CPP.il2cpp_field_static_get_value(campo, &crudo);
+            hayTope = (crudo & 0xFF) != 0;
+            tope = (int)(crudo >> 32);
+            return true;
+        }
+
+        // Tope que debería haber cargado el juego: el bank.maxInterest del ÚLTIMO mod activo que lo trae. El juego vacía los
+        // topes y aplica los economy_overrides.json en el orden de carga, y el último gana
+        // (TabletopTavernData.ApplyModOverrides -> EconomyOverrideLoader.ClearOverrides / ApplyOverridesFromModFolder)
+        // Cap the game should have loaded: the bank.maxInterest from the LAST active mod that provides it. The game clears
+        // caps and applies economy_overrides.json files in load order, and the last one wins
+        // (TabletopTavernData.ApplyModOverrides -> EconomyOverrideLoader.ClearOverrides / ApplyOverridesFromModFolder)
+        private static int? TopeEsperado(out string deQuien)
+        {
+            int? tope = null;
+            deQuien = "ningún mod activo trae bank.maxInterest";
+            var carpetas = ModLoadOrder.GetEnabledModFolderPathsInOrder();
+            for (int i = 0; carpetas != null && i < carpetas.Count; i++)
+            {
+                string carpeta = carpetas[i];
+                if (string.IsNullOrEmpty(carpeta)) continue;
+                string ruta = Path.Combine(carpeta, "economy_overrides.json");
+                if (!File.Exists(ruta)) continue;
+                string nombre = Path.GetFileName(carpeta.TrimEnd('\\', '/'));
+                try
+                {
+                    using var doc = JsonDocument.Parse(File.ReadAllText(ruta));
+                    if (!doc.RootElement.TryGetProperty("bank", out var banco) || !banco.TryGetProperty("maxInterest", out var mi)) continue;
+                    string texto = mi.ValueKind == JsonValueKind.String ? mi.GetString() : mi.GetRawText();
+                    // Mismo criterio que el juego (ModOverrideValidation.TryParseIntOrWarn: entero, cultura invariante)
+                    // Same logic as the game (ModOverrideValidation.TryParseIntOrWarn: integer, invariant culture)
+                    if (int.TryParse(texto, System.Globalization.NumberStyles.Integer, System.Globalization.CultureInfo.InvariantCulture, out int v))
+                    { tope = v; deQuien = nombre; }
+                }
+                catch (Exception e) { deQuien = $"{nombre} ilegible ({e.Message})"; }
+            }
+            return tope;
+        }
+
+        /// <summary>
+        /// E1) Tope de interés del banco en el menú: el campo estático que deja el cargador del juego tiene que coincidir con
+        /// los economy_overrides.json activos; con ZeroEconomia activo, 30; sin ningún mod que lo cambie, vacío (manda el de
+        /// serie, 5). Va al final, después de las simulaciones (cada una recarga los datos y vuelve a aplicar los topes).
+        /// E1) Bank interest cap in the menu: the static field left by the game's loader must match
+        /// the active economy_overrides.json files; with ZeroEconomia active, 30; with no mod changing it, empty (stock wins,
+        /// 5). Runs at the end, after the simulations (each one reloads data and reapplies the caps).
+        /// </summary>
+        private static void PruebaTopeInteres(ref int ok, ref int total)
+        {
+            try
+            {
+                bool economia = Nucleo.Encontrados.Any(m => string.Equals(m.Id, MEconomia, StringComparison.OrdinalIgnoreCase) && m.Activo);
+                bool leido = LeerTopeInteres(out bool hayTope, out int tope);
+                int? esperado = TopeEsperado(out string deQuien);
+                int deSerie = TopeInteresDeSerie;
+                try { deSerie = GoldManager.DefaultMaxInterest; } catch { }
+                bool bien = leido && hayTope == esperado.HasValue && (!hayTope || tope == esperado.Value)
+                            && (!economia || (hayTope && tope == TopeInteresEconomia));
+                string enJuego = !leido ? "no se pudo leer" : hayTope ? tope.ToString() : $"vacío (manda el de serie, {deSerie})";
+                Linea(bien, "Tope de interés del banco",
+                    $"GoldManager.MaxInterestOverride {enJuego}; esperado {(esperado.HasValue ? esperado.Value.ToString() : "vacío")} ({deQuien}); " +
+                    $"ZeroEconomia {(economia ? $"activo (tope {TopeInteresEconomia})" : "no activo (tope de serie)")}; tope de serie del juego {deSerie}. " +
+                    "En campaña, Dwarven Tax Collectors SUSTITUYE el tope por su valor (10 de serie)", ref ok, ref total);
+            }
+            catch (Exception e) { Linea(false, "Tope de interés del banco", e.ToString(), ref ok, ref total); }
+        }
+
+        // ---------------------------------------------------------------
+        // E2: escuadras y munición del jugador en TODO el catálogo (unidades de serie del juego y las 9xx)
+        // E2: player squads and ammo across the ENTIRE catalog (stock game units and 9xx)
+        // ---------------------------------------------------------------
+        /// <summary>
+        /// E2) Recorre el catálogo real: toda unidad escalada tiene soldados = EnCampo(base) y munición proporcional; ninguna de
+        /// menos de minimoSoldados (magos, monstruos, la puerta) se escala; con un módulo de munición, el evaluador del juego
+        /// da +(m-1) x la munición a las de los tipos del módulo (Ranged y Artillery; las Hybrid las cubre el postfix de
+        /// GetHeroStatBonus, así que valen 0 o el bonus) y 0 a las demás (Mage, Melee, Structure). Héroe forzado: Morvayne (9).
+        /// E2) Iterates the real catalog: every scaled unit has soldiers = OnField(base) and proportional ammo; none with
+        /// fewer than minimumSoldiers (mages, monsters, the gate) is scaled; with an ammo module, the game's evaluator
+        /// gives +(m-1) x ammo to units of the module's types (Ranged and Artillery; Hybrid ones are covered by the GetHeroStatBonus
+        /// postfix, so they return 0 or the bonus) and 0 to the rest (Mage, Melee, Structure). Forced hero: Morvayne (9).
+        /// </summary>
+        private static void PruebaCatalogoEscuadrasMunicion(TabletopTavernData data, ref int ok, ref int total)
+        {
+            try
+            {
+                var cat = data.SquadStatsDictionary;
+                int escaladas = 0, deUno = 0, malEsc = 0, conMun = 0, malMun = 0;
+                var fallos = new List<string>();
+                var porTipo = new SortedDictionary<string, int>();
+                var sueltasConMun = new List<string>();   // unidades de 1 soldado con munición (magos nuevos, la puerta...) y su tipo
+                                                          // 1-soldier units with ammo (new mages, the gate...) and their type
+                int mult = EjercitoReforzado.MultiplicadorMunicion;
+                var tipos = EjercitoReforzado.Municion?.Tipos ?? new List<string>();
+                // Claves copiadas a una lista .NET antes de forzar el héroe (la recarga de reglas no toca el catálogo)
+                // Keys copied to a .NET list before forcing the hero (rule reload does not touch the catalog)
+                var claves = new List<UnitName>();
+                foreach (UnitName k in cat.Keys) claves.Add(k);
+                EjercitoReforzado.ForzarParaPrueba(9, 0);
+                try
+                {
+                    foreach (UnitName u in claves)
+                    {
+                        var s = cat[u];
+                        // Escuadras: escalada => soldados y munición según la base; sin escalar => menos de minimoSoldados
+                        // Squads: scaled => soldiers and ammo from the base; not scaled => fewer than minimumSoldiers
+                        if (EjercitoReforzado.ValoresBase(u, out int bS, out int bM))
+                        {
+                            escaladas++;
+                            int esp = EjercitoReforzado.EnCampo(bS), espM = bM > 0 ? (int)(bM * (double)esp / bS + 0.5) : bM;
+                            if (s.baseUnitCount != esp || s.Ammunition != espM) { malEsc++; if (fallos.Count < 8) fallos.Add($"{u} {bS}->{s.baseUnitCount} (esp {esp}), mun {bM}->{s.Ammunition} (esp {espM})"); }
+                        }
+                        else if (s.baseUnitCount < EjercitoReforzado.MinimoSoldados) deUno++;
+                        else if (EjercitoReforzado.Factor > 1.0 && !EjercitoReforzado.ModViejoActivo()) { malEsc++; if (fallos.Count < 8) fallos.Add($"{u} con {s.baseUnitCount} soldados sin escalar"); }
+                        // Munición del jugador: solo unidades con munición
+                        // Player ammo: only units with ammo
+                        if (s.Ammunition <= 0) continue;
+                        conMun++;
+                        string tipo = s.unitType.ToString();
+                        if (s.baseUnitCount < 2) sueltasConMun.Add($"{u} {tipo} {s.Ammunition}");
+                        porTipo[tipo] = porTipo.TryGetValue(tipo, out int n) ? n + 1 : 1;
+                        float bono = HeroBonusRuleEvaluator.SumHeroStatBonus(UnitStat.Ammunition, u, 9, s, Race.Gruntkin, s.Ammunition);
+                        float espBono = tipos.Contains(tipo) ? s.Ammunition * (mult - 1) : 0f;
+                        bool bienMun = Math.Abs(bono - espBono) < 0.5f || (tipo == "Hybrid" && Math.Abs(bono) < 0.01f);
+                        if (!bienMun) { malMun++; if (fallos.Count < 8) fallos.Add($"{u} ({tipo}) munición +{bono:0} sobre {s.Ammunition} (esperado +{espBono:0})"); }
+                    }
+                }
+                finally { EjercitoReforzado.ForzarParaPrueba(null); }
+                Linea(malEsc == 0 && malMun == 0, "Catálogo entero: escuadras y munición",
+                    $"{claves.Count} unidades; escuadras x{EjercitoReforzado.Factor:0.##}: {escaladas} escaladas, {deUno} de menos de {EjercitoReforzado.MinimoSoldados} soldados sin tocar, {malEsc} mal; " +
+                    $"munición x{mult} ({string.Join("/", tipos)}): {conMun} con munición [{string.Join(", ", porTipo.Select(kv => kv.Key + " " + kv.Value))}], {malMun} mal; de 1 soldado con munición [{string.Join(", ", sueltasConMun)}]" +
+                    (fallos.Count > 0 ? $"; {string.Join(" | ", fallos)}" : ""), ref ok, ref total);
+            }
+            catch (Exception e) { Linea(false, "Catálogo entero: escuadras y munición", e.ToString(), ref ok, ref total); }
         }
     }
 }

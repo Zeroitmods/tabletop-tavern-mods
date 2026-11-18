@@ -292,17 +292,17 @@ namespace ZeroNucleo
 
         // 0.7.10 (juego 1.11.12): GenerateRaceForMap tiene un 4.º parámetro, raceRules (0 = listas fijas por acto; 1 o más =
         // orden abierto de StoryRaces.OpenOrder). Este postfix no lo necesita: actúa sobre el resultado con las dos reglas.
-        // El peso del sorteo sigue saliendo de ActosSerie (listas fijas); con el orden abierto es una aproximación
+        // 0.7.11: el peso sale de ActosSerie con reglas 0 y del bombo abierto con reglas 1 o más (__3)
         // Postfix de GenerateRaceForMap: en los actos 1-3, las razas nuevas de ese acto entran en el sorteo con el mismo peso
         // que cada raza de serie (0.7.6: las dos en los tres actos, «actosCampana» del manifiesto; antes una por acto). El sorteo es determinista (misma semilla, mismo resultado) y aparte del del juego: si
         // no toca la raza nueva, se queda lo que eligió el juego.
         // 0.7.10 (game 1.11.12): GenerateRaceForMap has a 4th parameter, raceRules (0 = fixed lists per act; 1 or more =
-        // open order from StoryRaces.OpenOrder). This postfix does not need it: it acts on the result with both rules.
-        // The draw weight still comes from ActosSerie (fixed lists); with open order it is an approximation
+        // open order of StoryRaces.OpenOrder). This postfix does not need it: it acts on the result with both rules.
+        // 0.7.11: weight comes from ActosSerie with rules 0 and from the open pool with rules 1 or more (__3)
         // Postfix of GenerateRaceForMap: in acts 1-3, the new races of that act enter the draw with the same weight
-        // as each base-series race (0.7.6: both in all three acts, «actosCampana» from the manifest; before, one per act). The draw is deterministic (same seed, same result) and separate from the game's: if
-        // it does not pick the new race, whatever the game chose is kept.
-        public static void TrasGenerateRaceForMap(int __0, int __1, Race __2, ref Race __result)
+        // as each stock race (0.7.6: both in all three acts, «actosCampana» from the manifest; before, one per act). The draw is deterministic (same seed, same result) and separate from the game's: if
+        // the new race is not drawn, what the game chose stands.
+        public static void TrasGenerateRaceForMap(int __0, int __1, Race __2, int __3, ref Race __result)
         {
             try
             {
@@ -316,7 +316,12 @@ namespace ZeroNucleo
                                                           && (Race)r.Id != propia && Jugable((Race)r.Id))
                                               .OrderBy(r => r.Id).Select(r => (Race)r.Id).ToList();
                 if (candidatas.Count == 0) return;
-                int deSerie = ActosSerie.TryGetValue(acto, out var lista) ? lista.Count(x => x != propia) : 3;
+                int deSerieFijo = ActosSerie.TryGetValue(acto, out var lista) ? lista.Count(x => x != propia) : 3;
+                // 0.7.11: con reglas 1 o más (StoryRaces.OpenOrder) el juego sortea entre todo el bombo abierto, no entre la
+                // lista fija del acto: la raza nueva pesa como cada raza de ese bombo (antes salía más del doble de lo debido)
+                // 0.7.11: with rules 1 or more (StoryRaces.OpenOrder) the game draws from the entire open pool, not from the
+                // fixed act list: the new race weighs the same as each race in that pool (before it came up more than twice as often as it should)
+                int deSerie = LogicaCampanaHeroes.DeSerieParaPeso(__3, deSerieFijo, BomboAbierto(propia));
                 var azar = new System.Random(unchecked(semilla * 31 + acto * 7919 + 4040));
                 double p = LogicaCampanaHeroes.ProbabilidadNuevas(deSerie, candidatas.Count);
                 if (azar.NextDouble() >= p) return;
@@ -324,6 +329,13 @@ namespace ZeroNucleo
             }
             catch (Exception e) { AvisoUnaVez("acto", "TrasGenerateRaceForMap: " + e.Message); }
         }
+
+        // Mismo bombo que StoryRaces.OpenOrder (desensamblado de la build 26749277): razas de la build menos Special y la
+        // propia del héroe. Solo se usa para el peso del sorteo con reglas 1 o más
+        // Same pool as StoryRaces.OpenOrder (disassembled from build 26749277): build races minus Special and the
+        // hero's own race. Only used for the draw weight with rules 1 or more
+        private static int BomboAbierto(Race propia) => Enum.GetValues(typeof(Race)).Cast<Race>()
+            .Count(r => r != Race.Special && r != propia && TabletopTavernConstants.IsRaceInBuild(r));
 
         // ¿La partida en curso usa la regla de la 0.7.6? Sin partida (menú, autoprueba), sí. La decisión se apunta en el registro
         // por runId para que no cambie nunca. Si algo falla, la nueva (como en una partida nueva)

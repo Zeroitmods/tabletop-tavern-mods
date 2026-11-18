@@ -125,41 +125,7 @@ namespace ZeroNucleo
                 // Solo un mundo vivo; la consulta se rehace si el mundo no es en el que se creó
                 // Only a live world; the query is rebuilt if the world is not the one it was created in
                 if (mundo == null || !mundo.IsCreated) { _consultaCreada = false; return; }
-                EntityManager em = mundo.EntityManager;
-                if (!_consultaCreada || mundo.Pointer != _mundoConsulta)
-                {
-                    _consulta = em.CreateEntityQuery(new Il2CppStructArray<ComponentType>(new[]
-                    {
-                        ComponentType.ReadOnly(Il2CppType.Of<PlayerSquad>()),
-                        ComponentType.ReadWrite(Il2CppType.Of<MoraleComponent>()),
-                    }));
-                    _consultaCreada = true;
-                    _mundoConsulta = mundo.Pointer;
-                }
-                NativeArray<Entity> escuadras = _consulta.ToEntityArray(Allocator.Temp);
-                try
-                {
-                    for (int i = 0; i < escuadras.Length; i++)
-                    {
-                        Entity e = escuadras[i];
-                        MoraleComponent m = em.GetComponentData<MoraleComponent>(e);
-                        float actual = m.CurrentMorale, umbral = m.MoraleThreshold;
-                        byte estado = m.MoraleState;
-                        if (!LogicaMoral.Ajustar(ref actual, m.MaxMorale, ref umbral, ref estado, _efecto.SinHuida, _efecto.SinVacilar)) continue;
-                        m.CurrentMorale = actual;
-                        m.MoraleThreshold = umbral;
-                        m.MoraleState = estado;
-                        em.SetComponentData(e, m);
-                        if (_vistas.Add(((long)e.Index << 32) | (uint)e.Version))
-                        {
-                            _escuadrasBatalla++;
-                            EscuadrasSesion++;
-                            if (_escuadrasBatalla == 1) Plugin.Info("Moral del jugador: escuadras del jugador impertérritas en esta batalla (la IA, de serie).");
-                            CuentaDeLaBatalla(em, escuadras.Length);
-                        }
-                    }
-                }
-                finally { escuadras.Dispose(); }
+                AjustarEscuadras(mundo, true);
             }
             catch (Exception e)
             {
@@ -168,6 +134,126 @@ namespace ZeroNucleo
                 _errorAvisado = true;
                 Plugin.Aviso("Moral del jugador: no se pudo ajustar la moral (" + e.GetType().Name + ": " + e.Message + "); el resto de la sesión, moral de serie.");
             }
+        }
+
+        // Ajusta la moral de todas las escuadras con PlayerSquad + MoraleComponent del mundo dado (lo de cada fotograma de
+        // batalla). «contar» = false en la autoprueba: no suma a las cuentas de la sesión ni escribe en el log de batalla.
+        // Devuelve cuántas escuadras se cambiaron en esta llamada.
+        // Adjusts the morale of all squads with PlayerSquad + MoraleComponent in the given world (what each battle
+        // frame does). «contar» = false in the self-test: does not add to session counts or write to the battle log.
+        // Returns how many squads were changed in this call.
+        private static int AjustarEscuadras(World mundo, bool contar)
+        {
+            EntityManager em = mundo.EntityManager;
+            if (!_consultaCreada || mundo.Pointer != _mundoConsulta)
+            {
+                _consulta = em.CreateEntityQuery(new Il2CppStructArray<ComponentType>(new[]
+                {
+                    ComponentType.ReadOnly(Il2CppType.Of<PlayerSquad>()),
+                    ComponentType.ReadWrite(Il2CppType.Of<MoraleComponent>()),
+                }));
+                _consultaCreada = true;
+                _mundoConsulta = mundo.Pointer;
+            }
+            int cambiadas = 0;
+            NativeArray<Entity> escuadras = _consulta.ToEntityArray(Allocator.Temp);
+            try
+            {
+                for (int i = 0; i < escuadras.Length; i++)
+                {
+                    Entity e = escuadras[i];
+                    MoraleComponent m = em.GetComponentData<MoraleComponent>(e);
+                    float actual = m.CurrentMorale, umbral = m.MoraleThreshold;
+                    byte estado = m.MoraleState;
+                    if (!LogicaMoral.Ajustar(ref actual, m.MaxMorale, ref umbral, ref estado, _efecto.SinHuida, _efecto.SinVacilar)) continue;
+                    m.CurrentMorale = actual;
+                    m.MoraleThreshold = umbral;
+                    m.MoraleState = estado;
+                    em.SetComponentData(e, m);
+                    cambiadas++;
+                    if (contar && _vistas.Add(((long)e.Index << 32) | (uint)e.Version))
+                    {
+                        _escuadrasBatalla++;
+                        EscuadrasSesion++;
+                        if (_escuadrasBatalla == 1) Plugin.Info("Moral del jugador: escuadras del jugador impertérritas en esta batalla (la IA, de serie).");
+                        CuentaDeLaBatalla(em, escuadras.Length);
+                    }
+                }
+            }
+            finally { escuadras.Dispose(); }
+            return cambiadas;
+        }
+
+        /// <summary>
+        /// Solo autoprueba (fuera de batalla): crea en el mundo ECS una escuadra de prueba del jugador (PlayerSquad +
+        /// MoraleComponent rota y con la moral baja), le pasa el mismo ajuste que en batalla y la borra en la MISMA llamada:
+        /// no pasa ningún fotograma, así ningún sistema del juego llega a verla. Mide que el núcleo escribe bien el
+        /// componente en esta versión del juego (no que el sistema Burst de moral lo respete después: eso solo se ve en
+        /// batalla). null = no hay mundo ECS (no se puede medir) o el módulo no está activo.
+        /// Self-test only (outside battle): creates a test player squad (PlayerSquad +
+        /// broken MoraleComponent with low morale) in the ECS world, applies the same adjustment as in battle and deletes it in the SAME call:
+        /// no frame passes, so no game system ever sees it. Measures that the core writes the
+        /// component correctly in this game version (not that the Burst morale system respects it afterwards: that is only visible in
+        /// battle). null = no ECS world (cannot be measured) or the module is not active.
+        /// </summary>
+        internal static (MoraleComponent antes, MoraleComponent despues, int cambiadas)? ProbarEnMundo()
+        {
+            if (!Activo) return null;
+            var mundo = World.DefaultGameObjectInjectionWorld;
+            if (mundo == null || !mundo.IsCreated) return null;
+            EntityManager em = mundo.EntityManager;
+            Entity e = em.CreateEntity(new Il2CppStructArray<ComponentType>(new[]
+            {
+                ComponentType.ReadWrite(Il2CppType.Of<PlayerSquad>()),
+                ComponentType.ReadWrite(Il2CppType.Of<MoraleComponent>()),
+            }));
+            try
+            {
+                // Escuadra «rota»: moral 10 de 100, umbral de huida 30, estado 2
+                // «Broken» squad: morale 10 out of 100, rout threshold 30, state 2
+                var antes = new MoraleComponent { CurrentMorale = 10f, MaxMorale = 100f, MoraleThreshold = 30f, MoraleState = LogicaMoral.Rota };
+                em.SetComponentData(e, antes);
+                int cambiadas = AjustarEscuadras(mundo, false);
+                return (antes, em.GetComponentData<MoraleComponent>(e), cambiadas);
+            }
+            finally
+            {
+                // Siempre se borra (también si algo falla); la consulta se rehace en la primera batalla
+                // Always deleted (even if something fails); the query is rebuilt on the first battle
+                em.DestroyEntity(e);
+                _consultaCreada = false;
+            }
+        }
+
+        /// <summary>
+        /// Solo autoprueba: llama de verdad a AutoResolveSimulation.UpdateMorale(vacío, vacío, aiSide = false). Con el
+        /// prefix puesto, el original NO se ejecuta (bando del jugador), así que con arrays vacíos no toca nada del juego.
+        /// Devuelve true si el prefix saltó (los pasos de la sesión subieron en 1); se descuenta para no ensuciar las cuentas.
+        /// Self-test only: really calls AutoResolveSimulation.UpdateMorale(empty, empty, aiSide = false). With the
+        /// prefix in place, the original does NOT run (player side), so with empty arrays nothing in the game is touched.
+        /// Returns true if the prefix fired (session step count went up by 1); it is deducted so as not to pollute the counts.
+        /// </summary>
+        internal static bool ProbarResolucionAutomatica()
+        {
+            var tAuto = Plugin.TipoPorNombre("TJ.Engagement.AutoResolveSimulation, TabletopTavern.Core");
+            var tEscuadra = Plugin.TipoPorNombre("TJ.Engagement.AutoResolveSquad, TabletopTavern.Core");
+            if (tAuto == null || tEscuadra == null) return false;
+            var metodo = tAuto.GetMethod("UpdateMorale", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            if (metodo == null) return false;
+            var info = HarmonyLib.Harmony.GetPatchInfo(metodo);
+            if (info == null || info.Prefixes.Count == 0) return false;   // sin el prefix se ejecutaría el original
+                                                                          // without the prefix the original would run
+            var tArray = typeof(Il2CppReferenceArray<>).MakeGenericType(tEscuadra);
+            object vacio = Activator.CreateInstance(tArray, 0L);
+            int antes = PasosAutoSesion;
+            bool avisado = _autoAvisado;
+            _autoAvisado = true;   // la línea «resolución automática sin pérdida de moral...» es para partidas de verdad
+                                   // the «auto-resolve with no morale loss...» line is for real runs
+            try { metodo.Invoke(null, new[] { vacio, vacio, (object)false }); }
+            finally { _autoAvisado = avisado; }
+            bool salto = PasosAutoSesion == antes + 1;
+            PasosAutoSesion = antes;
+            return salto;
         }
 
         // Prefix de AutoResolveSimulation.UpdateMorale(own, foes, aiSide): para el bando del jugador (aiSide = false) no se

@@ -575,7 +575,8 @@ namespace ZeroNucleo
             {
                 // Solo razas de serie jugables (sin «Especial» ni la Liga Olímpica «próximamente», como en InterfazColeccion)
                 // Only playable stock races (without «Especial» or the Olympic League «próximamente», as in InterfazColeccion)
-                if ((int)r >= 40 || r == Race.Special || r == Race.OlympianLeague) continue;
+                if ((int)r >= 40 || r == Race.Special || r == Race.OlympianLeague || !TabletopTavernConstants.IsRaceInBuild(r)) continue;   // 0.7.11: fuera también las que la build aún no trae (10 y 11)
+                                                                                                                                            // 0.7.11: also exclude those the build does not yet include (10 and 11)
                 ArmyBanners.Colours c;
                 try { c = ArmyBanners.FactionColours(r); } catch { continue; }
                 int n = 0;

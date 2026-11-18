@@ -169,6 +169,12 @@ internal static class PruebasCampana
         comprobar(Math.Abs(LogicaCampanaHeroes.ProbabilidadNuevas(2, 2) - 0.5) < 1e-9 && Math.Abs(LogicaCampanaHeroes.ProbabilidadNuevas(3, 1) - 0.25) < 1e-9
                   && LogicaCampanaHeroes.ProbabilidadNuevas(3, 0) == 0 && LogicaCampanaHeroes.ProbabilidadNuevas(-1, 1) == 1,
             "actos: cada raza nueva pesa como una de serie (acto 1: 2+2 -> 50 %; acto 2 con Creed: 3+1 -> 25 %)");
+        // 0.7.11: con reglas 1 o más (orden abierto) la nueva pesa como cada raza del bombo abierto, no de la lista fija
+        // 0.7.11: with rules 1 or more (open order) the new one weighs the same as each race in the open pool, not in the fixed list
+        comprobar(LogicaCampanaHeroes.DeSerieParaPeso(0, 3, 7) == 3 && LogicaCampanaHeroes.DeSerieParaPeso(1, 3, 7) == 7
+                  && LogicaCampanaHeroes.DeSerieParaPeso(2, 2, -1) == 0
+                  && Math.Abs(LogicaCampanaHeroes.ProbabilidadNuevas(LogicaCampanaHeroes.DeSerieParaPeso(1, 2, 7), 2) - 2.0 / 9) < 1e-9,
+            "actos: con orden abierto (reglas 1+) la nueva pesa como cada raza del bombo abierto (7+2 -> 22 %)");
 
         // -------- Regla del sorteo por partida (2.ª ronda de la revisión): las empezadas antes de la 0.7.6 siguen con la de antes
         // -------- Draw rule per run (2nd round of the review): runs started before 0.7.6 keep using the previous one

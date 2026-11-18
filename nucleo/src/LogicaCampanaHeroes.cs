@@ -202,6 +202,14 @@ namespace ZeroNucleo
         }
 
         /// <summary>
+        /// 0.7.11: razas de serie con las que compite una nueva en un acto. Con reglas 0, las de la lista fija del acto;
+        /// con 1 o más (orden abierto de StoryRaces.OpenOrder), todo el bombo abierto.
+        /// 0.7.11: stock races competing with a new one in an act. With rules 0, those in the fixed act list;
+        /// with 1 or more (open order of StoryRaces.OpenOrder), the entire open pool.
+        /// </summary>
+        public static int DeSerieParaPeso(int reglas, int deSerieFijo, int bomboAbierto) => reglas >= 1 ? Math.Max(0, bomboAbierto) : deSerieFijo;
+
+        /// <summary>
         /// Probabilidad de que el mapa de un acto sea de una raza nueva: cada raza nueva pesa lo mismo que cada raza de
         /// serie del acto (sin contar la del jugador). 0 si no hay nuevas.
         /// Probability that an act's map is of a new race: each new race weighs the same as each

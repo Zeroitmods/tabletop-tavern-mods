@@ -54,6 +54,9 @@ namespace ZeroNucleo
         /// What is being applied right now (the real one or, during the self-test, a simulated one).
         internal static ResultadoModulos Actual { get; private set; } = new ResultadoModulos();
         internal static bool Simulando { get; private set; }
+        /// <summary>0.7.11: avisos de la lectura de los módulos (Modulos.Buscar y modlist.json), para AvisoInstalacion.</summary>
+        /// 0.7.11: warnings from module reading (Modulos.Buscar and modlist.json), for AvisoInstalacion.
+        internal static List<string> AvisosLectura { get; private set; } = new List<string>();
         private static bool _avisoIncoherencia;
 
         /// <summary>
@@ -96,6 +99,8 @@ namespace ZeroNucleo
                 if (CarpetasActivas.Count == 0)
                     try { CarpetasActivas = OrdenMods.CarpetasActivas(CarpetaMods); } catch { }
             }
+            AvisosLectura = avisos;   // 0.7.11: para el aviso de instalación (zero_modulo.json ilegibles)
+                                      // 0.7.11: for the installation warning (unreadable zero_modulo.json files)
             foreach (string a in avisos.Concat(Real.Avisos)) Plugin.Aviso("Módulos: " + a);
             foreach (string r in Real.Rechazados) Plugin.Error("Módulo NO aplicado: " + r);
             Plugin.Info($"Módulos encontrados en {CarpetaMods}: {(Encontrados.Count == 0 ? "ninguno" : string.Join("; ", Encontrados))}.");

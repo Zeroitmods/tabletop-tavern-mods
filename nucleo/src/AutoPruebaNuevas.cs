@@ -469,6 +469,33 @@ namespace ZeroNucleo
                               : "faltan " + string.Join(", ", faltan), ref ok, ref total);
                 }
                 catch (Exception e) { Linea(false, "Moral del jugador (Impertérritos)", e.ToString(), ref ok, ref total); }
+
+                // --- 36 b) Medida (propuesta 18-11): escritura real de la moral en una escuadra de prueba del mundo ECS y salto
+                //     real del prefix de la resolución automática. Sin mundo ECS al arrancar no se puede medir: cuenta como
+                //     correcta y lo dice (no rompe el total) ---
+                // --- 36 b) Measurement (proposal 18-11): real morale write on a test squad in the ECS world and
+                //     real jump of the auto-resolve prefix. Without an ECS world at startup it cannot be measured: counts as
+                //     passed and says so (does not break the total) ---
+                try
+                {
+                    var r = MoralJugador.ProbarEnMundo();
+                    bool auto = MoralJugador.ProbarResolucionAutomatica();
+                    var ef = MoralJugador.Efecto;
+                    if (r == null)
+                        Linea(auto, "Moral del jugador medida", $"sin mundo ECS al arrancar (escritura no medible aquí); resolución automática del jugador saltada {auto}", ref ok, ref total);
+                    else
+                    {
+                        var (antes, despues, cambiadas) = r.Value;
+                        bool bien = cambiadas == 1 && auto
+                            && (!ef.SinHuida || despues.MoraleThreshold <= LogicaMoral.UmbralSinHuida / 2f)
+                            && (!ef.SinVacilar || (despues.CurrentMorale == despues.MaxMorale && despues.MoraleState == LogicaMoral.Firme));
+                        Linea(bien, "Moral del jugador medida",
+                              $"escuadra de prueba: moral {antes.CurrentMorale}/{antes.MaxMorale} umbral {antes.MoraleThreshold} estado {antes.MoraleState} -> " +
+                              $"{despues.CurrentMorale}/{despues.MaxMorale} umbral {despues.MoraleThreshold} estado {despues.MoraleState} (cambiadas {cambiadas}, esperada 1); " +
+                              $"resolución automática del jugador saltada {auto} (esperado True)", ref ok, ref total);
+                    }
+                }
+                catch (Exception e) { Linea(false, "Moral del jugador medida", e.ToString(), ref ok, ref total); }
             }
 
             // --- 37) 0.7.7: estandarte (Estandarte.cs). Con facciones nuevas o algún módulo con iconos: parches puestos y DÓNDE

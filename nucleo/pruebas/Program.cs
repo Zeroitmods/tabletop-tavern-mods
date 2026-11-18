@@ -722,6 +722,9 @@ internal static class Program
         // Test 32 (17-11, core 0.7.9): game files of the custom models rebuilt from the installation
         // (with the modules folder, also all real declarations against the installed game; PruebasFicherosJuego.cs)
         PruebasFicherosJuego.Todas(Comprobar, args.Length > 1 && Directory.Exists(args[1]) ? args[1] : null);
+        // Prueba 33 (18-11-2026, núcleo 0.7.11): instalación de los módulos y entradas en línea por línea de comandos (PruebasInstalacion.cs)
+        // Test 33 (18-11-2026, core 0.7.11): module installation and online command-line entries (PruebasInstalacion.cs)
+        PruebasInstalacion.Todas(Comprobar);
 
         Console.WriteLine(fallos == 0 ? "TODAS LAS PRUEBAS OK" : $"{fallos} FALLOS");
         return fallos == 0 ? 0 : 1;

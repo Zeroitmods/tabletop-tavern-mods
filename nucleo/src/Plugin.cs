@@ -69,8 +69,8 @@ namespace ZeroNucleo
     public class Plugin : BasePlugin
     {
         public const string GUID = "zero.tabletoptavern.nucleo";
-        public const string VERSION = "0.7.10";   // 0.7.10 (17-11-2026): adaptado al juego 1.11.12 (build 26621364): raceRules en GenerateEndlessRace/GenerateRaceForMap/GetEnemyHeroForCampaign y sin aviso en pantalla en las entradas en línea por línea de comandos (colgaban el arranque); 0.7.9 (17-11-2026): los módulos ya no traen ficheros del juego (anim.bin, anchors.bin, marcadores): se reconstruyen desde la instalación del jugador (FicherosJuego.cs); 0.7.8 (03-11-2026): textos propios del estandarte al idioma nuevo al cambiarlo en Ajustes; 0.7.7 (03-11-2026): estandarte (colores de las facciones A y B, rueda en «Colores de facción», iconos de los módulos con selector, en la vista previa y en las banderas del jugador en batalla); 0.7.6 (03-11-2026): prueba de Zero (Colección 3D, historias, bandas del grimorio, Refuerzos, razas enemigas en los tres actos, módulo Impertérritos) y arreglo del cierre de la autoprueba; 0.7.5 (02-11-2026): revisión total (ranuras por partida y slot, historial saneado, logros por partida, multijugador); 0.7.4: hechizos propios, munición x3 de las híbridas y sorteo por rareza
-                                                  // 0.7.10 (17-11-2026): adapted to game 1.11.12 (build 26621364): raceRules in GenerateEndlessRace/GenerateRaceForMap/GetEnemyHeroForCampaign and no on-screen notice in the online entry points from the command line (they hung startup); 0.7.9 (17-11-2026): modules no longer ship game files (anim.bin, anchors.bin, markers): they are rebuilt from the player's installation (FicherosJuego.cs); 0.7.8 (03-11-2026): banner's own texts switch to the new language when it is changed in Settings; 0.7.7 (03-11-2026): banner (colors of factions A and B, wheel in «Colores de facción», module icons with selector, in the preview and on the player's flags in battle); 0.7.6 (03-11-2026): Zero's test (3D Collection, stories, grimoire bands, Reinforcements, enemy races in all three acts, Impertérritos module) and fix for the self-test shutdown; 0.7.5 (02-11-2026): full review (slots per run and slot, sanitized history, achievements per run, multiplayer); 0.7.4: custom spells, x3 ammo for hybrids and draw by rarity
+        public const string VERSION = "0.7.11";   // 0.7.11 (18-11-2026): juego 1.11.17 (build 26749277); aviso de instalación en el menú y estado de los módulos en el menú de mods; las entradas en línea por línea de comandos siguen bloqueadas pero solo avisan si el arranque las pide; 0.7.10 (17-11-2026): adaptado al juego 1.11.12 (build 26621364): raceRules en GenerateEndlessRace/GenerateRaceForMap/GetEnemyHeroForCampaign y sin aviso en pantalla en las entradas en línea por línea de comandos (colgaban el arranque); 0.7.9 (17-11-2026): los módulos ya no traen ficheros del juego (anim.bin, anchors.bin, marcadores): se reconstruyen desde la instalación del jugador (FicherosJuego.cs); 0.7.8 (03-11-2026): textos propios del estandarte al idioma nuevo al cambiarlo en Ajustes; 0.7.7 (03-11-2026): estandarte (colores de las facciones A y B, rueda en «Colores de facción», iconos de los módulos con selector, en la vista previa y en las banderas del jugador en batalla); 0.7.6 (03-11-2026): prueba de Zero (Colección 3D, historias, bandas del grimorio, Refuerzos, razas enemigas en los tres actos, módulo Impertérritos) y arreglo del cierre de la autoprueba; 0.7.5 (02-11-2026): revisión total (ranuras por partida y slot, historial saneado, logros por partida, multijugador); 0.7.4: hechizos propios, munición x3 de las híbridas y sorteo por rareza
+                                                  // 0.7.11 (18-11-2026): game 1.11.17 (build 26749277); installation warning in the menu and module status in the mod menu; online command-line entries remain blocked but only warn if the startup requests them; 0.7.10 (17-11-2026): adapted to game 1.11.12 (build 26621364): raceRules in GenerateEndlessRace/GenerateRaceForMap/GetEnemyHeroForCampaign and no on-screen warning for online command-line entries (they hung the startup); 0.7.9 (17-11-2026): modules no longer carry game files (anim.bin, anchors.bin, markers): rebuilt from the player's installation (FicherosJuego.cs); 0.7.8 (03-11-2026): custom banner texts updated to the new language when changed in Settings; 0.7.7 (03-11-2026): banner (faction A and B colors, wheel in «Colores de facción», module icons with selector, in preview and in player flags in battle); 0.7.6 (03-11-2026): Zero test (Collection 3D, stories, grimoire bands, Reinforcements, enemy races in all three acts, Impertérritos module) and fix for self-test shutdown; 0.7.5 (02-11-2026): full review (slots per run and save slot, sanitized history, achievements per run, multiplayer); 0.7.4: custom spells, x3 ammo for hybrids and rarity-based drop roll
         // Versión del juego (Application.version) con la que se probó el núcleo. Fuente: PlayerSettings de
         // TabletopTavern_Data\globalgamemanagers del juego instalado, leída el 18-10-2026 (Unity 6000.3.23f1; build de
         // Steam 26006870, solo como dato). Si el juego arranca con otra versión, Load lo avisa en el log (ComprobarVersionJuego).
@@ -79,8 +79,8 @@ namespace ZeroNucleo
         // TabletopTavern_Data\globalgamemanagers of the installed game, read on 18-10-2026 (Unity 6000.3.23f1; Steam
         // build 26006870, for reference only). If the game starts with another version, Load warns about it in the log (ComprobarVersionJuego).
         // When testing the core with a new game version, update here.
-        public const string VersionJuegoProbada = "1.11.1";   // 03-11-2026: Zero probó la 0.7.6 en la 1.11.1 y todo fue bien
-                                                              // 03-11-2026: Zero tested 0.7.6 on 1.11.1 and everything went fine
+        public const string VersionJuegoProbada = "1.11.17.2";   // 18-11-2026: núcleo 0.7.11 en la 1.11.17.2 (build 26749277): arranques automáticos hasta el menú, autoprueba 64/64 con los módulos 1.1.1 (prueba 2) , 62/65 en la instalación limpia forzada con un módulo de prueba que pide el núcleo 9.9.9 (prueba 3a: los 3 fallos son los esperados) y 64/64 con los módulos 1.1.2 (prueba 3b: los 60 modelos exactos). Antes: 1.11.12 (17-11-2026, 0.7.10, autoprueba 55/55) y 1.11.1 (03-11-2026)
+                                                                 // 18-11-2026: core 0.7.11 on 1.11.17.2 (build 26749277): automatic startups to the menu, self-test 64/64 with modules 1.1.1 (test 2) , 62/65 on the forced clean install with a test module requiring core 9.9.9 (test 3a: the 3 failures are expected) and 64/64 with modules 1.1.2 (test 3b: 60 exact models). Before: 1.11.12 (17-11-2026, 0.7.10, self-test 55/55) and 1.11.1 (03-11-2026)
         // GUID y nombres de la versión monolítica (0.6.1), para migrar su configuración y su registro
         // GUID and names of the monolithic version (0.6.1), to migrate its configuration and its registry
         private const string GuidViejo = "zero.tabletoptavern.guardiaimperial";
@@ -114,6 +114,10 @@ namespace ZeroNucleo
         // 0.7.4: no online runs (co-op and versus) with modules applied (Multijugador.Bloquear)
         internal static ConfigEntry<bool> CfgBloquearMultijugador;
         internal static ConfigEntry<bool> CfgTrazas;
+        internal static ConfigEntry<bool> CfgSinSonido;   // 0.7.11: solo para pruebas (Silencio.cs)
+                                                          // 0.7.11: for tests only (Silencio.cs)
+        internal static ConfigEntry<bool> CfgProbarMenuMods;   // 0.7.11: solo para pruebas (DiagnosticoMenuMods.cs)
+                                                               // 0.7.11: for tests only (DiagnosticoMenuMods.cs)
         internal static ConfigEntry<bool> CfgAutoPrueba;
         internal static ConfigEntry<bool> CfgRespaldo;
         internal static ConfigEntry<string> CfgOmitir;
@@ -212,6 +216,18 @@ namespace ZeroNucleo
             // 0.7.0: the 0.6.1 configuration (another GUID) is copied once to the new file before reading it
             MigrarConfiguracion();
             LeerConfiguracion();
+            // 0.7.11: silencio de las pruebas, lo primero (antes de que el juego cargue el menú y su música)
+            // 0.7.11: test silence, first thing (before the game loads the menu and its music)
+            if (CfgSinSonido != null && CfgSinSonido.Value && Silencio.Aplicar())
+            {
+                try
+                {
+                    Il2CppInterop.Runtime.Injection.ClassInjector.RegisterTypeInIl2Cpp<VigiaSilencio>();
+                    AddComponent<VigiaSilencio>();
+                    Info("Diagnostico.SinSonido = true: juego sin sonido (volumen global de Unity a 0).");
+                }
+                catch (Exception e) { Aviso("Diagnostico.SinSonido: " + e.Message); }
+            }
             if (!CfgActivado.Value)
             {
                 Info("Desactivado en la configuración (General.Activado = false). No se aplica nada.");
@@ -243,6 +259,14 @@ namespace ZeroNucleo
             // Game 1.11.1 (review): in its own phase; if it fails, continues as with no modules (only achievements and online block if the
             // registry remains), without factory
             bool modulosLeidos = Fase("Módulos instalados (Nucleo.Iniciar)", () => Nucleo.Iniciar(datosJuego, Paths.PluginPath, copias));
+            // 0.7.11: instalación de los módulos (carpeta equivocada, carpeta de más, núcleo viejo...): resumen en el log y aviso
+            // en pantalla cuando el menú principal ya está montado. Va ANTES del retorno de «no hay ningún módulo», que es
+            // justo el caso de los módulos mal colocados, y con su propia instancia de Harmony
+            // 0.7.11: module installation (wrong folder, extra folder, old core...): log summary and on-screen warning
+            // when the main menu is fully set up. Runs BEFORE the «no modules found» early return, which is
+            // precisely the case of misplaced modules, and with its own Harmony instance
+            Fase("Aviso de instalación", () => AvisoInstalacion.Preparar(Nucleo.AvisosLectura));
+            Fase("Aviso de instalación (parches y vigilante)", AplicarParchesInstalacion);
             int encontrados = 0;
             if (modulosLeidos) { try { encontrados = Nucleo.Encontrados?.Count ?? 0; } catch { encontrados = 0; } }
             if (encontrados == 0)
@@ -423,6 +447,22 @@ namespace ZeroNucleo
             Fase("Alta de las unidades con el catálogo ya cargado", UnidadGuardia.RegistrarSiYaHayCatalogo);
         }
 
+        // 0.7.11: parches del aviso de instalación (instancia propia, opcionales: si no enganchan queda el log) y su vigilante
+        // 0.7.11: installation warning patches (own instance, optional: if they don't hook the log remains) and its watcher
+        private Harmony _harmonyInstalacion;
+        private void AplicarParchesInstalacion()
+        {
+            _harmonyInstalacion = new Harmony(GUID + ".instalacion");
+            Parchear("Aviso de instalación: menú principal montado (SceneHandler.AlertOfSceneSetUpComlete)", () => typeof(Memori.Scenes.SceneHandler),
+                "AlertOfSceneSetUpComlete", () => new[] { typeof(bool) }, null, nameof(AvisoInstalacion.TrasAlertaEscena), null, false,
+                typeof(AvisoInstalacion), _harmonyInstalacion);
+            Parchear("Menú de mods: estado de los módulos de Zero (ModListRow.Setup)", () => typeof(TJ.ModListRow), "Setup", null,
+                null, nameof(AvisoInstalacion.TrasModListRowSetup), null, false, typeof(AvisoInstalacion), _harmonyInstalacion);
+            if (!Il2CppInterop.Runtime.Injection.ClassInjector.IsTypeRegisteredInIl2Cpp<VigiaAvisoInstalacion>())
+                Il2CppInterop.Runtime.Injection.ClassInjector.RegisterTypeInIl2Cpp<VigiaAvisoInstalacion>();
+            AddComponent<VigiaAvisoInstalacion>();
+        }
+
         // Juego 1.11.1 (revisión): líneas de resumen de la carga (antes en Load), aparte para ir en su fase
         // Game 1.11.1 (review): load summary lines (previously in Load), separated so they go in their own phase
         private void EscribirResumen()
@@ -453,6 +493,19 @@ namespace ZeroNucleo
                     Info("Diagnóstico de la pantalla de héroes preparado (Diagnostico.ProbarPantallaHeroes = true).");
                 }
                 catch (Exception e) { Error("No se pudo preparar el diagnóstico de la pantalla de héroes: " + e.Message); }
+            }
+            // 0.7.11: prueba del menú de mods (estado de los módulos en cada fila), solo con Diagnostico.ProbarMenuMods
+            // 0.7.11: mod menu test (module status in each row), only with Diagnostico.ProbarMenuMods
+            if (CfgProbarMenuMods != null && CfgProbarMenuMods.Value)
+            {
+                try
+                {
+                    if (!Il2CppInterop.Runtime.Injection.ClassInjector.IsTypeRegisteredInIl2Cpp<DiagnosticoMenuMods>())
+                        Il2CppInterop.Runtime.Injection.ClassInjector.RegisterTypeInIl2Cpp<DiagnosticoMenuMods>();
+                    AddComponent<DiagnosticoMenuMods>();
+                    Info("Diagnóstico del menú de mods preparado (Diagnostico.ProbarMenuMods = true).");
+                }
+                catch (Exception e) { Error("No se pudo preparar el diagnóstico del menú de mods: " + e.Message); }
             }
         }
 
@@ -700,6 +753,12 @@ namespace ZeroNucleo
                 "(sin soporte: puede fallar o desincronizarse).");
             CfgTrazas = Config.Bind("Diagnostico", "Trazas", false,
                 "Escribe en el log cada paso del alta de la unidad (para localizar un cierre del juego).");
+            CfgSinSonido = Config.Bind("Diagnostico", "SinSonido", false,
+                "Solo para pruebas: el juego arranca y sigue sin ningún sonido (volumen global de Unity a 0 desde la carga). " +
+                "No cambia tus ajustes de volumen: con false suena como siempre.");
+            CfgProbarMenuMods = Config.Bind("Diagnostico", "ProbarMenuMods", false,
+                "Solo para pruebas: ya en el menú abre el menú de mods, escribe en el log cada fila (con el estado de los módulos de Zero) " +
+                "y hace una captura en BepInEx\\config\\ZeroNucleo_capturas; no toca ningún interruptor.");
             CfgOmitir = Config.Bind("Diagnostico", "OmitirParches", "",
                 "Solo para diagnosticar cierres: nombres de método del juego separados por comas que NO se parchean (p. ej. ToJson,WriteAllText). " +
                 "Submit (bloqueo de las clasificaciones online) no se omite mientras haya módulos de Zero aplicados y Clasificaciones.Bloquear = true.");

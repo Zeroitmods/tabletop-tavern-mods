@@ -404,7 +404,7 @@ internal static class PruebasHechizos
     // ---------------------------------------------------------------
     private static void PruebaModulos(Action<bool, string> comprobar, string modulos)
     {
-        string lista = Path.GetFullPath(Path.Combine(modulos, "..", "herramientas", "csharp", "volcado", "hechizos_registrados_1.11.1.txt"));
+        string lista = Path.GetFullPath(Path.Combine(modulos, "..", "herramientas", "csharp", "volcado", "hechizos_registrados_1.11.12.txt"));
         var registrados = File.Exists(lista)
             ? new HashSet<string>(File.ReadAllLines(lista).Select(l => l.Split('#')[0].Trim()).Where(l => l.Length > 0))
             : new HashSet<string>();
